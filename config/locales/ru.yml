@@ -1,4 +1,6 @@
 ru:
   hello_world: Hello World
-
+  layouts:
+    sign_out: Выйти
+    sign_in: Войти
 

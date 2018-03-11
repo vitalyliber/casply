@@ -31,6 +31,9 @@
 
 en:
   hello_world: Hello World
+  layouts:
+    sign_out: Sign out
+    sign_in: Sign in
 
 
 
