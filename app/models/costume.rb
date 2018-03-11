@@ -4,4 +4,5 @@ class Costume < ApplicationRecord
   validates_length_of :universe, minimum: 3, allow_blank: true
   belongs_to :user
   has_many :comments
+  has_many_attached :images
 end

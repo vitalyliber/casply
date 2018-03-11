@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(
+user = User.create!(
   [
     {
       name: 'Super Girl',
@@ -16,4 +16,6 @@ User.create(
   ]
 )
 
-User.last.update(confirmed_at: Time.now)
+user.update!(confirmed_at: Time.now)
+
+user.costumes.create!(name: 'Alice Liddell', universe: 'Alice in Wonderland')
