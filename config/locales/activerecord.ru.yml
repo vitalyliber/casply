@@ -4,9 +4,14 @@ ru:
       user:
         one: Пользователь
         other: Пользователи
+    attributes:
+      user:
+        password: Пароль
     errors:
       models:
         user:
           attributes:
             email:
+              blank: не может быть пустым
+            password:
               blank: не может быть пустым
