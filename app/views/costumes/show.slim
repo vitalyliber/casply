@@ -1,0 +1,29 @@
+h1.title = @costume.name
+- if @costume.universe.present?
+  h2.title = @costume.universe
+h3.title = link_to current_user.name, root_path, class: 'link-black'
+p.title = @costume.created_at.strftime("%m-%d-%Y")
+- if @costume.user == current_user
+.title = link_to 'edit', edit_costume_path(@costume), class: 'link-black'
+
+.container
+  - @costume.images.each do |image|
+    = link_to image do
+      div
+        = image_tag image.variant(resize: "400x400^", gravity: :center, crop: "400x400+0+0")
+
+- if @costume.desc.present?
+  p = @costume.desc
+
+h2 = t('costumes.comments')
+
+- @costume.comments do |comment|
+  p = link_to comment.user.name, root_path
+  p = comment.text
+
+= form_for [@costume, Comment.new] do |f|
+  = f.label :text
+  br
+  = f.text_field :text, minlength: 3, maxlength: 455
+
+  = f.submit class: 'mt-1'

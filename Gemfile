@@ -71,3 +71,6 @@ gem 'devise'
 
 # Slim
 gem 'slim-rails'
+
+# I18n for russian
+gem 'russian'

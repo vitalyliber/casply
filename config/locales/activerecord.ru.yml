@@ -4,14 +4,18 @@ ru:
       user:
         one: Пользователь
         other: Пользователи
+      costume:
+        one: Костюм
+        other: Костюмы
+      comment:
+        one: Комментарий
+        other: Комментарии
     attributes:
       user:
         password: Пароль
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              blank: не может быть пустым
-            password:
-              blank: не может быть пустым
+      costume:
+        name: Персонаж
+        universe: Вселенная
+        desc: Описание
+      comment:
+        text: Сообщение

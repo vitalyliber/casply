@@ -1,6 +1,13 @@
 ru:
-  hello_world: Hello World
   layouts:
     sign_out: Выйти
     sign_in: Войти
-
+    costumes: Персонажи
+    new_costume: Новый костюм
+    home: Casply.com
+  costumes:
+    images: Фотографии
+    new_costume: Новый костюм
+    costumes: Персонажи
+    edit: Редактирование персонажа
+    comments: Комментарии
