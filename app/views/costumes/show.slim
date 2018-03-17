@@ -15,10 +15,10 @@ p.title = @costume.created_at.strftime("%m-%d-%Y")
 - if @costume.desc.present?
   p = @costume.desc
 
-h2 = t('costumes.comments')
+h2 = "#{t('costumes.comments')} (#{@costume.comments_count})"
 
-- @costume.comments do |comment|
-  p = link_to comment.user.name, root_path
+- @costume.comments.each do |comment|
+  p = link_to comment.user.name, root_path, class: 'link-black'
   p = comment.text
 
 = form_for [@costume, Comment.new] do |f|
