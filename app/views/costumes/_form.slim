@@ -27,8 +27,8 @@
     = f.text_area :desc, minlength: 3, maxlength: 455, class: 'text-area'
 
   div.mt-1
-    = f.label t('costumes.images')
+    = f.label t('costumes.photos')
     br
-    = f.file_field :images, multiple: true, direct_upload: true
+    = f.file_field :photos, multiple: true, direct_upload: true
 
   = f.submit class: 'mt-1'

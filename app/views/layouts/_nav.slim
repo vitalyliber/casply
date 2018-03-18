@@ -3,8 +3,8 @@
     = link_to t('layouts.home'), root_path
     = link_to t('layouts.costumes'), costumes_path, class: 'ml-1'
   div
-    = link_to t('layouts.new_costume'), new_costume_path, class: 'mr-1'
     - if user_signed_in?
+      = link_to t('layouts.new_costume'), new_costume_path, class: 'mr-1'
       = link_to t('layouts.sign_out'), destroy_user_session_path, :method => :delete
     - else
       = link_to t('layouts.sign_in'), new_user_session_path

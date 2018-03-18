@@ -52,8 +52,8 @@ ActiveRecord::Schema.define(version: 2018_03_11_154748) do
     t.text "desc", default: ""
     t.bigint "user_id"
     t.integer "comments_count", default: 0
-    t.integer "views_count", default: 0
-    t.integer "images_count", default: 0
+    t.integer "impressions_count", default: 0
+    t.integer "photos_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_costumes_on_user_id"

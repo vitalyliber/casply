@@ -7,7 +7,7 @@ p.text-center = @costume.created_at.strftime("%m-%d-%Y")
 .text-center = link_to 'edit', edit_costume_path(@costume), class: 'link-black'
 
 .container
-  - @costume.images.each do |image|
+  - @costume.photos.each do |image|
     = link_to image do
       div
         = image_tag image.variant(resize: "700x600^", gravity: :center, crop: "700x600+0+0")

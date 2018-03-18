@@ -7,15 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 user = User.create!(
-  [
-    {
-      name: 'Super Girl',
-      email: 'SuperGirl@gmail.com',
-      password: 'supergirl',
-    }
-  ]
+  {
+    name: 'Super Girl',
+    email: 'SuperGirl@gmail.com',
+    password: 'supergirl',
+  }
 )
 
 user.update!(confirmed_at: Time.now)
-
-user.costumes.create!(name: 'Alice Liddell', universe: 'Alice in Wonderland')
