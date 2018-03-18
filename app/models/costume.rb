@@ -5,6 +5,6 @@ class Costume < ApplicationRecord
   validates_length_of :universe, minimum: 3, maximum: 100, allow_blank: true
   scope :with_eager_loaded_photos, -> { eager_load(photos_attachments: :blob) }
   belongs_to :user
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
   has_many_attached :photos
 end
