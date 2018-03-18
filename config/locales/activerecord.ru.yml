@@ -13,9 +13,11 @@ ru:
     attributes:
       user:
         password: Пароль
+        photo: Фото
       costume:
         name: Персонаж
         universe: Вселенная
         desc: Описание
+        images: Фотограифии
       comment:
         text: Сообщение

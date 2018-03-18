@@ -1,5 +1,5 @@
 class Costume < ApplicationRecord
-  validates_presence_of :name, :universe, :user
+  validates_presence_of :name, :universe, :user, :images
   validates_length_of :name, :universe, minimum: 3, maximum: 100
   validates_length_of :desc, minimum: 3, maximum: 455, allow_blank: true
   validates_length_of :universe, minimum: 3, maximum: 100, allow_blank: true

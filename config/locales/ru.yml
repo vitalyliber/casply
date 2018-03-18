@@ -2,12 +2,16 @@ ru:
   layouts:
     sign_out: Выйти
     sign_in: Войти
-    costumes: Персонажи
+    costumes: Костюмы
     new_costume: Новый костюм
     home: Casply.com
   costumes:
     images: Фотографии
     new_costume: Новый костюм
-    costumes: Персонажи
-    edit: Редактирование персонажа
+    costumes: Костюмы
+    edit: Редактирование костюма
     comments: Комментарии
+    register_to_write_comments: Пожалуйста авторизуйтесь чтобы писать комментарии
+    not_saved:
+      one: "Костюм: сохранение не удалось из-за %{count} ошибки"
+      few: "Костюм: сохранение не удалось из-за %{count} ошибок"

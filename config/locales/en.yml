@@ -42,3 +42,7 @@ en:
     costumes: Costumes
     edit: Edit costume
     comments: Comments
+    register_to_write_comments: Please log in or register to write comments
+    not_saved:
+      one: "Costume: has %{count} error"
+      few: "Costume: has %{count} errors"

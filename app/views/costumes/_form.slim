@@ -1,6 +1,10 @@
 - if costume.errors.any?
   div
-    h2 #{pluralize(costume.errors.count, "error")} prohibited this costume from being saved:
+    - if costume.errors.count == 1
+      h2 = t('costumes.not_saved.one', count: costume.errors.count)
+    - else
+      h2 = t('costumes.not_saved.few', count: costume.errors.count)
+
 
     ul
       - costume.errors.full_messages.each do |msg|

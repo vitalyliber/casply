@@ -1,29 +1,32 @@
-h1.title = @costume.name
+h1.text-center = @costume.name
 - if @costume.universe.present?
-  h2.title = @costume.universe
-h3.title = link_to current_user.name, root_path, class: 'link-black'
-p.title = @costume.created_at.strftime("%m-%d-%Y")
-- if @costume.user == current_user
-.title = link_to 'edit', edit_costume_path(@costume), class: 'link-black'
+  h2.text-center = @costume.universe
+h3.text-center = link_to @costume.user.name, root_path, class: 'link-black'
+p.text-center = @costume.created_at.strftime("%m-%d-%Y")
+- if user_signed_in? && @costume.user == current_user
+.text-center = link_to 'edit', edit_costume_path(@costume), class: 'link-black'
 
 .container
   - @costume.images.each do |image|
     = link_to image do
       div
-        = image_tag image.variant(resize: "400x400^", gravity: :center, crop: "400x400+0+0")
+        = image_tag image.variant(resize: "700x600^", gravity: :center, crop: "700x600+0+0")
 
 - if @costume.desc.present?
   p = @costume.desc
 
-h2 = "#{t('costumes.comments')} (#{@costume.comments_count})"
+h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
 - @costume.comments.each do |comment|
   p = link_to comment.user.name, root_path, class: 'link-black'
-  p = comment.text
+  p = simple_format(comment.text)
 
-= form_for [@costume, Comment.new] do |f|
-  = f.label :text
-  br
-  = f.text_field :text, minlength: 3, maxlength: 455
+- if user_signed_in?
+  = form_for [@costume, Comment.new] do |f|
+    = f.label :text
+    br
+    = f.text_area :text, minlength: 3, maxlength: 455, class: 'text-area'
 
-  = f.submit class: 'mt-1'
+    = f.submit class: 'mt-1'
+- else
+  = link_to t('costumes.register_to_write_comments'), new_user_session_path, class: 'link-black'

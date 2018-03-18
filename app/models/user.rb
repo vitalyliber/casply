@@ -10,5 +10,5 @@ class User < ApplicationRecord
 
   has_many :costumes
   has_many :comments
-  has_one_attached :avatar
+  has_one_attached :photo
 end
