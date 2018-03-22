@@ -7,10 +7,13 @@ p.text-center = @costume.created_at.strftime("%m-%d-%Y")
 .text-center = link_to 'edit', edit_costume_path(@costume), class: 'link-black'
 
 .container
-  - @costume.photos.each do |image|
-    = link_to image do
-      div
-        = image_tag image.variant(resize: "700x600^", gravity: :center, crop: "700x600+0+0")
+  - @costume.photos.each do |photo|
+    div
+      - if @costume.user == current_user
+        = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white' do
+          .image-costume-photo-title.b-c-alert = "delete"
+      = link_to photo, class: 'link-white' do
+        = image_tag photo.variant(resize: "700x600^", gravity: :center, crop: "700x600+0+0")
 
 - if @costume.desc.present?
   p = @costume.desc

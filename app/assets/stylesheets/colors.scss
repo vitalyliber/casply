@@ -1,3 +1,17 @@
-//.b-c-main {
-//  color:
-//}
+$color-main: #1fa0ff;
+
+$color-alert: #f1475d;
+
+$color-notice: #69a532;
+
+.b-c-main {
+  background-color: $color-main;
+}
+
+.b-c-alert {
+  background-color: $color-alert;
+}
+
+.b-c-notice {
+  background-color: $color-notice;
+}

@@ -1,7 +1,9 @@
 class CostumesController < ApplicationController
   before_action :find_costume, only: [:show, :edit, :update]
+  after_action :photos_counter_cache, only: [:create, :edit, :update]
 
   def index
+    @costumes = Costume.with_eager_loaded_photos.where("photos_count > ?", 0).order(created_at: :desc)
   end
 
   def new
@@ -25,7 +27,7 @@ class CostumesController < ApplicationController
 
   def update
     if @costume.update(costume_params)
-      redirect_to costumes_path
+      redirect_to @costume
     else
       render "edit"
     end
@@ -34,10 +36,14 @@ class CostumesController < ApplicationController
   private
 
   def find_costume
-    @costume = Costume.find(params[:id])
+    @costume = Costume.with_eager_loaded_photos.find(params[:id])
   end
 
   def costume_params
     params.require(:costume).permit(:name, :universe, :desc, photos: [])
+  end
+
+  def photos_counter_cache
+    @costume.update(photos_count: @costume.photos.count)
   end
 end

@@ -31,18 +31,19 @@
 
 en:
   layouts:
-    sign_out: Sign out
-    sign_in: Sign in
-    costumes: Costumes
-    new_costume: New costume
-    home: Casply.com
+    sign_out: "Sign out"
+    sign_in: "Sign in"
+    costumes: "Costumes"
+    new_costume: "New costume"
+    home: "Casply.com"
   costumes:
-    photos: Photos
-    new_costume: New costume
-    costumes: Costumes
-    edit: Edit costume
-    comments: Comments
-    register_to_write_comments: Please log in or register to write comments
+    photos: "Photos"
+    new_costume: "New costume"
+    costumes: "Costumes"
+    edit: "Edit costume"
+    comments: "Comments"
+    register_to_write_comments: "Please log in or register to write comments"
+    can_not_remove_last_photo: "You can\'t remove last photo"
     not_saved:
       one: "Costume: has %{count} error"
       few: "Costume: has %{count} errors"

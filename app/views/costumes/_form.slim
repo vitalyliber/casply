@@ -1,10 +1,9 @@
 - if costume.errors.any?
   div
     - if costume.errors.count == 1
-      h2 = t('costumes.not_saved.one', count: costume.errors.count)
+      p.alert = t('costumes.not_saved.one', count: costume.errors.count)
     - else
-      h2 = t('costumes.not_saved.few', count: costume.errors.count)
-
+      p.alert = t('costumes.not_saved.few', count: costume.errors.count)
 
     ul
       - costume.errors.full_messages.each do |msg|

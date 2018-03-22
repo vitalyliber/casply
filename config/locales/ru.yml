@@ -1,17 +1,18 @@
 ru:
   layouts:
-    sign_out: Выйти
-    sign_in: Войти
-    costumes: Костюмы
-    new_costume: Новый костюм
-    home: Casply.com
+    sign_out: "Выйти"
+    sign_in: "Войти"
+    costumes: "Костюмы"
+    new_costume: "Новый костюм"
+    home: "Casply.com"
   costumes:
-    photos: Фотографии
-    new_costume: Новый костюм
-    costumes: Костюмы
-    edit: Редактирование костюма
-    comments: Комментарии
-    register_to_write_comments: Пожалуйста авторизуйтесь чтобы писать комментарии
+    photos: "Фотографии"
+    new_costume: "Новый костюм"
+    costumes: "Костюмы"
+    edit: "Редактирование костюма"
+    comments: "Комментарии"
+    register_to_write_comments: "Пожалуйста авторизуйтесь чтобы писать комментарии"
+    can_not_remove_last_photo: "Вы не можете удалить последнюю фотографию"
     not_saved:
       one: "Костюм: сохранение не удалось из-за %{count} ошибки"
       few: "Костюм: сохранение не удалось из-за %{count} ошибок"

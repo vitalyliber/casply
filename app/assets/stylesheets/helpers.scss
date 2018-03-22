@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import 'colors';
 
 body {
   margin: 0;
@@ -13,7 +14,7 @@ h1, h2, h3, a, p {
   display: flex;
   justify-content: space-between;
   padding: 10px;
-  background-color: #1fa0ff;
+  background-color: $color-main;
 
   a {
     text-decoration: none;
@@ -96,4 +97,16 @@ h1, h2, h3, a, p {
 .link-black {
   text-decoration: none;
   color: #616060;
+}
+
+.alert {
+  background-color: $color-alert;
+  padding: 10px;
+  color: white;
+}
+
+.notice {
+  background-color: $color-notice;
+  padding: 10px;
+  color: white;
 }
