@@ -1,7 +1,6 @@
 .navigation
   div
     = link_to t('layouts.home'), root_path
-    = link_to t('layouts.costumes'), costumes_path, class: 'ml-1'
   div
     - if user_signed_in?
       = link_to t('layouts.new_costume'), new_costume_path, class: 'mr-1'
