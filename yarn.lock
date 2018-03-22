@@ -56,6 +56,10 @@ acorn@^5.0.0:
   version "5.5.3"
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.5.3.tgz#f473dd47e0277a08e28e9bec5aeeb04751f0b8c9"
 
+activestorage@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/activestorage/-/activestorage-0.1.1.tgz#a5db701467e80e6a139fb1a8e77977829115f131"
+
 ajv-keywords@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/ajv-keywords/-/ajv-keywords-3.1.0.tgz#ac2b27939c543e95d2c06e7f7f5c27be4aa543be"
