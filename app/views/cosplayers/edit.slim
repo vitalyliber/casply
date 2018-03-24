@@ -1,17 +1,17 @@
 h1.text-center = t('cosplayers.edit_cosplayers_info')
 
-- if @user.errors.any?
+- if current_user.errors.any?
   div
-    - if @user.errors.count == 1
+    - if current_user.errors.count == 1
       p.alert = t('costumes.not_saved.one', count: costume.errors.count)
     - else
       p.alert = t('costumes.not_saved.few', count: costume.errors.count)
 
     ul
-      - @user.errors.full_messages.each do |msg|
+      - current_user.errors.full_messages.each do |msg|
         li= msg
 
-= form_for @user, :url => { controller: :cosplayers, action: :update }, :html => {method: :patch} do |f|
+= form_for current_user, :url => { controller: :cosplayers, action: :update }, :html => {method: :patch} do |f|
   div
     = f.label :name
     br

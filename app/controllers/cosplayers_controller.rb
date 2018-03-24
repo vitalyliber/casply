@@ -1,13 +1,15 @@
 class CosplayersController < ApplicationController
-  before_action :find_user, only: [:show, :edit]
+  before_action :find_user, only: [:show, :edit, :update]
 
   def show
   end
 
   def edit
+    redirect_to cosplayer_path(current_user) unless can_edit?
   end
 
   def update
+    return redirect_to cosplayer_path(current_user) unless can_edit?
     if current_user.update(user_params)
       redirect_to cosplayer_path(current_user)
     else
@@ -23,5 +25,9 @@ class CosplayersController < ApplicationController
 
   def user_params
     params.require(:user).permit(:name, :desc, :country, :city, :photo)
+  end
+
+  def can_edit?
+    current_user == @user
   end
 end
