@@ -1,0 +1,2 @@
+module CosplayerHelper
+end

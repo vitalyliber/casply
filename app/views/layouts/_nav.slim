@@ -4,6 +4,6 @@
   div
     - if user_signed_in?
       = link_to t('layouts.new_costume'), new_costume_path, class: 'mr-1'
-      = link_to t('layouts.sign_out'), destroy_user_session_path, :method => :delete
+      = link_to current_user.name, cosplayer_path(current_user)
     - else
       = link_to t('layouts.sign_in'), new_user_session_path

@@ -1,27 +1,27 @@
 h1.text-center = @costume.name
 - if @costume.universe.present?
   h2.text-center = @costume.universe
-h3.text-center = link_to @costume.user.name, root_path, class: 'link-black'
+h3.text-center = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
 p.text-center = @costume.created_at.strftime("%m-%d-%Y")
 - if user_signed_in? && @costume.user == current_user
-.text-center = link_to 'edit', edit_costume_path(@costume), class: 'link-black'
+.text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
 
-.container
+.photos-container
   - @costume.photos.each do |photo|
-    div
+    .photo-container
       - if @costume.user == current_user
         = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white' do
           .image-costume-photo-title.b-c-alert = "delete"
       = link_to photo, class: 'link-white' do
-        = image_tag photo.variant(resize: "700x600^", gravity: :center, crop: "700x600+0+0")
+        = image_tag photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
 
 - if @costume.desc.present?
-  p = @costume.desc
+  p.text-center = @costume.desc
 
 h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
 - @costume.comments.each do |comment|
-  p = link_to comment.user.name, root_path, class: 'link-black'
+  p = link_to comment.user.name, root_path, class: 'link-main'
   p = simple_format(comment.text)
 
 - if user_signed_in?
@@ -30,6 +30,6 @@ h2 #{t('costumes.comments')} (#{@costume.comments_count})
     br
     = f.text_area :text, minlength: 3, maxlength: 455, class: 'text-area'
 
-    = f.submit class: 'mt-1'
+    = f.submit class: 'mt-1 btn btn-active'
 - else
-  = link_to t('costumes.register_to_write_comments'), new_user_session_path, class: 'link-black'
+  = link_to t('costumes.register_to_write_comments'), new_user_session_path, class: 'link-main'

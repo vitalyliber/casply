@@ -13,12 +13,12 @@
   div
     = f.label :name
     br
-    = f.text_field :name, minlength: 3, maxlength: 100
+    = f.text_field :name, minlength: 3, maxlength: 100, class: 'text-field'
 
   div.mt-1
     = f.label :universe
     br
-    = f.text_field :universe, minlength: 3, maxlength: 100
+    = f.text_field :universe, minlength: 3, maxlength: 100, class: 'text-field'
 
   div.mt-1
     = f.label :desc
@@ -30,4 +30,4 @@
     br
     = f.file_field :photos, multiple: true, direct_upload: true
 
-  = f.submit class: 'mt-1'
+  = f.submit class: 'mt-1 btn btn-active'

@@ -12,8 +12,12 @@ ru:
         other: Комментарии
     attributes:
       user:
+        name: Имя
         password: Пароль
         photo: Фото
+        desc: О себе
+        country: Страна
+        city: Город
       costume:
         name: Персонаж
         universe: Вселенная

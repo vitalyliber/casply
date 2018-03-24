@@ -58,23 +58,16 @@ h1, h2, h3, a, p {
   text-align: center;
 }
 
-.container {
-  padding: .5vw;
+.photos-container {
+  padding: 5px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   flex-flow: row wrap;
   justify-content: center;
 
-  a {
-    flex: auto;
-    width: 200px;
-    margin: .5vw;
-
-    img {
-      width: 100%;
-      height: auto;
-    }
+  .photo-container {
+    margin: 5px;
   }
 }
 
@@ -82,6 +75,10 @@ h1, h2, h3, a, p {
   box-sizing: border-box;
   width: 100%;
   min-height: 100px;
+}
+
+.text-field {
+  width: 100%;
 }
 
 .wrapper {
@@ -94,9 +91,14 @@ h1, h2, h3, a, p {
   color: white;
 }
 
-.link-black {
+.link-main {
   text-decoration: none;
-  color: #616060;
+  color: $color-main;
+}
+
+.link-alert {
+  text-decoration: none;
+  color: $color-alert;
 }
 
 .alert {

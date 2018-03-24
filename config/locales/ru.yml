@@ -16,3 +16,9 @@ ru:
     not_saved:
       one: "Костюм: сохранение не удалось из-за %{count} ошибки"
       few: "Костюм: сохранение не удалось из-за %{count} ошибок"
+  cosplayers:
+    edit_cosplayers_info: "Редактирование профиля"
+    costumes_number: "Количество костюмов (%{count})"
+  common:
+    edit: "Редактировать"
+    are_you_sure: "Вы уверены?"

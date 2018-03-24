@@ -1,0 +1,26 @@
+h1.text-center = @user.name
+
+h2.text-center = t('cosplayers.costumes_number', count: @user.costumes_count)
+
+- if @user.photo.attached?
+  .text-center =  image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0")
+
+- if @user.desc.present?
+  p.text-center = @user.desc
+
+- if @user.country.present?
+  p.text-center = @user.country
+
+- if @user.city.present?
+  p.text-center = @user.city
+
+- if user_signed_in? && @user == current_user
+  .text-center = link_to t('common.edit'), edit_cosplayer_path(@user), class: 'link-main'
+  br
+  .text-center = link_to t('layouts.sign_out'),
+          destroy_user_session_path,
+          method: :delete,
+          class: 'link-alert',
+          data: { confirm: t('common.are_you_sure') }
+
+= render partial: 'costumes/costumes_gallery', locals: { costumes: @user.costumes }

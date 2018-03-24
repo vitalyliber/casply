@@ -1,9 +1,3 @@
 h1.text-center = t('costumes.costumes')
 
-.container
-  - @costumes.each do |costume|
-
-    = link_to costume, class: 'link-white' do
-      .image-costume-photo-title = costume.name
-      = image_tag costume.photos.last.variant(resize: "700x600^", gravity: :center, crop: "700x600+0+0")
-      .image-costume-photo-title = time_ago_in_words(costume.created_at)
+= render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

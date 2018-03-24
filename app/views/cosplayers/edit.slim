@@ -1,0 +1,40 @@
+h1.text-center = t('cosplayers.edit_cosplayers_info')
+
+- if @user.errors.any?
+  div
+    - if @user.errors.count == 1
+      p.alert = t('costumes.not_saved.one', count: costume.errors.count)
+    - else
+      p.alert = t('costumes.not_saved.few', count: costume.errors.count)
+
+    ul
+      - @user.errors.full_messages.each do |msg|
+        li= msg
+
+= form_for @user, :url => { controller: :cosplayers, action: :update }, :html => {method: :patch} do |f|
+  div
+    = f.label :name
+    br
+    = f.text_field :name, minlength: 3, maxlength: 100, class: 'text-field'
+
+  div.mt-1
+    = f.label :country
+    br
+    = f.text_field :country, minlength: 3, maxlength: 100, class: 'text-field'
+
+  div.mt-1
+    = f.label :city
+    br
+    = f.text_field :city, minlength: 3, maxlength: 100, class: 'text-field'
+
+  div.mt-1
+    = f.label :desc
+    br
+    = f.text_area :desc, minlength: 3, maxlength: 455, class: 'text-area'
+
+  div.mt-1
+    = f.label :photo
+    br
+    = f.file_field :photo, direct_upload: true
+
+  = f.submit class: 'mt-1 btn btn-active'
