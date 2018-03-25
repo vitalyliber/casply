@@ -1,4 +1,5 @@
 class Costume < ApplicationRecord
+  paginates_per 25
   validates_presence_of :name, :universe, :user, :photos
   validates_length_of :name, :universe, minimum: 3, maximum: 100
   validates_length_of :desc, minimum: 3, maximum: 455, allow_blank: true

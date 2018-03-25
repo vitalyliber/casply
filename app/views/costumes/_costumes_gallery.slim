@@ -5,3 +5,5 @@
       .image-costume-photo-title = costume.name
       = image_tag costume.photos.last.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
       .image-costume-photo-title = time_ago_in_words(costume.created_at)
+
+.content-center.mt-2 = paginate costumes, window: 1

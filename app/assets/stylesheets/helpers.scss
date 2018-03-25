@@ -58,6 +58,11 @@ h1, h2, h3, a, p {
   text-align: center;
 }
 
+.content-center {
+  display: flex;
+  justify-content: center;
+}
+
 .photos-container {
   padding: 5px;
   display: flex;

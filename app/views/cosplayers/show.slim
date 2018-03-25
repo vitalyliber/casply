@@ -23,4 +23,4 @@ h2.text-center = t('cosplayers.costumes_number', count: @user.costumes_count)
           class: 'link-alert',
           data: { confirm: t('common.are_you_sure') }
 
-= render partial: 'costumes/costumes_gallery', locals: { costumes: @user.costumes }
+= render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

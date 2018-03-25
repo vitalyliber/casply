@@ -74,3 +74,6 @@ gem 'slim-rails'
 
 # I18n for russian
 gem 'russian'
+
+# Pagination
+gem 'kaminari'

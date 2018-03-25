@@ -3,7 +3,12 @@ class CostumesController < ApplicationController
   after_action :photos_counter_cache, only: [:create, :edit, :update]
 
   def index
-    @costumes = Costume.with_eager_loaded_photos.where("photos_count > ?", 0).order(created_at: :desc)
+    @costumes =
+      Costume
+      .with_eager_loaded_photos
+      .where('photos_count > ?', 0)
+      .order(created_at: :desc)
+      .page(params[:page])
   end
 
   def new
@@ -15,21 +20,19 @@ class CostumesController < ApplicationController
     if @costume.save
       redirect_to costumes_path
     else
-      render "new"
+      render 'new'
     end
   end
 
-  def edit
-  end
+  def edit; end
 
-  def show
-  end
+  def show; end
 
   def update
     if @costume.update(costume_params)
       redirect_to @costume
     else
-      render "edit"
+      render 'edit'
     end
   end
 

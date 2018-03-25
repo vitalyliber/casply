@@ -2,6 +2,7 @@ class CosplayersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update]
 
   def show
+    @costumes = @user.costumes.page(params[:page])
   end
 
   def edit
