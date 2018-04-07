@@ -64,7 +64,8 @@ ActiveRecord::Schema.define(version: 2018_03_11_154748) do
     t.string "name", default: "", null: false
     t.text "desc", default: "", null: false
     t.string "country", default: "", null: false
-    t.string "city", default: "", null: false
+    t.integer "gender", null: false
+    t.string "website", default: "", null: false
     t.integer "costumes_count", default: 0
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false

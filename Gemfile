@@ -77,3 +77,12 @@ gem 'russian'
 
 # Pagination
 gem 'kaminari'
+
+# For choosing user country
+gem 'country_select'
+
+# Flag icons
+gem 'flag-icons-rails'
+
+# Countries helper
+gem 'countries', require: 'countries/global'

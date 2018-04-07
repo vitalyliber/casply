@@ -1,18 +1,19 @@
-h1.text-center = @user.name
-
-h2.text-center = t('cosplayers.costumes_number', count: @user.costumes_count)
-
 - if @user.photo.attached?
-  .text-center =  image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0")
+  .text-center.mt-1 = image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0")
+
+h1.text-center
+  = @user.name
+  = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')
+
+p.text-center = User.human_attribute_name(@user.gender)
+
+p.text-center = t('cosplayers.costumes_number', count: @user.costumes_count)
 
 - if @user.desc.present?
   p.text-center = @user.desc
 
-- if @user.country.present?
-  p.text-center = @user.country
-
-- if @user.city.present?
-  p.text-center = @user.city
+- if @user.website.present?
+  .mb-1.text-center = link_to @user.website, @user.website, class: 'link-main'
 
 - if user_signed_in? && @user == current_user
   .text-center = link_to t('common.edit'), edit_cosplayer_path(@user), class: 'link-main'

@@ -1,8 +1,10 @@
 h1.text-center = @costume.name
 - if @costume.universe.present?
   h2.text-center = @costume.universe
-h3.text-center = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
-p.text-center = @costume.created_at.strftime("%m-%d-%Y")
+p.text-center
+  = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
+  = flag_icon(@costume.user.country.downcase, title: Country[@costume.user.country].name, class: 'ml-1')
+p.text-center = time_ago_in_words(@costume.created_at)
 - if user_signed_in? && @costume.user == current_user
 .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
 
@@ -25,11 +27,15 @@ h2 #{t('costumes.comments')} (#{@costume.comments_count})
   p = simple_format(comment.text)
 
 - if user_signed_in?
-  = form_for [@costume, Comment.new] do |f|
-    = f.label :text
-    br
-    = f.text_area :text, minlength: 3, maxlength: 455, class: 'text-area'
+  - if current_user.confirmed?
+    = form_for [@costume, Comment.new] do |f|
+      = f.label :text
+      br
+      = f.text_area :text, minlength: 3, maxlength: 455, class: 'text-area'
 
-    = f.submit class: 'mt-1 btn btn-active'
+      = f.submit class: 'mt-1 btn btn-active'
+  - else
+    = render partial: 'layouts/need_confirmation'
+
 - else
   = link_to t('costumes.register_to_write_comments'), new_user_session_path, class: 'link-main'

@@ -25,7 +25,7 @@ class CosplayersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :desc, :country, :city, :photo)
+    params.require(:user).permit(:name, :desc, :country, :gender, :photo, :website)
   end
 
   def can_edit?

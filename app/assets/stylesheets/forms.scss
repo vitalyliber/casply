@@ -1,0 +1,37 @@
+@import 'colors';
+
+.field_with_errors {
+  input, select {
+    outline: none;
+    border-color: $color-alert;
+    box-shadow: 0 0 10px #9ecaed;
+  }
+}
+
+.field {
+  .label {
+    display: block;
+  }
+  em {
+    display: block;
+  }
+  input {
+    margin-bottom: 10px;
+  }
+  select {
+    margin-bottom: 10px;
+  }
+}
+
+#error_explanation{
+  h2 {
+    background-color: #f1475d;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+  }
+}
+
+#error_explanation:first-letter {
+  text-transform: uppercase;
+}

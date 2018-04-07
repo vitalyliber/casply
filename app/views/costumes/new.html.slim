@@ -1,4 +1,7 @@
-h1 = t('costumes.new_costume')
+.text-center
+  h1 = t('costumes.new_costume')
 
-= render partial: 'form', locals: { costume: @costume }
-
+- if current_user.confirmed?
+  = render partial: 'form', locals: { costume: @costume }
+- else
+  = render partial: 'layouts/need_confirmation'
