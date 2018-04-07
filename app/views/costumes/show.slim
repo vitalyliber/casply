@@ -23,8 +23,8 @@ p.text-center = time_ago_in_words(@costume.created_at)
 h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
 - @costume.comments.each do |comment|
-  p = link_to comment.user.name, root_path, class: 'link-main'
-  p = simple_format(comment.text)
+  = link_to comment.user.name, root_path, class: 'link-main'
+  = simple_format(comment.text)
 
 - if user_signed_in?
   - if current_user.confirmed?
