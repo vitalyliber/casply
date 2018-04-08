@@ -1,6 +1,7 @@
 class CostumesController < ApplicationController
   before_action :find_costume, only: [:show, :edit, :update]
   after_action :photos_counter_cache, only: [:create, :edit, :update]
+  LIMIT_PHOTOS = 2
 
   def index
     @costumes =
@@ -13,18 +14,20 @@ class CostumesController < ApplicationController
 
   def new
     @costume = Costume.new
+    @limit_photos = LIMIT_PHOTOS
   end
 
   def create
-    @costume = current_user.costumes.new(costume_params)
+    @costume = current_user.costumes.new(limit_photos!(costume_params))
     if @costume.save
-      redirect_to costumes_path
+      redirect_to costume_path(@costume)
     else
       render 'new'
     end
   end
 
   def edit
+    @limit_photos = LIMIT_PHOTOS
     unless user_costume?
       redirect_to costume_path(@costume)
     end
@@ -36,7 +39,7 @@ class CostumesController < ApplicationController
     unless user_costume?
       return redirect_to costume_path(@costume)
     end
-    if @costume.update(costume_params)
+    if @costume.update(limit_photos!(costume_params, @costume.photos_count))
       redirect_to @costume
     else
       render 'edit'
@@ -59,5 +62,19 @@ class CostumesController < ApplicationController
 
   def user_costume?
     @costume.user_id == current_user.id
+  end
+
+  def limit_photos!(params, photos_number = 0)
+    limit = LIMIT_PHOTOS - photos_number
+    if params[:photos].count > limit
+      flash[:notice] = t('costumes.limit_photos', number: LIMIT_PHOTOS)
+      params[:photos] = if limit < 0
+                          []
+                        else
+                          params[:photos][0, limit]
+                        end
+      return params
+    end
+    params
   end
 end

@@ -16,6 +16,8 @@ ru:
     not_saved:
       one: "Костюм: сохранение не удалось из-за %{count} ошибки"
       few: "Костюм: сохранение не удалось из-за %{count} ошибок"
+    limit_photos: "Вы можете загрузить только %{number} фотографий"
+    your_reached_limit_photos: "Вы достигли лимита загрузки фотографий для этого костюма"
   cosplayers:
     edit_cosplayers_info: "Редактирование профиля"
     costumes_number: "Количество костюмов (%{count})"

@@ -8,7 +8,7 @@ p.text-center = time_ago_in_words(@costume.created_at)
 - if user_signed_in? && @costume.user == current_user
   .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
 
-.photos-container
+.photos-container.mt-2
   - @costume.photos.each do |photo|
     .photo-container
       - if @costume.user == current_user
