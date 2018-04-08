@@ -86,3 +86,6 @@ gem 'flag-icons-rails'
 
 # Countries helper
 gem 'countries', require: 'countries/global'
+
+# For count views
+gem 'impressionist'
