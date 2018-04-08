@@ -1,14 +1,8 @@
 p
-  | Hello 
-  = @email
-  | !
+  = t('mailer.hello', email: @email)
 - if @resource.try(:unconfirmed_email?)
   p
-    | We're contacting you to notify you that your email is being changed to 
-    = @resource.unconfirmed_email
-    | .
+    = t('mailer.changed.email_is_been', email: @resource.unconfirmed_email)
 - else
   p
-    | We're contacting you to notify you that your email has been changed to 
-    = @resource.email
-    | .
+    = t('mailer.changed.email_has_been', email: @resource.email)
