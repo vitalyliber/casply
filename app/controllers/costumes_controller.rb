@@ -24,11 +24,18 @@ class CostumesController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    unless user_costume?
+      redirect_to costume_path(@costume)
+    end
+  end
 
   def show; end
 
   def update
+    unless user_costume?
+      return redirect_to costume_path(@costume)
+    end
     if @costume.update(costume_params)
       redirect_to @costume
     else
@@ -48,5 +55,9 @@ class CostumesController < ApplicationController
 
   def photos_counter_cache
     @costume.update(photos_count: @costume.photos.count)
+  end
+
+  def user_costume?
+    @costume.user_id == current_user.id
   end
 end
