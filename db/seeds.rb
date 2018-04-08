@@ -8,10 +8,10 @@
 
 user = User.create!(
   {
-    name: 'Super Girl',
+    name: 'Cosplay Star',
     gender: :female,
     country: 'AU',
-    email: 'SuperGirl@gmail.com',
+    email: 'cosplay.star@gmail.com',
     password: '111111',
   }
 )

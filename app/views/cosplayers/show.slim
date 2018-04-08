@@ -1,5 +1,9 @@
-- if @user.photo.attached?
-  .text-center.mt-1 = image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0")
+.text-center.mt-1
+  - if @user.photo.attached?
+    = image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0"),
+        class: 'circle'
+  - else
+    = image_tag 'avatar.jpg', height: "200", width: "200", class: 'circle'
 
 h1.text-center
   = @user.name
