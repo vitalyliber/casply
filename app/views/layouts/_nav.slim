@@ -3,7 +3,13 @@
     = link_to t('layouts.home'), root_path
   div
     - if user_signed_in?
-      = link_to t('layouts.new_costume'), new_costume_path, class: 'mr-1'
-      = link_to current_user.name, cosplayer_path(current_user)
+      = link_to new_costume_path, class: 'mr-1' do
+        = image_tag 'cloud.png', height: "25", width: "35"
+      = link_to cosplayer_path(current_user) do
+        - if current_user.photo.attached?
+          = image_tag current_user.photo.variant(resize: "30x30^", gravity: :center, crop: "30x30+0+0"),
+                  class: 'circle'
+        - else
+          = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'
     - else
       = link_to t('layouts.sign_in'), new_user_session_path

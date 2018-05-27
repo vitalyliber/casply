@@ -1,8 +1,25 @@
-// Place all the styles related to the costumes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'colors';
 
 .image-costume-photo-title {
-  padding: 5px 10px;
-  background-color: #1fa0ff;
+  padding: 5px 0px;
+  background-color: white;
+  color: $color-text;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.image-costume-photo-info {
+  padding: 5px 0px;
+  background-color: white;
+  color: #aaaaaa;
+  font-size: 12px;
+}
+
+.costume-card {
+  padding: 1px 15px 20px 15px;
+  background-color: white;
+}
+
+.universe {
+  color: $color-text-gray
 }

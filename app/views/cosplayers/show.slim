@@ -1,31 +1,40 @@
-.text-center.mt-1
-  - if @user.photo.attached?
-    = image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0"),
-        class: 'circle'
-  - else
-    = image_tag 'avatar.jpg', height: "200", width: "200", class: 'circle'
+.info
+  p
+    = t('cosplayers.costumes_number')
+    span.ml-0-5 = @user.costumes_count
 
-h1.text-center
-  = @user.name
-  = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')
+  p
+    = t('cosplayers.gender')
+    span.ml-0-5 = User.human_attribute_name(@user.gender)
 
-p.text-center = User.human_attribute_name(@user.gender)
+.wrapper
 
-p.text-center = t('cosplayers.costumes_number', count: @user.costumes_count)
+  .profile-card
 
-- if @user.desc.present?
-  p.text-center = @user.desc
+    .text-center.mt-1
+      - if @user.photo.attached?
+        = image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0"),
+            class: 'circle'
+      - else
+        = image_tag 'avatar.jpg', height: "200", width: "200", class: 'circle'
 
-- if @user.website.present?
-  .mb-1.text-center = link_to @user.website, @user.website, class: 'link-main'
+    h1.text-center
+      = @user.name
+      = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')
 
-- if user_signed_in? && @user == current_user
-  .text-center = link_to t('common.edit'), edit_cosplayer_path(@user), class: 'link-main'
-  br
-  .text-center = link_to t('layouts.sign_out'),
-          destroy_user_session_path,
-          method: :delete,
-          class: 'link-alert',
-          data: { confirm: t('common.are_you_sure') }
+    - if @user.desc.present?
+      p.text-center = @user.desc
 
-= render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }
+    - if @user.website.present?
+      .mb-1.text-center = link_to @user.website, @user.website, class: 'link-main'
+
+    - if user_signed_in? && @user == current_user
+      .text-center = link_to t('common.edit'), edit_cosplayer_path(@user), class: 'link-main'
+      br
+      .text-center = link_to t('layouts.sign_out'),
+              destroy_user_session_path,
+              method: :delete,
+              class: 'link-alert',
+              data: { confirm: t('common.are_you_sure') }
+
+  = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

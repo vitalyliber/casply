@@ -1,60 +1,61 @@
-h1.text-center = t('cosplayers.edit_cosplayers_info')
+.wrapper
+  h1.text-center = t('cosplayers.edit_cosplayers_info')
 
-- if current_user.errors.any?
-  div
-    - if current_user.errors.count == 1
-      p.alert = t('costumes.not_saved.one', count: current_user.errors.count)
-    - else
-      p.alert = t('costumes.not_saved.few', count: current_user.errors.count)
+  - if current_user.errors.any?
+    div
+      - if current_user.errors.count == 1
+        p.alert = t('costumes.not_saved.one', count: current_user.errors.count)
+      - else
+        p.alert = t('costumes.not_saved.few', count: current_user.errors.count)
 
-    ul
-      - current_user.errors.full_messages.each do |msg|
-        li= msg
+      ul
+        - current_user.errors.full_messages.each do |msg|
+          li= msg
 
-= form_for current_user, :url => { controller: :cosplayers, action: :update }, :html => {method: :patch} do |f|
-  .field
-    = f.label :name, class: 'label'
-    = f.text_field :name,
-            autofocus: true,
-            minlength: 3,
-            maxlength: 100,
-            class: 'text-field'
+  = form_for current_user, :url => { controller: :cosplayers, action: :update }, :html => {method: :patch} do |f|
+    .field
+      = f.label :name, class: 'label'
+      = f.text_field :name,
+              autofocus: true,
+              minlength: 3,
+              maxlength: 100,
+              class: 'text-field'
 
-  .field
-    = f.label :country, class: 'label'
-    = f.country_select :country,
-            autofocus: true,
-            include_blank: true,
-            minlength: 3,
-            maxlength: 100,
-            class: 'text-field'
+    .field
+      = f.label :country, class: 'label'
+      = f.country_select :country,
+              autofocus: true,
+              include_blank: true,
+              minlength: 3,
+              maxlength: 100,
+              class: 'text-field'
 
-  .field
-    = f.label :gender, class: 'label'
-    = f.select :gender,
-            User.genders.map {|gender| [User.human_attribute_name(gender[0]), gender[0]]},
-            include_blank: true,
-            minlength: 3,
-            maxlength: 100,
-            class: 'text-field'
+    .field
+      = f.label :gender, class: 'label'
+      = f.select :gender,
+              User.genders.map {|gender| [User.human_attribute_name(gender[0]), gender[0]]},
+              include_blank: true,
+              minlength: 3,
+              maxlength: 100,
+              class: 'text-field'
 
-  .field
-    = f.label :website, class: 'label'
-    = f.text_field :website,
-            minlength: 5,
-            maxlength: 100,
-            class: 'text-field'
+    .field
+      = f.label :website, class: 'label'
+      = f.text_field :website,
+              minlength: 5,
+              maxlength: 100,
+              class: 'text-field'
 
-  .field
-    = f.label :desc, class: 'label'
-    = f.text_area :desc,
-            minlength: 3,
-            maxlength: 455,
-            class: 'text-area'
+    .field
+      = f.label :desc, class: 'label'
+      = f.text_area :desc,
+              minlength: 3,
+              maxlength: 455,
+              class: 'text-area'
 
-  div.mt-1
-    = f.label :photo
-    br
-    = f.file_field :photo, direct_upload: true
+    div.mt-1
+      = f.label :photo
+      br
+      = f.file_field :photo, direct_upload: true
 
-  = f.submit class: 'mt-1 btn btn-active'
+    = f.submit class: 'mt-1 btn btn-active'

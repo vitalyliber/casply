@@ -1,9 +1,14 @@
-.photos-container.mt-2
+.photos-container
   - costumes.each do |costume|
 
-    = link_to costume, class: 'link-white photo-container' do
-      .image-costume-photo-title = costume.name
-      = image_tag costume.photos.last.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
-      .image-costume-photo-title = time_ago_in_words(costume.created_at)
+    .photo-container
+      .image-costume-photo-title
+        p = costume.name
+      = link_to costume, class: 'link-white ' do
+        = image_tag costume.photos.last.variant(resize: "200x150^", gravity: :center, crop: "200x150+0+0")
+      .image-costume-photo-info.f-sb
+        span = time_ago_in_words(costume.created_at)
+        span
+          = "👁 #{costume.impressions_count}"
 
 .content-center.mt-2 = paginate costumes, window: 1

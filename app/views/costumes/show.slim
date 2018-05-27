@@ -1,41 +1,43 @@
-h1.text-center = @costume.name
-- if @costume.universe.present?
-  h2.text-center = @costume.universe
-p.text-center
-  = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
-  = flag_icon(@costume.user.country.downcase, title: Country[@costume.user.country].name, class: 'ml-1')
-p.text-center = time_ago_in_words(@costume.created_at)
-- if user_signed_in? && @costume.user == current_user
-  .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
+.wrapper
+  .costume-card
+    h1.text-center = @costume.name
+    - if @costume.universe.present?
+      h2.text-center.universe = @costume.universe
+    p.text-center
+      = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
+      = flag_icon(@costume.user.country.downcase, title: Country[@costume.user.country].name, class: 'ml-1')
+    p.text-center = time_ago_in_words(@costume.created_at)
+    - if user_signed_in? && @costume.user == current_user
+      .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
 
-.photos-container.mt-2
-  - @costume.photos.each do |photo|
-    .photo-container
-      - if @costume.user == current_user
-        = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white' do
-          .image-costume-photo-title.b-c-alert = "delete"
-      = link_to photo, class: 'link-white' do
-        = image_tag photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
+  .images-container.mt-2
+    - @costume.photos.each do |photo|
+      .image-container
+        - if @costume.user == current_user
+          = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white' do
+            .image-costume-photo-title.b-c-alert = t('common.remove')
+        = link_to photo, class: 'link-white' do
+          = image_tag photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
 
-- if @costume.desc.present?
-  p.text-center = @costume.desc
+  - if @costume.desc.present?
+    p.text-center = @costume.desc
 
-h2 #{t('costumes.comments')} (#{@costume.comments_count})
+  h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
-- @costume.comments.each do |comment|
-  = link_to comment.user.name, root_path, class: 'link-main'
-  = simple_format(comment.text)
+  - @costume.comments.each do |comment|
+    = link_to comment.user.name, root_path, class: 'link-main'
+    = simple_format(comment.text)
 
-- if user_signed_in?
-  - if current_user.confirmed?
-    = form_for [@costume, Comment.new] do |f|
-      = f.label :text
-      br
-      = f.text_area :text, minlength: 3, maxlength: 455, class: 'text-area'
+  - if user_signed_in?
+    - if current_user.confirmed?
+      = form_for [@costume, Comment.new] do |f|
+        = f.label :text
+        br
+        = f.text_area :text, minlength: 3, maxlength: 455, class: 'text-area'
 
-      = f.submit class: 'mt-1 btn btn-active'
+        = f.submit class: 'mt-1 btn btn-active'
+    - else
+      = render partial: 'layouts/need_confirmation'
+
   - else
-    = render partial: 'layouts/need_confirmation'
-
-- else
-  = link_to t('costumes.register_to_write_comments'), new_user_session_path, class: 'link-main'
+    = link_to t('costumes.register_to_write_comments'), new_user_session_path, class: 'link-main'

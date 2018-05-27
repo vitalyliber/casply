@@ -4,14 +4,14 @@ ru:
     sign_in: "Войти"
     costumes: "Костюмы"
     new_costume: "Новый костюм"
-    home: "Casply.com"
+    home: "CASPLY"
   costumes:
     photos: "Фотографии"
     new_costume: "Новый костюм"
     costumes: "Костюмы"
     edit: "Редактирование костюма"
     comments: "Комментарии"
-    register_to_write_comments: "Пожалуйста авторизуйтесь чтобы писать комментарии"
+    register_to_write_comments: "Пожалуйста авторизуйтесь чтобы оставить комментарий"
     can_not_remove_last_photo: "Вы не можете удалить последнюю фотографию"
     not_saved:
       one: "Костюм: сохранение не удалось из-за %{count} ошибки"
@@ -20,8 +20,10 @@ ru:
     your_reached_limit_photos: "Вы достигли лимита загрузки фотографий для этого костюма"
   cosplayers:
     edit_cosplayers_info: "Редактирование профиля"
-    costumes_number: "Количество костюмов (%{count})"
+    costumes_number: "Костюмы"
+    gender: "Пол"
   common:
+    remove: "Удалить"
     edit: "Редактировать"
     are_you_sure: "Вы уверены?"
     confirm_your_email: "Пожалуйста, подтвердите свой email"

@@ -67,7 +67,7 @@ class CostumesController < ApplicationController
 
   def limit_photos!(params, photos_number = 0)
     limit = LIMIT_PHOTOS - photos_number
-    if params[:photos].count > limit
+    if params[:photos] && params[:photos].count > limit
       flash[:notice] = t('costumes.limit_photos', number: LIMIT_PHOTOS)
       params[:photos] = if limit < 0
                           []

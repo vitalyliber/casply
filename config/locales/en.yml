@@ -35,7 +35,7 @@ en:
     sign_in: "Sign in"
     costumes: "Costumes"
     new_costume: "New costume"
-    home: "Casply.com"
+    home: "CASPLY"
   costumes:
     photos: "Photos"
     new_costume: "New costume"
@@ -51,8 +51,10 @@ en:
     your_reached_limit_photos: "You have reached limit of photos for the costume"
   cosplayers:
     edit_cosplayers_info: "Edit cosplayer's info"
-    costumes_number: "Costume's number (%{count})"
+    costumes_number: "Costumes"
+    gender: "Gender"
   common:
+    remove: "Remove"
     edit: "Edit"
     are_you_sure: "Are you sure?"
     confirm_your_email: "Please, confirm your email"

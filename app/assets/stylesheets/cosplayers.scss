@@ -1,3 +1,31 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'colors';
+
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 50px;
+  border-bottom: 1px solid #e5e5e5;
+  background: rgba(255,255,255,0.6);
+
+  p {
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-text;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-text-lite;
+  }
+}
+
+
+.profile-card {
+  padding: 20px 15px;
+  background-color: white;
+}
