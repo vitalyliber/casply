@@ -1,7 +1,10 @@
 .text-center
   h2
     = t('devise.sessions.log_in')
-= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+= form_for(resource,
+        as: resource_name,
+        url: session_path(resource_name),
+        html: {class: 'session-form'}) do |f|
   .field
     = f.label :email, class: 'label'
     = f.email_field :email, autofocus: true, autocomplete: "email"

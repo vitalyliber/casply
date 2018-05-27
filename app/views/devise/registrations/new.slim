@@ -1,7 +1,10 @@
 .text-center
   h2
     = t 'devise.registrations.sign_up'
-= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+= form_for(resource,
+        as: resource_name,
+        url: registration_path(resource_name),
+        html: {class: 'session-form'}) do |f|
   = devise_error_messages!
   .field
     = f.label :name, class: 'label'
