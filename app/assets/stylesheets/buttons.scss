@@ -11,12 +11,26 @@
   }
 }
 
+@mixin button-cl($bg, $cl) {
+  background: $bg;
+  &:hover {
+    background:darken($cl,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($cl,25%);
+  }
+}
+
 .btn {
+  font-weight: bold;
   color: white;
   text-decoration: none;
   padding: 5px 10px;
   border-radius: 3px;
+  border: 0;
   text-transform: uppercase;
+  outline-width: 0;
 }
 
 .btn-active {
@@ -25,6 +39,10 @@
 
 .btn-main {
   @include button-bg($color-main);
+}
+
+.btn-inactive {
+  @include button-cl($color-text-gray, $color-main);
 }
 
 .btn-alert {

@@ -226,3 +226,24 @@ span {
   font-size: 12px;
   @extend .link-main;
 }
+
+.blank-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  border-radius: 10px;
+  border: 4px white solid;
+  color: $color-text-lite;
+
+  .upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      @extend .ml-1
+    }
+  }
+}

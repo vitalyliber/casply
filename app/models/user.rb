@@ -13,4 +13,19 @@ class User < ApplicationRecord
   has_many :costumes
   has_many :comments
   has_one_attached :photo
+
+  # magic from here ->
+  # https://stackoverflow.com/questions/6559164/rails-associations-has-many-through-but-same-model
+  has_many :subscriptions_association,
+           :class_name => "Subscriber",
+           :foreign_key => "subscription_id"
+  has_many :subscriptions,
+           :through => :subscriptions_association,
+           :source => :follower
+  has_many :followers_association,
+           :class_name => "Subscriber",
+           :foreign_key => "follower_id"
+  has_many :followers,
+           :through => :followers_association,
+           :source => :subscription
 end

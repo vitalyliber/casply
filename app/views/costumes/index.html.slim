@@ -1,2 +1,8 @@
 .wrapper
+  .text-center.mb-1
+    - if params[:subscriptions]
+      = link_to t('costumes.subscriptions'), root_path, class: 'link-main'
+    - else
+      = link_to t('costumes.all'), root_path(subscriptions: true), class: 'link-main'
+
   = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

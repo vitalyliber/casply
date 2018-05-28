@@ -89,3 +89,6 @@ gem 'countries', require: 'countries/global'
 
 # For count views
 gem 'impressionist'
+
+# Icons
+gem 'font-awesome-rails'

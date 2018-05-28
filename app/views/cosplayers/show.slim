@@ -7,6 +7,10 @@
     = t('cosplayers.gender')
     span.ml-0-5 = User.human_attribute_name(@user.gender)
 
+  p
+    = t('cosplayers.followers_count')
+    span.ml-0-5 = @user.followers_count
+
 .wrapper
 
   .profile-card
@@ -28,6 +32,13 @@
     - if @user.website.present?
       .mb-1.text-center = link_to @user.website, @user.website, class: 'link-main'
 
+    - if user_signed_in? && @user != current_user
+      .text-center
+        - if @subscriber.present?
+          = button_to t('cosplayers.unsubscribe'), unsubscribe_cosplayer_path(@user), class: 'btn btn-main mb-1'
+        - else
+          = button_to t('cosplayers.subscribe'), subscribe_cosplayer_path(@user), class: 'btn btn-inactive mb-1'
+
     - if user_signed_in? && @user == current_user
       .text-center = link_to t('common.edit'), edit_cosplayer_path(@user), class: 'link-main'
       br
@@ -37,4 +48,5 @@
               class: 'link-alert',
               data: { confirm: t('common.are_you_sure') }
 
+  br
   = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }
