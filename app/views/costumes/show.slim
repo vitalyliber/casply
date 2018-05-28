@@ -3,6 +3,8 @@
     h1.text-center = @costume.name
     - if @costume.universe.present?
       h2.text-center.universe = @costume.universe
+    - if @costume.desc.present?
+      .text-center = simple_format @costume.desc
     p.text-center
       = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
       = flag_icon(@costume.user.country.downcase, title: Country[@costume.user.country].name, class: 'ml-1')
@@ -14,13 +16,10 @@
     - @costume.photos.each do |photo|
       .image-container
         - if @costume.user == current_user
-          = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white' do
-            .image-costume-photo-title.b-c-alert = t('common.remove')
+          = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white image-remove' do
+            .image-costume-photo-title.b-c-alert = t('common.remove').html_safe
         = link_to photo, class: 'link-white' do
           = image_tag photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
-
-  - if @costume.desc.present?
-    p.text-center = @costume.desc
 
   h2 #{t('costumes.comments')} (#{@costume.comments_count})
 

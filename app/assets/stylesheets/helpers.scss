@@ -90,6 +90,11 @@ h2 {
   @extend .text-truncate
 }
 
+.text-clear {
+  margin: 0;
+  padding: 0;
+}
+
 span {
   @extend .text-truncate
 }
@@ -133,6 +138,12 @@ span {
   .image-container {
     margin: 5px;
     background-color: white;
+    position: relative;
+
+    .image-remove {
+      position: absolute;
+      right: 0;
+    }
   }
 
   p {

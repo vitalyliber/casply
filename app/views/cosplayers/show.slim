@@ -23,7 +23,7 @@
       = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')
 
     - if @user.desc.present?
-      p.text-center = @user.desc
+      .text-center = simple_format @user.desc
 
     - if @user.website.present?
       .mb-1.text-center = link_to @user.website, @user.website, class: 'link-main'

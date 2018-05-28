@@ -23,7 +23,7 @@ ru:
     costumes_number: "Костюмы"
     gender: "Пол"
   common:
-    remove: "Удалить"
+    remove: "&#x2715;"
     edit: "Редактировать"
     are_you_sure: "Вы уверены?"
     confirm_your_email: "Пожалуйста, подтвердите свой email"

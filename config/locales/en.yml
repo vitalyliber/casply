@@ -54,7 +54,7 @@ en:
     costumes_number: "Costumes"
     gender: "Gender"
   common:
-    remove: "Remove"
+    remove: "&#x2715;"
     edit: "Edit"
     are_you_sure: "Are you sure?"
     confirm_your_email: "Please, confirm your email"
