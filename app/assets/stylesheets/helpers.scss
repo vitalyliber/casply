@@ -20,8 +20,13 @@ h2 {
 
 .wrapper {
   padding: 30px 30px 40px 30px;
-  width: 100vw;
   box-sizing: border-box;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  margin: auto;
 }
 
 .navigation {
@@ -146,6 +151,11 @@ span {
 
 .text-field {
   width: 100%;
+}
+
+.datetime {
+  color: $color-text-gray;
+  font-size: 12px;
 }
 
 .link-white {
