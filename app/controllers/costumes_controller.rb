@@ -10,7 +10,7 @@ class CostumesController < ApplicationController
       .with_eager_loaded_photos
       .where('photos_count > ?', 0)
       .try { |costumes|
-        params[:subscriptions] ?
+        user_signed_in? && params[:subscriptions] ?
             costumes.where(user_id: current_user.subscriptions.ids) :
             costumes }
       .order(created_at: :desc)
