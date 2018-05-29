@@ -6,7 +6,7 @@ body {
   background: #f4f4f4;
 }
 
-h1, h2, h3, a, p, span {
+h1, h2, h3, a, p, span, label {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -87,6 +87,11 @@ h2 {
 
 .text-center {
   text-align: center;
+  @extend .text-truncate
+}
+
+.text-right {
+  text-align: right;
   @extend .text-truncate
 }
 

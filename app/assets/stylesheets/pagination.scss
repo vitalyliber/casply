@@ -12,6 +12,11 @@
 
 .pagination {
   border-left: 1px solid #ddd;
+
+  a {
+    color: $color-main;
+  }
+
   .first{
     padding : 0;
     float: none;

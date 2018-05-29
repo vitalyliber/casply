@@ -38,7 +38,13 @@ class CostumesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @comments =
+      @costume
+        .comments
+        .order(created_at: :desc)
+        .page(params[:page])
+  end
 
   def update
     unless user_costume?

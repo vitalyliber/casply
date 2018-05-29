@@ -9,8 +9,6 @@
           = image_tag costume.photos.last.variant(resize: "200x150^", gravity: :center, crop: "200x150+0+0")
         .image-costume-photo-info.f-sb
           span = time_ago_in_words(costume.created_at)
-          / span
-          /   = "👁 #{costume.impressions_count}"
           span = fa_icon 'eye', text: costume.impressions_count, left: true, class: "fa-1x"
 
   .content-center.mt-2 = paginate costumes, window: 1
