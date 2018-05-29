@@ -95,6 +95,11 @@ h2 {
   @extend .text-truncate
 }
 
+.text-center-wb {
+  text-align: center;
+  word-break: break-word
+}
+
 .text-clear {
   margin: 0;
   padding: 0;

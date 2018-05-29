@@ -27,10 +27,10 @@
       = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')
 
     - if @user.desc.present?
-      .text-center = simple_format @user.desc
+      .text-center-wb = simple_format @user.desc
 
     - if @user.website.present?
-      .mb-1.text-center = link_to @user.website, @user.website, class: 'link-main'
+      .mb-1.text-center = link_to @user.website, "http://#{@user.website}", class: 'link-main', target: "_blank"
 
     - if user_signed_in? && @user != current_user
       .text-center

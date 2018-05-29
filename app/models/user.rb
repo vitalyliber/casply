@@ -28,4 +28,14 @@ class User < ApplicationRecord
   has_many :followers,
            :through => :followers_association,
            :source => :subscription
+
+  before_save :clear_website
+
+  def clear_website
+    self.website = website.try do |field|
+      field
+        .sub('https://', '')
+        .sub('http://', '')
+    end
+  end
 end
