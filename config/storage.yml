@@ -12,7 +12,7 @@ wasabi:
  secret_access_key: <%= ENV['SECRET_ACCESS_KEY'] %>
  region: us-east-1
  bucket: casply
- endpoint: s3.wasabisys.com
+ endpoint: https://s3.wasabisys.com
 
 # Use rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
