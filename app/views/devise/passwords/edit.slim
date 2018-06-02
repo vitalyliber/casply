@@ -1,6 +1,9 @@
-h2
+h2.text-center
   = t('devise.passwords.change_your_password')
-= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+= form_for(resource,
+        as: resource_name,
+        url: password_path(resource_name),
+        html: { method: :put, class: 'session-form' }) do |f|
   = devise_error_messages!
   = f.hidden_field :reset_password_token
   .field
