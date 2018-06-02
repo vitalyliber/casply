@@ -95,14 +95,14 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Mailer settings for Devise
-  config.action_mailer.default_url_options = { :host => "casply.com" }
+  config.action_mailer.default_url_options = { :host => 'www.casply.com' }
 
   config.action_mailer.smtp_settings = {
       :port           => ENV['MAILGUN_SMTP_PORT'],
       :address        => ENV['MAILGUN_SMTP_SERVER'],
       :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
       :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-      :domain         => 'casply.com',
+      :domain         => 'www.casply.com',
       :authentication => :plain,
   }
     config.action_mailer.delivery_method = :smtp
