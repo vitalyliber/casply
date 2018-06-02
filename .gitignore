@@ -31,3 +31,4 @@ yarn-debug.log*
 .yarn-integrity
 # Ignore RubyMine files.
 /.idea
+/.env
