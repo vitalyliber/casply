@@ -15,5 +15,5 @@
 - else
   .blank-list
     p = t('common.no_costumes_found')
-    = link_to new_costume_path, class: 'link-main' do
+    = link_to (user_signed_in? ? new_costume_path : new_user_session_path), class: 'link-main' do
       .upload = fa_icon 'cloud', text: t('common.upload_costume'), right: true, class: "fa-2x"
