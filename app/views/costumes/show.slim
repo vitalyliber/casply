@@ -13,6 +13,10 @@
       .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
 
   #costume-images
+    // static preloader for time when turbolinks going to show component
+    .images-container.mt-2
+      .image-container
+      .image-container
 
   h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
