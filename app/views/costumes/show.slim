@@ -12,14 +12,7 @@
     - if user_signed_in? && @costume.user == current_user
       .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
 
-  .images-container.mt-2
-    - @costume.photos.each do |photo|
-      .image-container
-        - if @costume.user == current_user
-          = link_to costume_photo_path(@costume, photo), method: :delete, class: 'link-white image-remove' do
-            .image-costume-photo-title.b-c-alert = t('common.remove').html_safe
-        = link_to photo, class: 'link-white' do
-          = image_tag photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
+  #costume-images
 
   h2 #{t('costumes.comments')} (#{@costume.comments_count})
 

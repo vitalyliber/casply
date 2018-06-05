@@ -146,6 +146,7 @@ span {
   justify-content: center;
 
   .image-container {
+    cursor: pointer;
     margin: 5px;
     background-color: white;
     position: relative;
@@ -256,4 +257,10 @@ span {
       @extend .ml-1
     }
   }
+}
+
+// need for a spinner animation
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

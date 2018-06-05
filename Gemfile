@@ -94,3 +94,6 @@ gem 'impressionist'
 
 # Icons
 gem 'font-awesome-rails'
+
+# Passing view variables to js
+gem 'gon', '~> 6.2'

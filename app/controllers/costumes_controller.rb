@@ -44,6 +44,21 @@ class CostumesController < ApplicationController
         .comments
         .order(created_at: :desc)
         .page(params[:page])
+    gon.push({
+      canRemove: user_signed_in? && @costume.user == current_user,
+      costumeId: @costume.id,
+      photos: @costume.photos.map do |photo|
+        {
+          id: photo.id,
+          small: photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
+                   .processed
+                   .service_url,
+          big: photo.variant(resize: "600")
+                   .processed
+                   .service_url
+        }
+      end
+    })
   end
 
   def update

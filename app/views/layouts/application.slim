@@ -2,12 +2,14 @@ doctype html
 html
   head
     title Cosplayers
+    = Gon::Base.render_data
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application'
     = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'slider'
     meta content="width=device-width, initial-scale=1" name="viewport" /
 
   body

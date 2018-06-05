@@ -114,6 +114,10 @@ GEM
       railties (>= 3.2, < 6.0)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
+    gon (6.2.0)
+      actionpack (>= 3.0)
+      multi_json
+      request_store (>= 1.0)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     i18n_data (0.8.0)
@@ -197,6 +201,8 @@ GEM
     rb-fsevent (0.10.3)
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
+    request_store (1.4.1)
+      rack (>= 1.4)
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
@@ -285,6 +291,7 @@ DEPENDENCIES
   dotenv-rails
   flag-icons-rails
   font-awesome-rails
+  gon (~> 6.2)
   impressionist
   jbuilder (~> 2.5)
   kaminari
