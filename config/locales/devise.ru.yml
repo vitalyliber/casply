@@ -44,7 +44,7 @@ ru:
       confirm_new_password: 'Подтверждение пароля'
       change_my_password: 'Изменить мой пароль'
       forgot_your_password: 'Забыли свой пароль?'
-      send_me_reset_password_instructions: 'Послать мне инструкции для сброса пароля'
+      send_me_reset_password_instructions: 'Сбросить пароль'
     registrations:
       destroyed: "До свидания! Ваша учётная запись удалена. Надеемся снова увидеть вас."
       signed_up: "Добро пожаловать! Вы зарегистрировались."
@@ -55,6 +55,7 @@ ru:
       updated: "Ваша учётная запись изменена."
       # views
       sign_up: 'Зарегистрироваться'
+      sign_up_process: 'Регистрация'
       characters_minimum: 'минимум символов'
       password: 'Пароль'
       password_confirmation: 'Подтверждение пароля'

@@ -18,8 +18,6 @@ ru:
       few: "Костюм: сохранение не удалось из-за %{count} ошибок"
     limit_photos: "Вы можете загрузить только %{number} фотографий"
     your_reached_limit_photos: "Вы достигли лимита загрузки фотографий для этого костюма"
-    all: "Все костюмы"
-    subscriptions: "Подписки"
   cosplayers:
     edit_cosplayers_info: "Редактирование профиля"
     costumes_number: "Костюмы"
@@ -38,3 +36,8 @@ ru:
     something_went_wrong: "Что-то пошло не так, попробуйте в другой раз"
     no_costumes_found: "Ни одного костюма не найдено"
     upload_costume: "Загрузить костюм"
+    main_title: "Над каким костюмом вы сейчас работаете? "
+    main_subtitle: "Casply - это место для поиска вдохновения."
+    popular: "Популярное"
+    continue: "Продолжить →"
+    save: "Сохранить"

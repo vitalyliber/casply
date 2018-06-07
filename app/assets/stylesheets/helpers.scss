@@ -6,7 +6,7 @@ body {
   background: #f4f4f4;
 }
 
-h1, h2, h3, a, p, span, label {
+h1, h2, h3, a, p, span, label, .btn, .field {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -187,6 +187,16 @@ span {
   color: white;
 }
 
+.link-black {
+  text-decoration: none;
+  color: black;
+}
+
+.link-gray {
+  text-decoration: none;
+  color: $color-text-gray;
+}
+
 .link-main {
   text-decoration: none;
   color: $color-main;
@@ -221,17 +231,43 @@ span {
   align-items: center;
 }
 
+input[type=password], input[type=email], input[type=text], textarea, select {
+  background-color: white;
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 8px 10px;
+  margin-top: 8px;
+  color: #444;
+  outline: none;
+}
+
 .session-form {
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .field {
-    width: 300px;
+    width: 250px;
 
-    input[type=password], input[type=email], input[type=text], select {
-      width: 100%;
-    }
+    //input[type=password], input[type=email], input[type=text], select {
+    //  background-color: white;
+    //  width: 100%;
+    //  box-sizing: border-box;
+    //  border: none;
+    //  border-radius: 6px;
+    //  font-size: 16px;
+    //  padding: 8px 10px;
+    //  margin-top: 8px;
+    //  color: #444;
+    //  outline: none;
+    //}
+  }
+
+  input[type=submit] {
+    margin-top: 10px;
   }
 }
 

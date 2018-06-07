@@ -38,4 +38,9 @@ class User < ApplicationRecord
         .sub('http://', '')
     end
   end
+
+  # trick for devise
+  def remember_me
+    true
+  end
 end

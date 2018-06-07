@@ -5,12 +5,13 @@ class CostumesController < ApplicationController
   LIMIT_PHOTOS = 10
 
   def index
+    @is_showing_subscriptions = user_signed_in? && current_user.subscriptions_count > 0 && !params[:popular]
     @costumes =
       Costume
       .with_eager_loaded_photos
       .where('photos_count > ?', 0)
       .try { |costumes|
-        user_signed_in? && params[:subscriptions] ?
+        @is_showing_subscriptions ?
             costumes.where(user_id: current_user.subscriptions.ids) :
             costumes }
       .order(created_at: :desc)

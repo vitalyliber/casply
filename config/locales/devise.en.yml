@@ -46,7 +46,7 @@ en:
       confirm_new_password: 'Confirm new password'
       change_my_password: 'Change my password'
       forgot_your_password: 'Forgot your password?'
-      send_me_reset_password_instructions: 'Send me reset password instructions'
+      send_me_reset_password_instructions: 'Reset password'
     registrations:
       destroyed: "Bye! Your account has been successfully cancelled. We hope to see you again soon."
       signed_up: "Welcome! You have signed up successfully."
@@ -57,6 +57,7 @@ en:
       updated: "Your account has been updated successfully."
       # views
       sign_up: 'Sign up'
+      sign_up_process: 'Sign up'
       characters_minimum: 'minimum characters'
       password: 'Password'
       password_confirmation: 'Password confirmation'

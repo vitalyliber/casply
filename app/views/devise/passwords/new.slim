@@ -10,5 +10,5 @@ h2.text-center
     br
     = f.email_field :email, autofocus: true, autocomplete: "email"
   .actions
-    = f.submit t('devise.passwords.send_me_reset_password_instructions')
+    = f.submit t('devise.passwords.send_me_reset_password_instructions'), class: 'btn btn-active'
 = render "devise/shared/links"

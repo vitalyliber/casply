@@ -1,9 +1,16 @@
-.wrapper
-  - if user_signed_in?
-    .text-center.mb-1
-      - if params[:subscriptions]
-        = link_to t('costumes.subscriptions'), root_path, class: 'link-main'
-      - else
-        = link_to t('costumes.all'), root_path(subscriptions: true), class: 'link-main'
+- unless user_signed_in?
+  .welcome
+    h1
+      = t('common.main_title')
+      strong = t('common.main_subtitle')
 
+    = link_to t('common.continue'), new_user_session_path, class: 'btn btn-main mt-1'
+
+.info
+  - if user_signed_in? && current_user.subscriptions_count
+    = link_to t('cosplayers.following_count'), root_path, class: "#{@is_showing_subscriptions ? 'link-black' : 'link-gray' }"
+
+  = link_to 'Popular', root_path(popular: true), class: "#{@is_showing_subscriptions ? 'link-gray' : 'link-black'} ml-0-5"
+
+.wrapper
   = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }
