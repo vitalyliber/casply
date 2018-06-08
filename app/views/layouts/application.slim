@@ -2,7 +2,6 @@ doctype html
 html
   head
     = display_meta_tags site: 'Casply - cosplay community'
-    = Gon::Base.render_data
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -13,6 +12,7 @@ html
     meta content="width=device-width, initial-scale=1" name="viewport" /
 
   body
+    = Gon::Base.render_data
     = render 'layouts/nav'
 
     = render 'layouts/flash'

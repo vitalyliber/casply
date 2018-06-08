@@ -82,11 +82,7 @@ class Gallery extends PureComponent {
             <div style={styles.imageContainer}>
               <img
                 src={modalContent.url}
-                style={{
-                  width: '100%',
-                  maxWidth: '600px',
-                  height: 'auto',
-                }}
+                style={styles.image}
               />
               <div
                 onClick={() => {
@@ -165,6 +161,10 @@ document.addEventListener('turbolinks:before-cache', () => {
 const styles = {
   imageContainer: {
     position: 'relative',
+  },
+  image: {
+    width: '100%',
+    height: 'auto',
   },
   leftSlideButton: {
     position: 'absolute',
