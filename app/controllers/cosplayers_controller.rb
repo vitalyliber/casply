@@ -4,6 +4,20 @@ class CosplayersController < ApplicationController
   def show
     @costumes = @user.costumes.page(params[:page])
     @subscriber = Subscriber.find_by(subscription: current_user, follower: @user)
+    @photo_url =
+      if @user.photo.attached?
+        @user.photo.variant(resize: "800x600^", gravity: :center, crop: "800x600+0+0")
+      else
+        ActionController::Base.helpers.asset_path('avatar.jpg')
+      end
+    desc = 'Cosplayer page'
+    set_meta_tags description: desc,
+                  og: {
+                      title: @user.name,
+                      type: 'website',
+                      description: desc,
+                      image: @photo_url
+                  }
   end
 
   def edit

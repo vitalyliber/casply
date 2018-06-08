@@ -73,4 +73,11 @@
 .profile-card {
   padding: 20px 15px;
   background-color: white;
+
+  img {
+    display: block;
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+  }
 }

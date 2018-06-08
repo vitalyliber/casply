@@ -71,17 +71,17 @@ class Gallery extends PureComponent {
       <div className="images-container mt-2">
         {photos.map(photo => (
           <div key={photo.id} className="image-container">
-            <img onClick={() => this.setModalContent(photo)} src={photo.small} />
+            <img onClick={() => this.setModalContent(photo)} src={photo.url} />
           </div>
         ))}
         <Popup
           isOpen={modalContent}
           onClose={() => this.setState({ modalContent: null })}
         >
-          { (!isImageRemoving && modalContent && modalContent.big) ? (
+          { (!isImageRemoving && modalContent && modalContent.url) ? (
             <div style={styles.imageContainer}>
               <img
-                src={modalContent.big}
+                src={modalContent.url}
                 style={{
                   width: '100%',
                   maxWidth: '600px',

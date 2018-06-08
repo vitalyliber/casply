@@ -97,3 +97,6 @@ gem 'font-awesome-rails'
 
 # Passing view variables to js
 gem 'gon', '~> 6.2'
+
+# Meta-tags
+gem 'meta-tags'

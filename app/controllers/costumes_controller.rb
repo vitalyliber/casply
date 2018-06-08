@@ -45,21 +45,29 @@ class CostumesController < ApplicationController
         .comments
         .order(created_at: :desc)
         .page(params[:page])
-    gon.push({
-      canRemove: user_signed_in? && @costume.user == current_user,
-      costumeId: @costume.id,
-      photos: @costume.photos.map do |photo|
-        {
-          id: photo.id,
-          small: photo.variant(resize: "350x350^", gravity: :center, crop: "350x350+0+0")
-                   .processed
-                   .service_url,
-          big: photo.variant(resize: "600")
-                   .processed
-                   .service_url
+
+    js_variables = {
+        canRemove: user_signed_in? && @costume.user_id == current_user.id,
+        costumeId: @costume.id,
+        photos: @costume.photos.map do |photo|
+          {
+              id: photo.id,
+              url: photo.variant(resize: "600")
+                     .processed
+                     .service_url
+          }
+        end
+    }
+    gon.push(js_variables)
+
+    desc = 'Costume page'
+    set_meta_tags description: desc,
+        og: {
+            title: @costume.name,
+            type: 'website',
+            description: desc,
+            image: js_variables[:photos][0][:url]
         }
-      end
-    })
   end
 
   def update

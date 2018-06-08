@@ -15,15 +15,11 @@
 
   .profile-card
 
-    .text-center.mt-1
-      - if @user.photo.attached?
-        = image_tag @user.photo.variant(resize: "200x200^", gravity: :center, crop: "200x200+0+0"),
-            class: 'circle'
-      - else
-        = image_tag 'avatar.jpg', height: "200", width: "200", class: 'circle'
+    .content-center.mt-1
+      = image_tag @photo_url, class: 'circle'
 
     h1.text-center
-      = @user.name
+      = title @user.name
       = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')
 
     - if @user.desc.present?

@@ -1,6 +1,6 @@
 .wrapper
   .costume-card
-    h1.text-center = @costume.name
+    h1.text-center = title @costume.name
     - if @costume.universe.present?
       h2.text-center.universe = @costume.universe
     - if @costume.desc.present?

@@ -153,6 +153,13 @@ span {
     height: 350px;
     width: 350px;
 
+    img {
+      display: block;
+      object-fit: cover;
+      height: 350px;
+      width: 350px;
+    }
+
     .image-remove {
       position: absolute;
       right: 0;
