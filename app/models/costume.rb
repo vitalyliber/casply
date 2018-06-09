@@ -1,5 +1,5 @@
 class Costume < ApplicationRecord
-  is_impressionable counter_cache: true, unique: true
+  is_impressionable counter_cache: true
   paginates_per 25
   validates_presence_of :name, :universe, :user, :photos
   validates_length_of :name, :universe, minimum: 3, maximum: 100

@@ -1,7 +1,7 @@
 class CostumesController < ApplicationController
   before_action :find_costume, only: [:show, :edit, :update]
   after_action :photos_counter_cache, only: [:create, :edit, :update]
-  impressionist actions: [:show]
+  impressionist actions: [:show], unique: [:user_id, :impressionable_type, :impressionable_id]
   LIMIT_PHOTOS = 10
 
   def index
