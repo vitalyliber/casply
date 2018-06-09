@@ -1,5 +1,6 @@
 .navigation
-  div
+  .logo
+    / = image_tag 'logo.png', width: 40, height: 40, class: 'mr-1'
     = link_to t('layouts.home'), root_path
   div
     - if user_signed_in?
