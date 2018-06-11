@@ -13,7 +13,11 @@ Then you can install Ruby 2.4.3 via running the command in terminal:
 
 ```
 rvm install ruby 2.4.3@cosplayers
+rvm use 2.4.3@cosplayers
 ```
+
+Remember further when you will open console in root of project
+RVM automatically will set ruby version and gemset for you.
 
 After that you may download project dependencies:
 
