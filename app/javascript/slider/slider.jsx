@@ -139,14 +139,10 @@ document.addEventListener('turbolinks:load', () => {
 document.addEventListener('turbolinks:before-cache', () => {
   const reactNode = document.getElementById('costume-images');
   if (reactNode) {
+    const clone = reactNode.cloneNode(true);
     ReactDOM.unmountComponentAtNode(reactNode)
     // static preloader for time when turbolinks going to show component
-    let newNode = document.createElement('div');
-    newNode.className = 'images-container mt-2';
-    let imageNode = document.createElement('div')
-    imageNode.className = 'image-container'
-    newNode.innerHTML += imageNode.outerHTML + imageNode.outerHTML
-    reactNode.appendChild(newNode);
+    reactNode.appendChild(clone);
   }
 })
 

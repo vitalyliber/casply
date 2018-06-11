@@ -46,7 +46,7 @@ class CostumesController < ApplicationController
         .order(created_at: :desc)
         .page(params[:page])
 
-    js_variables = {
+    @js_variables = {
         canRemove: user_signed_in? && @costume.user_id == current_user.id,
         costumeId: @costume.id,
         photos: @costume.photos.map do |photo|
@@ -58,7 +58,7 @@ class CostumesController < ApplicationController
           }
         end
     }
-    gon.push(js_variables)
+    gon.push(@js_variables)
 
     desc = 'Costume page'
     set_meta_tags description: desc,
@@ -66,7 +66,7 @@ class CostumesController < ApplicationController
             title: @costume.name,
             type: 'website',
             description: desc,
-            image: js_variables[:photos][0][:url]
+            image: @js_variables[:photos][0][:url]
         }
   end
 

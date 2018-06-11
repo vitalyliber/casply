@@ -15,8 +15,9 @@
   #costume-images
     // static preloader for time when turbolinks going to show component
     .images-container.mt-2
-      .image-container
-      .image-container
+      - @js_variables[:photos].each do |photo|
+        .image-container
+         = image_tag photo[:src]
 
   h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
