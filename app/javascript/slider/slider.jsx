@@ -16,9 +16,10 @@ class Gallery extends PureComponent {
     currentImage: 0,
   }
 
-  openLightbox = () => {
+  openLightbox = (currentPhotoId) => {
     this.setState({
       lightboxIsOpen: true,
+      currentImage: currentPhotoId,
     })
   }
 
@@ -31,7 +32,10 @@ class Gallery extends PureComponent {
     const { photos } = this.state;
     const token = document.querySelector("meta[name=csrf-token]").content || ''
 
-    this.setState({ isImageRemoving: true })
+    this.setState({
+      isImageRemoving: true,
+      imageRemovingId: currentPhotoId,
+    })
     fetch(`/costumes/${gon.costumeId}/photos/${currentPhotoId}`, {
       method: 'delete',
       credentials: "same-origin",
@@ -61,19 +65,32 @@ class Gallery extends PureComponent {
   }
 
   render() {
-    const { photos, canRemove, isImageRemoving, currentImage, lightboxIsOpen } = this.state
+    const {
+      photos,
+      canRemove,
+      isImageRemoving,
+      currentImage,
+      lightboxIsOpen,
+      imageRemovingId
+    } = this.state
 
     return(
       <div className="images-container mt-2">
-        {photos.map(photo => (
-          <div key={photo.id} className="image-container">
-            <img onClick={() => this.openLightbox(photo)} src={photo.src} />
+        {photos.map((photo, index) => (
+          <div
+            key={photo.id}
+            className="image-container"
+          >
+            <img
+              onClick={() => this.openLightbox(index)}
+               src={photo.src}
+            />
             {(canRemove && photos.length > 1) &&
             <div
               onClick={() => this.removeImage(photo.id)}
               className="trash"
             >
-              {isImageRemoving ? (
+              {isImageRemoving && imageRemovingId === photo.id ? (
                 <i style={styles.loader} className="fa fa-spinner fa-1x" />
               ) : (
                 <i className="fa fa-trash fa-1x" />
@@ -83,6 +100,7 @@ class Gallery extends PureComponent {
           </div>
         ))}
         <Lightbox
+          imageCountSeparator="/"
           currentImage={currentImage}
           images={photos}
           isOpen={lightboxIsOpen}
