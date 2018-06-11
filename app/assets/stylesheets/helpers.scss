@@ -166,6 +166,18 @@ span {
       width: 350px;
     }
 
+    .trash {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      color: #ffffff61;
+      padding: 10px;
+    }
+
+    .trash:hover {
+      color: red;
+    }
+
     .image-remove {
       position: absolute;
       right: 0;
