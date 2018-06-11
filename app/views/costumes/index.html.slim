@@ -10,7 +10,7 @@
   - if user_signed_in? && current_user.subscriptions_count > 0
     = link_to t('cosplayers.following_count'), root_path, class: "#{@is_showing_subscriptions ? 'link-black' : 'link-gray' }"
 
-  = link_to 'Popular', root_path(popular: true), class: "#{@is_showing_subscriptions ? 'link-gray' : 'link-black'} ml-0-5"
+  = link_to t('costumes.popular'), root_path(popular: true), class: "#{@is_showing_subscriptions ? 'link-gray' : 'link-black'} ml-0-5"
 
 .wrapper
   = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

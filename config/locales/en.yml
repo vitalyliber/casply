@@ -49,6 +49,7 @@ en:
       few: "Costume: has %{count} errors"
     limit_photos: "You can upload only %{number} photos"
     your_reached_limit_photos: "You have reached limit of photos for the costume"
+    popular: "Popular"
   cosplayers:
     edit_cosplayers_info: "Edit cosplayer's info"
     costumes_number: "Costumes"
