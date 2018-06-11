@@ -23,9 +23,15 @@
 
   - @comments.each do |comment|
     .comment-header
+      - if comment.user.photo.attached?
+        = image_tag comment.user.photo.variant(resize: "30x30^", gravity: :center, crop: "30x30+0+0"),
+                class: 'circle mr-0-5'
+      - else
+        = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle mr-0-5'
       = link_to comment.user.name, root_path, class: 'link-main'
       p = time_ago_in_words(comment.created_at)
-    = simple_format(comment.text)
+    .comment-text
+      = simple_format(comment.text)
 
   - if @comments.present?
     .content-center.mt-1.mb-2 = paginate @comments, window: 1
