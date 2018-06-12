@@ -43,6 +43,7 @@ class CostumesController < ApplicationController
     @comments =
       @costume
         .comments
+        .includes(:user)
         .order(created_at: :desc)
         .page(params[:page])
 
