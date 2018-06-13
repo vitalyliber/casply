@@ -2,7 +2,7 @@
   .logo
     / = image_tag 'logo.png', width: 40, height: 40, class: 'mr-1'
     = link_to t('layouts.home'), root_path
-  div
+  .options
     - if user_signed_in?
       = link_to new_costume_path, title: 'Загрузить костюм', class: 'mr-1' do
         = fa_icon 'cloud', class: "fa-2x"
@@ -12,5 +12,7 @@
                 class: 'circle'
         - else
           = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'
+      = form_for :search, url: root_path, method: :get, html: { class: 'ml-1' } do |f|
+        = f.text_field :name, placeholder: t('common.search'), value: params.dig(:search, :name)
     - else
       = link_to t('layouts.sign_in'), new_user_session_path

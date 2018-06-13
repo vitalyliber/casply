@@ -47,6 +47,18 @@ h2 {
     justify-content:  center;
     align-items:  center;
   }
+
+  .options {
+    display: flex;
+    align-items: center;
+
+    input {
+      font-size: 13px;
+      padding: 6px 6px;
+      margin-top: 0;
+      width: 140px;
+    }
+  }
 }
 
 .ml-0-5 {

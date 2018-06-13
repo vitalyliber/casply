@@ -5,7 +5,10 @@ class CostumesController < ApplicationController
   LIMIT_PHOTOS = 10
 
   def index
-    @is_showing_subscriptions = user_signed_in? && current_user.subscriptions_count > 0 && !params[:popular]
+    name = params.dig(:search, :name)
+    @is_showing_subscriptions = user_signed_in? &&
+        current_user.subscriptions_count > 0 && !params[:popular] &&
+        !name
     @costumes =
       Costume
       .with_eager_loaded_photos
@@ -13,6 +16,10 @@ class CostumesController < ApplicationController
       .try { |costumes|
         @is_showing_subscriptions ?
             costumes.where(user_id: current_user.subscriptions.ids) :
+            costumes }
+      .try { |costumes|
+        name ?
+            costumes.search_by_name(name) :
             costumes }
       .order(created_at: :desc)
       .page(params[:page])

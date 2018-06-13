@@ -100,3 +100,6 @@ gem 'gon', '~> 6.2'
 
 # Meta-tags
 gem 'meta-tags'
+
+# Postgres full-text-search
+gem 'pg_search'
