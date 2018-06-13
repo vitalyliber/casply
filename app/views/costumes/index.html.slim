@@ -13,4 +13,6 @@
   = link_to t('costumes.popular'), root_path(popular: true), class: "#{@is_showing_subscriptions ? 'link-gray' : 'link-black'} ml-0-5"
 
 .wrapper
+  .mb-1
+    = render 'layouts/search'
   = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

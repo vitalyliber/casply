@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import 'colors';
+@import 'media_queries';
 
 body {
   margin: 0;
@@ -27,6 +28,14 @@ h2 {
   justify-content: center;
   align-self: center;
   margin: auto;
+
+ .search {
+   display: none;
+
+   @include mobile-only {
+     display: block;
+   }
+ }
 }
 
 .navigation {
@@ -57,6 +66,10 @@ h2 {
       padding: 6px 6px;
       margin-top: 0;
       width: 140px;
+
+      @include mobile-only {
+        display: none;
+      }
     }
   }
 }

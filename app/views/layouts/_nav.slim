@@ -1,6 +1,7 @@
 .navigation
   .logo
-    / = image_tag 'logo.png', width: 40, height: 40, class: 'mr-1'
+    = link_to root_path do
+      = image_tag 'logo.png', width: 40, height: 40, class: 'mr-0-5'
     = link_to t('layouts.home'), root_path
   .options
     - if user_signed_in?
@@ -12,7 +13,7 @@
                 class: 'circle'
         - else
           = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'
-      = form_for :search, url: root_path, method: :get, html: { class: 'ml-1' } do |f|
-        = f.text_field :name, placeholder: t('common.search'), value: params.dig(:search, :name)
+      .ml-1
+        = render 'layouts/search'
     - else
       = link_to t('layouts.sign_in'), new_user_session_path
