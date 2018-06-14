@@ -10,12 +10,11 @@ class CosplayersController < ApplicationController
       else
         ActionController::Base.helpers.asset_path('avatar.jpg')
       end
-    desc = 'Cosplayer page'
-    set_meta_tags description: desc,
+    set_meta_tags description: @user.desc,
                   og: {
-                      title: @user.name,
+                      title: "Cosplayer - #{@user.name}",
                       type: 'website',
-                      description: desc,
+                      description: @user.desc,
                       image: @photo_url
                   }
   end

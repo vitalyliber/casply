@@ -23,6 +23,12 @@ class CostumesController < ApplicationController
             costumes }
       .order(created_at: :desc)
       .page(params[:page])
+    desc = 'Cosplay from popular cosplayers in the Casply community, your best resource to discover and connect with cosplayers worldwide.'
+    set_meta_tags description: desc,
+                  og: {
+                      type: 'website',
+                      description: desc,
+                  }
   end
 
   def new
@@ -68,12 +74,11 @@ class CostumesController < ApplicationController
     }
     gon.push(@js_variables)
 
-    desc = 'Costume page'
-    set_meta_tags description: desc,
+    set_meta_tags description: @costume.desc,
         og: {
-            title: @costume.name,
+            title: "Cosplay - #{@costume.name}",
             type: 'website',
-            description: desc,
+            description: @costume.desc,
             image: @js_variables[:photos][0][:url]
         }
   end

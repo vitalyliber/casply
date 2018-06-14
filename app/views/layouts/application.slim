@@ -1,7 +1,8 @@
 doctype html
 html
   head
-    = display_meta_tags site: 'Casply - cosplay community'
+    - site_name = 'Casply - cosplay community'
+    = display_meta_tags site: site_name, og: { site_name: site_name }
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
