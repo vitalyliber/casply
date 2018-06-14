@@ -13,7 +13,6 @@
                 class: 'circle'
         - else
           = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'
-      .ml-1
-        = render 'layouts/search'
+      = render 'layouts/search'
     - else
       = link_to t('layouts.sign_in'), new_user_session_path

@@ -46,6 +46,10 @@ h2 {
   height: 56px;
   background-color: #333333;
 
+  @include mobile-only {
+    padding: 0px 15px;
+  }
+
   a {
     text-decoration: none;
     color: white;
@@ -70,6 +74,14 @@ h2 {
       @include mobile-only {
         display: none;
       }
+    }
+  }
+
+  .search {
+    margin-left: 1rem;
+
+    @include mobile-only {
+      margin-left: 0;
     }
   }
 }
