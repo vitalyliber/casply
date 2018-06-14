@@ -6,7 +6,7 @@ class CosplayersController < ApplicationController
     @subscriber = Subscriber.find_by(subscription: current_user, follower: @user)
     @photo_url =
       if @user.photo.attached?
-        @user.photo.variant(resize: "800x600^", gravity: :center, crop: "800x600+0+0")
+        @user.photo.variant(resize: "800x600^", gravity: :center, crop: "800x600+0+0", interlace: "plane")
       else
         ActionController::Base.helpers.asset_path('avatar.jpg')
       end

@@ -9,7 +9,7 @@
         = fa_icon 'cloud', class: "fa-2x"
       = link_to cosplayer_path(current_user) do
         - if current_user.photo.attached?
-          = image_tag current_user.photo.variant(resize: "30x30^", gravity: :center, crop: "30x30+0+0"),
+          = image_tag current_user.photo.variant(resize: "30x30^", gravity: :center, crop: "30x30+0+0", interlace: "plane"),
                 class: 'circle'
         - else
           = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'

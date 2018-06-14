@@ -66,7 +66,7 @@ class CostumesController < ApplicationController
         photos: @costume.photos.map do |photo|
           {
               id: photo.id,
-              src: photo.variant(resize: "1024")
+              src: photo.variant(resize: "1024", interlace: "plane")
                      .processed
                      .service_url
           }
