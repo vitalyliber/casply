@@ -60,6 +60,7 @@ en:
     unsubscribed_successfully: "You successfully unsubscribed"
     followers_count: "Followers"
     following_count: "Following"
+    create_costume: "Create costume"
   common:
     remove: "&#x2715;"
     edit: "Edit"

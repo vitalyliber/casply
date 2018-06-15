@@ -29,6 +29,7 @@ ru:
     unsubscribed_successfully: "Вы успешно отписались"
     followers_count: "Подписчики"
     following_count: "Подписки"
+    create_costume: "Создать костюм"
   common:
     remove: "&#x2715;"
     edit: "Редактировать"

@@ -5,7 +5,7 @@
       h2.text-center.universe = @costume.universe
     - if @costume.desc.present?
       .text-center-wb = simple_format @costume.desc
-    p.text-center
+    .content-center
       = link_to @costume.user.name, cosplayer_path(@costume.user), class: 'link-main'
       = flag_icon(@costume.user.country.downcase, title: Country[@costume.user.country].name, class: 'ml-1')
     p.text-center.datetime = time_ago_in_words(@costume.created_at)
