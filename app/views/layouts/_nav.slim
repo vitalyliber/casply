@@ -2,7 +2,7 @@
   .logo
     = link_to root_path do
       = image_tag 'logo.png', width: 40, height: 40, class: 'mr-0-5'
-    = link_to t('layouts.home'), root_path
+      = image_tag 'text_logo.svg', width: 80, height: 35, class: 'mr-0-5'
   .options
     - if user_signed_in?
       = link_to new_costume_path, title: 'Загрузить костюм', class: 'mr-1' do
