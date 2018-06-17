@@ -9,6 +9,7 @@ class AvatarEditor extends PureComponent {
     allowZoomOut: false,
     scale: 1,
     endpoint: gon.endpoint,
+    isUploading: false,
   }
 
   dataURLToBlob = (dataURL) => {
@@ -37,6 +38,7 @@ class AvatarEditor extends PureComponent {
   }
 
   upload = () => {
+    this.setState({ isUploading: true })
     const image = this.editor.getImageScaledToCanvas().toDataURL()
     const token = document.querySelector("meta[name=csrf-token]").content || ''
     const { endpoint } = this.state;
@@ -59,9 +61,20 @@ class AvatarEditor extends PureComponent {
         location.reload()
       }
     ).catch(
-      error => console.log('error', error)
+      error => {
+        console.log('error', error)
+        location.reload()
+      }
     );
   };
+
+  cancel = () => {
+    document.getElementById('static-avatar').style.display = '';
+    this.setState({
+      image: null,
+      scale: 1,
+    })
+  }
 
   setEditorRef = editor => {
     if (editor) this.editor = editor
@@ -73,12 +86,13 @@ class AvatarEditor extends PureComponent {
   }
 
   handleNewImage = (e, results) => {
+    document.getElementById('static-avatar').style.display = 'none';
     const [_e, file] = results[0];
     this.setState({ image: file })
   }
 
   render() {
-    const { image, scale } = this.state;
+    const { image, scale, isUploading } = this.state;
     return (
       <Fragment>
         {image &&
@@ -92,6 +106,9 @@ class AvatarEditor extends PureComponent {
               borderRadius={150}
               scale={parseFloat(scale)}
             />
+            { isUploading &&
+              <i style={styles.loader} className="fa fa-spinner fa-3x" />
+            }
           </div>
         }
         <br/>
@@ -129,6 +146,12 @@ class AvatarEditor extends PureComponent {
               >
                 {I18n.t("cosplayers.upload_a_photo")}
               </button>
+              <button
+                className="btn btn-main btn-m mt-0-5 mb-1 ml-0-5"
+                onClick={this.cancel}
+              >
+                {I18n.t("common.cancel")}
+              </button>
             </div>
 
           </Fragment>
@@ -157,3 +180,13 @@ document.addEventListener('turbolinks:before-cache', () => {
     reactNode.appendChild(clone);
   }
 })
+
+const styles = {
+  loader: {
+    position: 'absolute',
+    color: 'white',
+    justifyContent: 'center',
+    display: 'flex',
+    animation: 'spin 2s linear infinite',
+  }
+}
