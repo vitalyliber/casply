@@ -18,6 +18,9 @@
     .content-center.mt-1
       = image_tag @photo_url, class: 'circle'
 
+    - if @user == current_user
+      #avatar-editor
+
     h1.text-center
       = title @user.name
       = flag_icon(@user.country.downcase, title: Country[@user.country].name, class: 'ml-1')

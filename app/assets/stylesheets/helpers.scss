@@ -110,12 +110,20 @@ h2 {
   margin-right: 2rem;
 }
 
+.mt-0-5 {
+  margin-top: 0.5rem;
+}
+
 .mt-1 {
   margin-top: 1rem;
 }
 
 .mt-2 {
   margin-top: 2rem;
+}
+
+.mb-0-5 {
+  margin-bottom: 0.5rem;
 }
 
 .mb-1 {
@@ -318,19 +326,6 @@ input[type=password], input[type=email], input[type=text], textarea, select {
 
   .field {
     width: 250px;
-
-    //input[type=password], input[type=email], input[type=text], select {
-    //  background-color: white;
-    //  width: 100%;
-    //  box-sizing: border-box;
-    //  border: none;
-    //  border-radius: 6px;
-    //  font-size: 16px;
-    //  padding: 8px 10px;
-    //  margin-top: 8px;
-    //  color: #444;
-    //  outline: none;
-    //}
   }
 
   input[type=submit] {

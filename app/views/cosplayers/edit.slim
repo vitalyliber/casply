@@ -53,11 +53,4 @@
               maxlength: 455,
               class: 'text-area'
 
-    div.mt-1
-      = f.label :photo
-      br
-      = f.file_field :photo,
-              accept: 'image/jpeg',
-              direct_upload: true
-
     = f.submit t('common.save'), class: 'mt-1 btn btn-active'

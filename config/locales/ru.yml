@@ -30,6 +30,8 @@ ru:
     followers_count: "Подписчики"
     following_count: "Подписки"
     create_costume: "Создать костюм"
+    change_a_photo: "Изменить фото"
+    upload_a_photo: "Загрузить фото"
   common:
     remove: "&#x2715;"
     edit: "Редактировать"

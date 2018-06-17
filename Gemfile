@@ -103,3 +103,6 @@ gem 'meta-tags'
 
 # Postgres full-text-search
 gem 'pg_search'
+
+# js i18n
+gem 'i18n-js'

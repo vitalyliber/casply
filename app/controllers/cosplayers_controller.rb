@@ -6,7 +6,7 @@ class CosplayersController < ApplicationController
     @subscriber = Subscriber.find_by(subscription: current_user, follower: @user)
     @photo_url =
       if @user.photo.attached?
-        @user.photo.variant(resize: "800x600^", gravity: :center, crop: "800x600+0+0", interlace: "plane")
+        @user.photo.variant(resize: "250x250^", gravity: :center, crop: "250x250+0+0", interlace: "plane")
       else
         ActionController::Base.helpers.asset_path('avatar.jpg')
       end
@@ -17,6 +17,7 @@ class CosplayersController < ApplicationController
                       description: @user.desc,
                       image: @photo_url
                   }
+    gon.push({endpoint: "/cosplayers/#{@user.id}"})
   end
 
   def edit
@@ -24,9 +25,14 @@ class CosplayersController < ApplicationController
   end
 
   def update
+
     return redirect_to cosplayer_path(current_user) unless can_edit?
     if current_user.update(user_params)
-      redirect_to cosplayer_path(current_user)
+      if params[:from_react]
+        render json: {}, status: 200
+      else
+        redirect_to cosplayer_path(current_user)
+      end
     else
       render 'edit'
     end

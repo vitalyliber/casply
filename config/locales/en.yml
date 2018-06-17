@@ -61,6 +61,8 @@ en:
     followers_count: "Followers"
     following_count: "Following"
     create_costume: "Create costume"
+    change_a_photo: "Change a photo"
+    upload_a_photo: "Upload a photo"
   common:
     remove: "&#x2715;"
     edit: "Edit"
