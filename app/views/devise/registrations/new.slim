@@ -14,7 +14,7 @@
     = f.label :country, class: 'label'
     = f.country_select :country,
             autofocus: true,
-            include_blank: country_code.blank? && country_code == '--',
+            include_blank: country_code.blank? || country_code == '--',
             selected: country_code
   .field
     = f.label :gender, class: 'label'
