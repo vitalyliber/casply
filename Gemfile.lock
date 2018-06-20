@@ -112,6 +112,7 @@ GEM
       sass (~> 3.2)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+    geoip (1.6.4)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gon (6.2.0)
@@ -299,6 +300,7 @@ DEPENDENCIES
   dotenv-rails
   flag-icons-rails
   font-awesome-rails
+  geoip
   gon (~> 6.2)
   i18n-js
   impressionist

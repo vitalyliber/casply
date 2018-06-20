@@ -25,7 +25,6 @@
       = f.label :country, class: 'label'
       = f.country_select :country,
               autofocus: true,
-              include_blank: true,
               minlength: 3,
               maxlength: 100,
               class: 'text-field'
@@ -34,7 +33,6 @@
       = f.label :gender, class: 'label'
       = f.select :gender,
               User.genders.map {|gender| [User.human_attribute_name(gender[0]), gender[0]]},
-              include_blank: true,
               minlength: 3,
               maxlength: 100,
               class: 'text-field'

@@ -106,3 +106,6 @@ gem 'pg_search'
 
 # js i18n
 gem 'i18n-js'
+
+# Autodetect user location by ip
+gem 'geoip'
