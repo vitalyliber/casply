@@ -1,0 +1,8 @@
+.text-center
+  h1 = t('costumes.new_costume')
+
+.wrapper
+  - if current_user.confirmed?
+    = render partial: 'form', locals: { costume: @costume, limit_photos: @limit_photos }
+  - else
+    = render partial: 'layouts/need_confirmation'

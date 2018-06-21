@@ -3,12 +3,16 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.3.0",
+    "activestorage": "^0.1.1",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-avatar-editor": "^11.0.3",
+    "react-dom": "^16.2.0",
+    "react-file-reader-input": "^2.0.0",
+    "react-images": "^0.5.17"
   },
   "devDependencies": {
-    "webpack-dev-server": "^3.1.1"
+    "webpack-dev-server": "^2.11.1"
   }
 }

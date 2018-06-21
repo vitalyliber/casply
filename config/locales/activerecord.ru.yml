@@ -1,0 +1,30 @@
+ru:
+  activerecord:
+    models:
+      user:
+        one: Пользователь
+        other: Пользователи
+      costume:
+        one: Костюм
+        other: Костюмы
+      comment:
+        one: Комментарий
+        other: Комментарии
+    attributes:
+      user:
+        name: Имя
+        password: Пароль
+        photo: Фото
+        desc: О себе
+        country: Страна
+        gender: Пол
+        female: Женский
+        male: Мужской
+        other: Другой
+      costume:
+        name: Персонаж
+        universe: Вселенная
+        desc: Описание
+        photos: Фотограифии
+      comment:
+        text: Сообщение

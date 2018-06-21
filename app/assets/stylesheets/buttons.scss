@@ -1,0 +1,55 @@
+@import 'colors';
+
+@mixin button-bg($bg) {
+  background: $bg;
+  &:hover {
+    background:darken($bg,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($bg,25%);
+  }
+}
+
+@mixin button-cl($bg, $cl) {
+  background: $bg;
+  &:hover {
+    background:darken($cl,8%);
+    transition: all 0.3s ease;
+  }
+  &:active {
+    background:darken($cl,25%);
+  }
+}
+
+.btn {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  padding: 10px 20px;
+  border-radius: 3px;
+  border: 0;
+  text-transform: uppercase;
+  outline-width: 0;
+  text-align: center;
+}
+
+.btn-m {
+  padding: 5px 10px;
+}
+
+.btn-active {
+  @include button-bg($color-notice);
+}
+
+.btn-main {
+  @include button-bg($color-main);
+}
+
+.btn-inactive {
+  @include button-cl($color-text-gray, $color-main);
+}
+
+.btn-alert {
+  @include button-bg($color-alert);
+}

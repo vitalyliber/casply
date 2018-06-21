@@ -1,0 +1,19 @@
+- if @costumes.present?
+  .photos-container
+    - costumes.each do |costume|
+
+      .photo-container
+        .image-costume-photo-title
+          p = costume.name
+        = link_to costume, class: 'link-white ' do
+          = image_tag costume.photos.last.variant(resize: "200x150^", gravity: :center, crop: "200x150+0+0", interlace: "plane")
+        .image-costume-photo-info.f-sb
+          span = time_ago_in_words(costume.created_at)
+          span = fa_icon 'eye', text: costume.impressions_count, left: true, class: "fa-1x"
+
+  .content-center.mt-2 = paginate costumes, window: 1
+- else
+  .blank-list
+    p = t('common.no_costumes_found')
+    = link_to (user_signed_in? ? new_costume_path : new_user_session_path), class: 'link-main' do
+      .upload = fa_icon 'cloud', text: t('common.upload_costume'), right: true, class: "fa-2x"

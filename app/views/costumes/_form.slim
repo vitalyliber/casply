@@ -1,0 +1,39 @@
+- if costume.errors.any?
+  div
+    - if costume.errors.count == 1
+      p.alert = t('costumes.not_saved.one', count: costume.errors.count)
+    - else
+      p.alert = t('costumes.not_saved.few', count: costume.errors.count)
+
+    ul
+      - costume.errors.full_messages.each do |msg|
+        li= msg
+
+= form_for costume do |f|
+  div
+    = f.label :name
+    br
+    = f.text_field :name, minlength: 3, maxlength: 100, class: 'text-field'
+
+  div.mt-1
+    = f.label :universe
+    br
+    = f.text_field :universe, minlength: 3, maxlength: 100, class: 'text-field'
+
+  div.mt-1
+    = f.label :desc
+    br
+    = f.text_area :desc, minlength: 3, maxlength: 455, class: 'text-area'
+
+  - if costume.photos_count >= limit_photos
+    p = t('costumes.your_reached_limit_photos')
+  - else
+    div.mt-1
+      = f.label t('costumes.photos')
+      br
+      = f.file_field :photos,
+              multiple: true,
+              direct_upload: true,
+              accept: 'image/jpeg'
+
+  = f.submit class: 'mt-1 btn btn-active'

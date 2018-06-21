@@ -30,7 +30,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
+
+# ActiveStorage cloud dependency
+gem 'aws-sdk-s3', require: false
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -41,6 +44,8 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # Environment variables
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -62,3 +67,45 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+# Devise
+gem 'devise'
+
+# Slim
+gem 'slim-rails'
+
+# I18n for russian
+gem 'russian'
+
+# Pagination
+gem 'kaminari'
+
+# For choosing user country
+gem 'country_select'
+
+# Flag icons
+gem 'flag-icons-rails'
+
+# Countries helper
+gem 'countries', require: 'countries/global'
+
+# For count views
+gem 'impressionist'
+
+# Icons
+gem 'font-awesome-rails'
+
+# Passing view variables to js
+gem 'gon', '~> 6.2'
+
+# Meta-tags
+gem 'meta-tags'
+
+# Postgres full-text-search
+gem 'pg_search'
+
+# js i18n
+gem 'i18n-js'
+
+# Autodetect user location by ip
+gem 'geoip'

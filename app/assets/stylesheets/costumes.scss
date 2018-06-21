@@ -1,0 +1,55 @@
+@import 'colors';
+@import 'helpers';
+
+.image-costume-photo-title {
+  right: 0;
+  padding: 5px 0px;
+  background-color: white;
+  color: $color-text;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.image-costume-photo-info {
+  padding: 5px 0px;
+  background-color: white;
+  color: #aaaaaa;
+  font-size: 12px;
+
+  span {
+    display: flex;
+    align-items: center;
+
+    i {
+      margin-right: 0.3rem;
+    }
+  }
+}
+
+.costume-card {
+  padding: 1px 15px 20px 15px;
+  background-color: white;
+}
+
+.universe {
+  color: $color-text-gray
+}
+
+.comment-header {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+
+  p {
+    padding: 0;
+    margin: 0;
+    margin-left: 0.5rem;
+    color: $color-text-lite;
+    @extend .text-truncate;
+  }
+}
+
+.comment-text {
+  padding: 0 10px;
+  word-break: break-word;
+}

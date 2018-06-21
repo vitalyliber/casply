@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    - site_name = 'Casply - cosplay community'
+    = display_meta_tags site: site_name, og: { site_name: site_name }
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
+    = javascript_pack_tag 'slider'
+    = javascript_pack_tag 'avatar_editor'
+    meta content="width=device-width, initial-scale=1" name="viewport" /
+
+  body
+    = Gon::Base.render_data
+    = render 'layouts/nav'
+
+    = render 'layouts/flash'
+    = yield

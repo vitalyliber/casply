@@ -1,0 +1,8 @@
+p
+  = t('mailer.hello', email: @email)
+- if @resource.try(:unconfirmed_email?)
+  p
+    = t('mailer.changed.email_is_been', email: @resource.unconfirmed_email)
+- else
+  p
+    = t('mailer.changed.email_has_been', email: @resource.email)

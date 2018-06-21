@@ -1,0 +1,29 @@
+$color-main: #3c8bbb;
+
+$color-alert: #f1475d;
+
+$color-notice: #69a532;
+
+$color-black: #252525;
+
+$color-text: #444;
+
+$color-text-lite: #bbb;
+
+$color-text-gray: #999;
+
+.b-c-main {
+  background-color: $color-main;
+}
+
+.b-c-alert {
+  background-color: $color-alert;
+  padding: 10px;
+  color: white;
+}
+
+.b-c-notice {
+  background-color: $color-notice;
+  padding: 10px;
+  color: white;
+}

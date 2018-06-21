@@ -1,0 +1,8 @@
+p
+  = t('mailer.hello', email: @resource.email)
+p
+  = t('mailer.lock.message')
+p
+  = t('mailer.lock.instruction')
+p
+  = link_to t('mailer.lock.button'), unlock_url(@resource, unlock_token: @token)

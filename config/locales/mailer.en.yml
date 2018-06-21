@@ -1,0 +1,24 @@
+en:
+  mailer:
+    hello: "Hello %{email}!"
+
+    confirmation:
+      welcome: "Welcome %{email}!"
+      instruction: "You can confirm your account email through the link below:"
+      button: "Confirm my account"
+
+    changed:
+      email_is_been: "We're contacting you to notify you that your email is being changed to %{email}."
+      email_has_been: "We're contacting you to notify you that your email has been changed to %{email}."
+      password: "We're contacting you to notify you that your password has been changed."
+
+    reset_password:
+      instruction: "Someone has requested a link to change your password. You can do this through the link below."
+      button: "Change my password"
+      if_you_did_not_request: "If you didn't request this, please ignore this email."
+      password_will_not_change: "Your password won't change until you access the link above and create a new one."
+
+    lock:
+      message: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+      instruction: "Click the link below to unlock your account:"
+      button: "Unlock my account"

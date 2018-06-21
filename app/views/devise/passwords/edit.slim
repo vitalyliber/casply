@@ -1,0 +1,25 @@
+h2.text-center
+  = t('devise.passwords.change_your_password')
+= form_for(resource,
+        as: resource_name,
+        url: password_path(resource_name),
+        html: { method: :put, class: 'session-form' }) do |f|
+  = devise_error_messages!
+  = f.hidden_field :reset_password_token
+  .field
+    = f.label :password, t('devise.passwords.new_password')
+    br
+    - if @minimum_password_length
+      em
+        | (
+        = @minimum_password_length
+        |  #{t('devise.passwords.characters_minimum')})
+      br
+    = f.password_field :password, autofocus: true, autocomplete: "off"
+  .field
+    = f.label :password_confirmation, t('devise.passwords.confirm_new_password')
+    br
+    = f.password_field :password_confirmation, autocomplete: "off"
+  .actions
+    = f.submit t('devise.passwords.change_my_password')
+= render "devise/shared/links"
