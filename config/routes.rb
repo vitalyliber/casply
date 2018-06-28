@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'users/social_auth'
   resources :costumes do
     resources :comments
     resources :photos, only: [:destroy]

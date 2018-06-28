@@ -1,6 +1,8 @@
-.text-center
+.text-center.mt-1
   h2
     = t('devise.sessions.log_in')
+.content-center
+  #social-auth
 = form_for(resource,
         as: resource_name,
         url: session_path(resource_name),
@@ -14,3 +16,4 @@
   .actions
     = f.submit t('devise.sessions.log_in'), class: 'btn btn-active'
 = render "devise/shared/links"
+= render "layouts/facebook_sdk"

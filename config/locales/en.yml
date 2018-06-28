@@ -78,3 +78,5 @@ en:
     save: "Save"
     search: "Search"
     cancel: "Cancel"
+    error: "Something went wrong. Please try again later"
+    login_with_facebook: "Login with facebook"

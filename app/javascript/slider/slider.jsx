@@ -160,7 +160,7 @@ document.addEventListener('turbolinks:before-cache', () => {
     const clone = reactNode.cloneNode(true);
     ReactDOM.unmountComponentAtNode(reactNode)
     // static preloader for time when turbolinks going to show component
-    reactNode.appendChild(clone);
+    reactNode.replaceWith(clone);
   }
 })
 
