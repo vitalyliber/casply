@@ -14,6 +14,7 @@ class UsersController < ApplicationController
             password: SecureRandom.hex,
             gender: :other,
             country: country_code.present? && country_code != '--' ? country_code : 'KY',
+            confirmed_at: DateTime.now,
         )
         picture
             .try { |el| el['data']['url'] }
