@@ -5,7 +5,7 @@ ru:
       send_instructions: "В течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи."
       send_paranoid_instructions: "Если ваш электронный адрес есть в нашей базе данных, то в течение нескольких минут вы получите письмо с инструкциями по подтверждению вашей учётной записи."
       # views
-      resend_confirmation_instructions: 'Выслать инструкции для подтверждения пароля'
+      resend_confirmation_instructions: 'Выслать инструкции для подтверждения email'
       send: 'Выслать'
     failure:
       already_authenticated: "Вы уже вошли в систему."
@@ -72,7 +72,7 @@ ru:
       send_paranoid_instructions: "Если ваша учётная запись существует, то в течение нескольких минут вы получите письмо с инструкциями по её разблокировке."
       unlocked: "Ваша учётная запись разблокирована. Теперь вы вошли в систему."
     shared:
-      did_not_receive_confirmation_instructions: "Не получили инструкции для подтверждения email?"
+      did_not_receive_confirmation_instructions: "Подтвердить email"
       did_not_receive_unlock_instructions: "Не получили инструкции для разблокировки аккаунта?"
   errors:
     messages:
