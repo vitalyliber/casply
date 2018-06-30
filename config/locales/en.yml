@@ -78,3 +78,7 @@ en:
     save: "Save"
     search: "Search"
     cancel: "Cancel"
+    error: "Something went wrong. Please try again later"
+    login_with_facebook: "Login with facebook"
+    privacy_policy: "Privacy Policy"
+    privacy_agreement: "By registering, you agree to our"

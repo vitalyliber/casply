@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post 'users/social_auth'
+  get '/privacy_policy', to: redirect('/privacy_policy.html')
   resources :costumes do
     resources :comments
     resources :photos, only: [:destroy]

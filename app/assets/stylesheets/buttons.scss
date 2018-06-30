@@ -23,11 +23,12 @@
 }
 
 .btn {
+  cursor: pointer;
   font-weight: bold;
   color: white;
   text-decoration: none;
   padding: 10px 20px;
-  border-radius: 3px;
+  border-radius: 2px;
   border: 0;
   text-transform: uppercase;
   outline-width: 0;
@@ -43,7 +44,11 @@
 }
 
 .btn-main {
-  @include button-bg($color-main);
+  @include button-cl($color-main, $color-main);
+}
+
+.btn-facebook {
+  @include button-cl(#3b5998, #3b5998);
 }
 
 .btn-inactive {

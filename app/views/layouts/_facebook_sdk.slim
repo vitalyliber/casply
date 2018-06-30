@@ -1,0 +1,29 @@
+javascript:
+  // we need reinitialize SDK because there is an issue related with the blank auth popup
+  // @TODO need to rewrite without gloval variables
+  FB = null;
+  prevFacebookSDKLink = document.getElementById('facebook-jssdk')
+  if (prevFacebookSDKLink) {
+    prevFacebookSDKLink.remove()
+  }
+
+  window.fbAsyncInit = function () {
+    FB.init({
+      appId: "#{ENV['FACEBOOK_APP_ID']}",
+      autoLogAppEvents: true,
+      xfbml: true,
+      version: 'v3.0',
+      status: true,
+    });
+  };
+
+  (function (d, s, id) {
+    let js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) {
+      return;
+    }
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));

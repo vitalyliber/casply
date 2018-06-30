@@ -109,3 +109,6 @@ gem 'i18n-js'
 
 # Autodetect user location by ip
 gem 'geoip'
+
+# Usable http library
+gem 'excon'
