@@ -371,3 +371,18 @@ input[type=password], input[type=email], input[type=text], textarea, select {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+.loader {
+  color: white;
+  justify-content: center;
+  display: flex;
+  animation: spin 2s linear infinite;
+}
+
+.avatar-loader {
+  position: absolute;
+  @extend .loader
+}
+
+.fd-c {
+  flex-direction: column;
+}

@@ -107,7 +107,7 @@ class AvatarEditor extends PureComponent {
               scale={parseFloat(scale)}
             />
             { isUploading &&
-              <i style={styles.loader} className="fa fa-spinner fa-3x" />
+              <i className="fa fa-spinner fa-3x avatar-loader" />
             }
           </div>
         }
@@ -180,13 +180,3 @@ document.addEventListener('turbolinks:before-cache', () => {
     reactNode.replaceWith(clone);
   }
 })
-
-const styles = {
-  loader: {
-    position: 'absolute',
-    color: 'white',
-    justifyContent: 'center',
-    display: 'flex',
-    animation: 'spin 2s linear infinite',
-  }
-}

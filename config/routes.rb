@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   post 'users/social_auth'
+  get 'users/social_auth_vk'
   get '/privacy_policy', to: redirect('/privacy_policy.html')
   resources :costumes do
     resources :comments

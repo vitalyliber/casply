@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :set_locale
+  before_action :set_env
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def set_locale
@@ -21,6 +22,13 @@ class ApplicationController < ActionController::Base
 
   def render_404
     raise ActionController::RoutingError.new('Not Found')
+  end
+
+  def set_env
+    gon.push(
+      vk_app_id: ENV['VK_APP_ID'],
+      vk_redirect_uri: ENV['VK_REDIRECT_URI'],
+    )
   end
 
 end
