@@ -51,6 +51,10 @@
   @include button-cl(#3b5998, #3b5998);
 }
 
+.btn-vk {
+  @include button-cl(#4975a8, #4975a8);
+}
+
 .btn-inactive {
   @include button-cl($color-text-gray, $color-main);
 }
