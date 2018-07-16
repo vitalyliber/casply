@@ -3,13 +3,20 @@ ru:
     models:
       user:
         one: Пользователь
-        other: Пользователи
+        few: Пользователя
+        other: Пользователей
       costume:
         one: Костюм
-        other: Костюмы
+        few: Костюма
+        other: Костюмов
       comment:
         one: Комментарий
-        other: Комментарии
+        few: Комментария
+        other: Комментариев
+      event:
+        one: Событие
+        few: События
+        other: Событий
     attributes:
       user:
         name: Имя
@@ -25,6 +32,13 @@ ru:
         name: Персонаж
         universe: Вселенная
         desc: Описание
-        photos: Фотограифии
+        photos: Фотографии
       comment:
         text: Сообщение
+      event:
+        title: Заголовок
+        desc: Описание
+        city: Город
+        country: Страна
+        link: Ссылка
+        date: Дата

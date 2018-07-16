@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: Summer Fest
+  from: 2019-07-09 14:46:58
+  to: 2019-07-09 14:46:58
+  country: Russia
+  city: Novosibirsk
+  desc: MyText
+  costumes_count: 0
+
+two:
+  title: Pop Corn
+  from: 2019-07-09 14:46:58
+  to: 2019-07-09 14:46:58
+  country: Russia
+  city: Novosibirsk
+  desc: MyText
+  costumes_count: 0

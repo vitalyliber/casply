@@ -1,4 +1,8 @@
 ru:
+  not_saved:
+    one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
+    few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
+    other: "%{resource}: сохранение не удалось из-за %{count} ошибок"
   layouts:
     sign_out: "Выйти"
     sign_in: "Войти"
@@ -13,9 +17,6 @@ ru:
     comments: "Комментарии"
     register_to_write_comments: "Пожалуйста авторизуйтесь чтобы оставить комментарий"
     can_not_remove_last_photo: "Вы не можете удалить последнюю фотографию"
-    not_saved:
-      one: "Костюм: сохранение не удалось из-за %{count} ошибки"
-      few: "Костюм: сохранение не удалось из-за %{count} ошибок"
     limit_photos: "Вы можете загрузить только %{number} фотографий"
     your_reached_limit_photos: "Вы достигли лимита загрузки фотографий для этого костюма"
     popular: "Популярное"
@@ -35,6 +36,7 @@ ru:
   common:
     remove: "&#x2715;"
     edit: "Редактировать"
+    delete: "Удалить"
     are_you_sure: "Вы уверены?"
     confirm_your_email: "Пожалуйста, подтвердите свой email"
     something_went_wrong: "Что-то пошло не так, попробуйте в другой раз"
@@ -52,3 +54,11 @@ ru:
     login_with_vk: "Войти через ВКонтакте"
     privacy_policy: "Политики Конфедициальности"
     privacy_agreement: "Регистрируясь, вы соглашаетесь на условия"
+  events:
+    new: "Новое событие"
+    create: "Создать событие"
+    edit: "Редактирование события"
+    city: "Город"
+    сountry: "Страна"
+    posted_by: "Разместил"
+    was_destroyed: "Событие было успешно удалено."

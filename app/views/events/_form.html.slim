@@ -1,0 +1,29 @@
+= form_for @event do |f|
+  - if @event.errors.any?
+    #error_explanation
+      p.alert = t('not_saved', count: @event.errors.count, resource: Event.model_name.human)
+      ul
+        - @event.errors.full_messages.each do |message|
+          li = message
+  div
+    = f.label :title
+    br
+    = f.text_field :title, minlength: 3, maxlength: 100, class: 'text-field'
+  #event-form
+  .mt-1
+    = f.label :date
+    = date_select :event, :date
+  .mt-1
+    = f.label :link
+    br
+    = f.text_field :link, minlength: 3, maxlength: 100, class: 'text-field'
+  .mt-1
+    = f.label :desc
+    br
+    = f.text_area :desc, minlength: 3, maxlength: 1455, class: 'text-area'
+  .mt-1
+    .mb-1
+      = f.label :image
+    = f.file_field :image, multiple: false, direct_upload: true
+
+  = f.submit class: 'actions mt-1 btn btn-active'

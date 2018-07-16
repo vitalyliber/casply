@@ -41,6 +41,7 @@ class CostumesController < ApplicationController
     if @costume.save
       redirect_to costume_path(@costume)
     else
+      @limit_photos = LIMIT_PHOTOS
       render 'new'
     end
   end

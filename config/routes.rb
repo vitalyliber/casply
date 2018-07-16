@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  namespace :api do
+    resources :cities, only: :index
+  end
   post 'users/social_auth'
   get 'users/social_auth_vk'
   get '/privacy_policy', to: redirect('/privacy_policy.html')
+  resources :events
   resources :costumes do
     resources :comments
     resources :photos, only: [:destroy]

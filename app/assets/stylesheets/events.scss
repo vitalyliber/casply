@@ -1,0 +1,65 @@
+@import 'colors';
+
+.event-card {
+  box-shadow: #999 0px 0px 3px;
+  position: relative;
+  .image {
+    position: relative;
+    height: 100px;
+    width: 100%;
+    background-color: #ed7aa3;
+
+    img {
+      width: 100%;
+      height: 100px;
+      object-fit: cover;
+    }
+  }
+  .group {
+    padding: 15px;
+    h2, h1, p {
+      margin: 0;
+    }
+    .posted_by {
+      color: $color-text-gray;
+      font-size: 12px;
+    }
+    .fa {
+      color: $color-text;
+    }
+    .flex {
+      display: flex;
+    }
+  }
+
+}
+
+.event-page {
+  p, h1, h2 {
+    margin: 0;
+    word-break: break-word
+  }
+  .flex {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-center {
+    justify-content: center;
+  }
+
+  .posted_by {
+    color: $color-text-gray;
+  }
+
+  .item {
+    border-top: 1px solid #CCC;
+    border-left: 1px solid #CCC;
+    border-right: 1px solid #CCC;
+    padding: 20px;
+
+    &:last-child {
+      border-bottom: 1px solid #CCC;
+    }
+  }
+}

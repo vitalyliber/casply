@@ -11,6 +11,7 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :costumes
+  has_many :events
   has_many :comments
   has_one_attached :photo
 

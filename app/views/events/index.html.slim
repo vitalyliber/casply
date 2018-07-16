@@ -1,0 +1,28 @@
+= render 'info'
+.wrapper
+  - @events.each do |event|
+    .event-card
+      = link_to event do
+        .image
+          - if event.image.attached?
+            = image_tag event.image.variant(resize: "600x100^", gravity: :center, crop: "600x100+0+0", interlace: "plane"),
+                    class: 'mr-0-5'
+      .group
+        h1 = link_to event.title, event, class: 'link-black'
+        .mt-1
+          p.posted_by
+            '#{t('events.posted_by')}
+            = link_to event.user.name, cosplayer_path(event.user), class: 'link-main'
+            '
+        .mt-1.flex
+          = fa_icon 'calendar', class: "fa-1x mr-0-5"
+          p = event.date
+        .mt-0-5.flex
+          = fa_icon 'globe', class: "fa-1x mr-0-5"
+          p = "#{event.country}, #{event.city}"
+        .mt-0-5
+          = fa_icon 'link', class: "fa-1x mr-0-5"
+          = link_to event.link, "http://#{event.link}", class: 'link-main', target: "_blank"
+    br
+
+  .content-center.mt-2 = paginate @events, window: 1
