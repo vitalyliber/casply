@@ -21,6 +21,15 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    desc = @event.desc.truncate(160)
+
+    set_meta_tags description: desc,
+      og: {
+        title: "Cosplay event - #{@event.title}",
+        type: 'website',
+        description: desc,
+        image: @event.image.attached? ? @event.image.variant(resize: "1024", interlace: "plane").processed.service_url : nil
+      }
   end
 
   # GET /events/new
