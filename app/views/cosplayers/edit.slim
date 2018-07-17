@@ -3,10 +3,7 @@
 
   - if current_user.errors.any?
     div
-      - if current_user.errors.count == 1
-        p.alert = t('costumes.not_saved.one', count: current_user.errors.count)
-      - else
-        p.alert = t('costumes.not_saved.few', count: current_user.errors.count)
+      p.alert = t('not_saved', count: current_user.errors.count, resource: User.model_name.human)
 
       ul
         - current_user.errors.full_messages.each do |msg|

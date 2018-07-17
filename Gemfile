@@ -112,3 +112,13 @@ gem 'geoip'
 
 # Usable http library
 gem 'excon'
+
+# Form list with cities and states
+gem 'city-state'
+
+# Complete validation of dates
+gem 'validates_timeliness'
+gem 'timeliness-i18n'
+
+# Redcarpet is a Ruby library for Markdown processing
+gem 'redcarpet'

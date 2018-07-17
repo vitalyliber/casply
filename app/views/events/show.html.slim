@@ -1,0 +1,29 @@
+= render 'info'
+.wrapper
+  .event-page
+    .list
+      .item
+        h1 = link_to @event.title, @event, class: 'link-black'
+      .item
+        p.posted_by
+          '#{t('events.posted_by')}
+          = link_to @event.user.name, cosplayer_path(@event.user), class: 'link-main'
+          '
+      .item.flex
+        = fa_icon 'calendar', class: "fa-1x mr-0-5"
+        p = @event.date
+      .item.flex
+        = fa_icon 'globe', class: "fa-1x mr-0-5"
+        p = "#{@event.country}, #{@event.city}"
+      .item
+        = fa_icon 'link', class: "fa-1x mr-0-5"
+        = link_to @event.link, "http://#{@event.link}", class: 'link-main', target: "_blank"
+      .item
+        = MarkdownHelper.render(@event.desc).html_safe
+    - if user_signed_in? && current_user == @event.user
+      = link_to edit_event_path(@event), class: 'mt-1 btn btn-active flex flex-center' do
+        = fa_icon 'edit', class: "fa-1x mr-0-5"
+        p = t('common.edit')
+      = link_to event_path(@event), method: :delete, class: 'mt-1 btn btn-alert flex flex-center' do
+        = fa_icon 'trash', class: "fa-1x mr-0-5"
+        p = t('common.delete')

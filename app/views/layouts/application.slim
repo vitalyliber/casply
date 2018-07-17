@@ -13,9 +13,12 @@ html
     = javascript_pack_tag 'slider'
     = javascript_pack_tag 'avatar_editor'
     = javascript_pack_tag 'social_auth'
+    = javascript_pack_tag 'event_form'
+    = javascript_pack_tag 'events_search'
     meta content="width=device-width, initial-scale=1" name="viewport" /
 
   body
+    = render 'layouts/locales'
     = Gon::Base.render_data
     = render 'layouts/nav'
 

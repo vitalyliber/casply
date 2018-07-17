@@ -41,6 +41,7 @@ class CostumesController < ApplicationController
     if @costume.save
       redirect_to costume_path(@costume)
     else
+      @limit_photos = LIMIT_PHOTOS
       render 'new'
     end
   end
@@ -74,11 +75,12 @@ class CostumesController < ApplicationController
     }
     gon.push(@js_variables)
 
-    set_meta_tags description: @costume.desc,
+    desc = @costume.desc.truncate(160)
+    set_meta_tags description: desc,
         og: {
             title: "Cosplay - #{@costume.name}",
             type: 'website',
-            description: @costume.desc,
+            description: desc,
             image: @js_variables[:photos][0][:url]
         }
   end

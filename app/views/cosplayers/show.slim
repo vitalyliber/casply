@@ -48,6 +48,7 @@
               data: { confirm: t('common.are_you_sure') }
   - if user_signed_in? && @user == current_user
     = link_to t('cosplayers.create_costume'), new_costume_path, class: 'btn btn-main mt-1'
+    = link_to t('events.create'), new_event_path, class: 'mt-0-5 btn btn-active'
 
   br
   = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

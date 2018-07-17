@@ -1,13 +1,10 @@
 - if costume.errors.any?
   div
-    - if costume.errors.count == 1
-      p.alert = t('costumes.not_saved.one', count: costume.errors.count)
-    - else
-      p.alert = t('costumes.not_saved.few', count: costume.errors.count)
+    p.alert = t('not_saved', count: costume.errors.count, resource: Costume.model_name.human)
 
     ul
       - costume.errors.full_messages.each do |msg|
-        li= msg
+        li = msg
 
 = form_for costume do |f|
   div

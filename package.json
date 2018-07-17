@@ -7,9 +7,10 @@
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "prop-types": "^15.6.1",
-    "react": "^16.2.0",
+    "react": "^16.4.1",
+    "react-autocomplete": "^1.8.1",
     "react-avatar-editor": "^11.0.3",
-    "react-dom": "^16.2.0",
+    "react-dom": "^16.4.1",
     "react-file-reader-input": "^2.0.0",
     "react-images": "^0.5.17"
   },
