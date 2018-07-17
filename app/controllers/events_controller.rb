@@ -6,9 +6,16 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events =
-      Event.where("date >= ?", DateTime.now)
+      Event
+        .with_eager_loaded_image
+        .where("date >= ?", DateTime.now)
+        .try {|el| params[:country] ? el.where(country: params[:country]) : el}
         .order(date: :asc)
         .page(params[:page])
+    gon.push({
+      countries: countries,
+      country_input: params[:country]
+    })
   end
 
   # GET /events/1

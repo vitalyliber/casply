@@ -1,5 +1,6 @@
 = render 'info'
 .wrapper
+  #events-search
   - @events.each do |event|
     .event-card
       = link_to event do
@@ -24,5 +25,10 @@
           = fa_icon 'link', class: "fa-1x mr-0-5"
           = link_to event.link, "http://#{event.link}", class: 'link-main', target: "_blank"
     br
+  - if @events.blank?
+    .blank-list
+      p = t('common.no_events_found')
+      = link_to (user_signed_in? ? new_event_path : new_user_session_path), class: 'link-main' do
+        .upload = fa_icon 'calendar', text: t('events.create'), right: true, class: "fa-2x"
 
   .content-center.mt-2 = paginate @events, window: 1

@@ -72,6 +72,7 @@ en:
     confirm_your_email: "Please, confirm your email"
     something_went_wrong: "Something went wrong, repeat again later"
     no_costumes_found: "No costumes found"
+    no_events_found: "No events found"
     upload_costume: "Upload new costume"
     main_title: "What are you working on? "
     main_subtitle: "Casply is where cosplayers get inspired."
@@ -93,3 +94,4 @@ en:
     country: "Country"
     posted_by: "Posted by"
     was_destroyed: "Event was successfully destroyed."
+    name: "Events"
