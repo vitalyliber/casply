@@ -6,7 +6,7 @@
       = link_to event do
         .image
           - if event.image.attached?
-            = image_tag event.image.variant(resize: "600x100^", gravity: :center, crop: "600x100+0+0", interlace: "plane"),
+            = image_tag event.image.variant(resize: "600x100^", gravity: :center, interlace: "plane"),
                     class: 'mr-0-5'
       .group
         h1 = link_to event.title, event, class: 'link-black'
