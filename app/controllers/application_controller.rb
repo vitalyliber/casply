@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :set_locale
   before_action :set_env
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_raven_context
 
   def set_locale
     logger.debug "* Accept-Language: #{request.env['HTTP_ACCEPT_LANGUAGE']}"
@@ -29,6 +30,13 @@ class ApplicationController < ActionController::Base
       vk_app_id: ENV['VK_APP_ID'],
       vk_redirect_uri: ENV['VK_REDIRECT_URI'],
     )
+  end
+
+  # Error reporting
+  def set_raven_context
+    user_id = current_user.id if user_signed_in?
+    Raven.user_context(id: user_id)
+    Raven.extra_context(params: params.to_unsafe_h, url: request.url)
   end
 
 end
