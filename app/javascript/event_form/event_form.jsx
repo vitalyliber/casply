@@ -65,7 +65,9 @@ class EventForm extends PureComponent {
           />
         }
         { isGettingCities &&
-          <div className="content-center">Loading...</div>
+          <div className="content-center mt-0-5">
+            <i className="fa fa-spinner fa-2x avatar-loader mt-1" />
+          </div>
         }
       </div>
     )
