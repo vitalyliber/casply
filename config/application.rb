@@ -17,3 +17,10 @@ module Cosplayers
     # the framework and any gems in your application.
   end
 end
+
+# Error reporting
+unless Rails.env.development?
+  Raven.configure do |config|
+    config.dsn = ENV['SENTRY_DSN']
+  end
+end
