@@ -1,4 +1,5 @@
 class EventsController < ApplicationController
+  include EventsHelper
   before_action :set_event, only: [:show, :edit, :update, :destroy]
 
   # GET /events
@@ -27,12 +28,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    gon.push({
-      countries: countries,
-      current_country: @event.country,
-      current_country_code: country_code_by_name(@event.country),
-      current_city: @event.city
-    })
+    gon_data
   end
 
   # POST /events
@@ -47,12 +43,7 @@ class EventsController < ApplicationController
         format.json { render :show, status: :created, location: @event }
       else
         format.html {
-          gon.push({
-            countries: countries,
-            current_country: @event.country,
-            current_country_code: country_code_by_name(@event.country),
-            current_city: @event.city
-          })
+          gon_data
           render :new
         }
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -70,12 +61,7 @@ class EventsController < ApplicationController
         format.json { render :show, status: :ok, location: @event }
       else
         format.html do
-          gon.push({
-            countries: countries,
-            current_country: @event.country,
-            current_country_code: country_code_by_name(@event.country),
-            current_city: @event.city
-          })
+          gon_data
           render :edit
         end
         format.json { render json: @event.errors, status: :unprocessable_entity }
@@ -107,21 +93,16 @@ class EventsController < ApplicationController
     )
   end
 
-  def countries
-    @countries ||= CS.countries.map {|country| { name: country[1], code: country[0] } }
-  end
-
-  def country_code_by_name(name)
-    countries
-      .find {|country| country[:name] == name}
-      .try {|el| el[:code]}
-  end
-
-  def geoip
-    @geoip ||= GeoIPInstance.try(:country, request.remote_ip)
-  end
-
   def user_event?
     current_user == @event.user
+  end
+
+  def gon_data
+    gon.push({
+      countries: countries,
+      current_country: @event.country,
+      current_country_code: country_code_by_name(@event.country),
+      current_city: @event.city
+    })
   end
 end

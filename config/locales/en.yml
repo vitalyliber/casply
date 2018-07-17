@@ -33,6 +33,7 @@ en:
   not_saved:
     one: "Costume: has %{count} error"
     few: "Costume: has %{count} errors"
+    other: "Costume: has %{count} errors"
   layouts:
     sign_out: "Sign out"
     sign_in: "Sign in"
