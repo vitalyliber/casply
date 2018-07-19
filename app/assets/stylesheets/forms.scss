@@ -43,3 +43,11 @@
   margin: 10px 20px 30px;
   width: 250px;
 }
+
+.field_with_errors {
+  input, textarea {
+    outline: none;
+    border-color: #f1475d;
+    box-shadow: 0 0 10px #f1475d;
+  }
+}

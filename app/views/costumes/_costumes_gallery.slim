@@ -6,7 +6,11 @@
         .image-costume-photo-title
           p = costume.name
         = link_to costume, class: 'link-white ' do
-          = image_tag costume.photos.order(created_at: :asc).first.variant(resize: "200x150^", gravity: :center, crop: "200x150+0+0", interlace: "plane")
+          - if costume.photos.attached?
+            = image_tag costume.photos.order(created_at: :asc).first.variant(resize: "200x150^", gravity: :center, crop: "200x150+0+0", interlace: "plane")
+          - else
+            .stub.content-center
+              = fa_icon 'image 4x', class: 'text-color-gray'
         .image-costume-photo-info.f-sb
           span = time_ago_in_words(costume.created_at)
           span = fa_icon 'eye', text: costume.impressions_count, left: true, class: "fa-1x"

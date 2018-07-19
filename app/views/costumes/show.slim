@@ -11,6 +11,11 @@
     p.text-center.datetime = time_ago_in_words(@costume.created_at)
     - if user_signed_in? && @costume.user == current_user
       .text-center = link_to t('common.edit'), edit_costume_path(@costume), class: 'link-main'
+      .text-center.mt-1 = link_to t('costumes.remove'),
+              costume_path(@costume),
+              method: :delete,
+              class: 'link-alert',
+              data: {confirm: t('common.are_you_sure')}
 
   #costume-images
     // static preloader for time when turbolinks going to show component

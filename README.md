@@ -28,6 +28,16 @@ bundle install
 
 Cool! You are on a right way!
 
+Create the .env file in the root of project:
+
+```
+SECRET_KEY_BASE=xxx
+FACEBOOK_APP_ID=xxx
+VK_APP_ID=xxx
+VK_REDIRECT_URI=http://localhost:3000/users/social_auth_vk
+VK_CLIENT_SECRET=xxx
+```
+
 For compatibility reasons Casply app uses PostgresSQL in development mode.
 You need to have this database locally. 
 Don't worry because you should't install PostgresSQL.
@@ -52,17 +62,6 @@ rake db:setup
 
 For some interactive elements app use Node.js v9.4.0 and Yarn. 
 You can install it from [here(Node)](https://nodejs.org/dist/v9.4.0/) and [here(Yarn)](https://yarnpkg.com/en/docs/install#mac-stable).
-
-Last step. 
-Create the .env file in the root of project:
-
-```
-SECRET_KEY_BASE=xxx
-FACEBOOK_APP_ID=xxx
-VK_APP_ID=xxx
-VK_REDIRECT_URI=http://localhost:3000/users/social_auth_vk
-VK_CLIENT_SECRET=xxx
-```
 
 Congratulations! You are ready to start to work on new feature for Casply!
 Just run Rails app:
