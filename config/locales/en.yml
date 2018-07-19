@@ -34,12 +34,14 @@ en:
     one: "Costume: has %{count} error"
     few: "Costume: has %{count} errors"
     other: "Costume: has %{count} errors"
+
   layouts:
     sign_out: "Sign out"
     sign_in: "Sign in"
     costumes: "Costumes"
     new_costume: "New costume"
     home: "CASPLY"
+
   costumes:
     photos: "Photos"
     new_costume: "New costume"
@@ -47,10 +49,13 @@ en:
     edit: "Edit costume"
     comments: "Comments"
     register_to_write_comments: "Please log in or register to write comments"
-    can_not_remove_last_photo: "You can\'t remove last photo"
     limit_photos: "You can upload only %{number} photos"
     your_reached_limit_photos: "You have reached limit of photos for the costume"
     popular: "Popular"
+    add_photos: "Add photos"
+    remove: "Destroy"
+    was_destroyed: "Costume was successfully destroyed."
+
   cosplayers:
     edit_cosplayers_info: "Edit cosplayer's info"
     costumes_number: "Costumes"
@@ -64,6 +69,7 @@ en:
     create_costume: "Create costume"
     change_a_photo: "Change a photo"
     upload_a_photo: "Upload a photo"
+
   common:
     remove: "&#x2715;"
     edit: "Edit"
@@ -86,6 +92,7 @@ en:
     login_with_vk: "Login with vk"
     privacy_policy: "Privacy Policy"
     privacy_agreement: "By registering, you agree to our"
+
   events:
     new: "New event"
     create: "Create event"

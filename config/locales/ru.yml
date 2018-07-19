@@ -3,12 +3,14 @@ ru:
     one: "%{resource}: сохранение не удалось из-за %{count} ошибки"
     few: "%{resource}: сохранение не удалось из-за %{count} ошибок"
     other: "%{resource}: сохранение не удалось из-за %{count} ошибок"
+
   layouts:
     sign_out: "Выйти"
     sign_in: "Войти"
     costumes: "Костюмы"
     new_costume: "Новый костюм"
     home: "CASPLY"
+
   costumes:
     photos: "Фотографии"
     new_costume: "Новый костюм"
@@ -16,10 +18,13 @@ ru:
     edit: "Редактирование костюма"
     comments: "Комментарии"
     register_to_write_comments: "Пожалуйста авторизуйтесь чтобы оставить комментарий"
-    can_not_remove_last_photo: "Вы не можете удалить последнюю фотографию"
     limit_photos: "Вы можете загрузить только %{number} фотографий"
     your_reached_limit_photos: "Вы достигли лимита загрузки фотографий для этого костюма"
     popular: "Популярное"
+    add_photos: "Добавить фото"
+    remove: "Удалить"
+    was_destroyed: "Костюм был успешно удален."
+
   cosplayers:
     edit_cosplayers_info: "Редактирование профиля"
     costumes_number: "Костюмы"
@@ -33,6 +38,7 @@ ru:
     create_costume: "Создать костюм"
     change_a_photo: "Изменить фото"
     upload_a_photo: "Загрузить фото"
+
   common:
     remove: "&#x2715;"
     edit: "Редактировать"
@@ -55,6 +61,7 @@ ru:
     login_with_vk: "Войти через ВКонтакте"
     privacy_policy: "Политики Конфедициальности"
     privacy_agreement: "Регистрируясь, вы соглашаетесь на условия"
+
   events:
     new: "Новое событие"
     create: "Создать событие"

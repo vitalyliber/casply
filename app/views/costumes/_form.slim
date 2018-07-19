@@ -24,13 +24,5 @@
 
   - if costume.photos_count >= limit_photos
     p = t('costumes.your_reached_limit_photos')
-  - else
-    div.mt-1
-      = f.label t('costumes.photos')
-      br
-      = f.file_field :photos,
-              multiple: true,
-              direct_upload: true,
-              accept: 'image/jpeg'
 
   = f.submit class: 'mt-1 btn btn-active'

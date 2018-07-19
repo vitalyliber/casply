@@ -11,6 +11,7 @@
     "react-autocomplete": "^1.8.1",
     "react-avatar-editor": "^11.0.3",
     "react-dom": "^16.4.1",
+    "react-dropzone": "^4.2.13",
     "react-file-reader-input": "^2.0.0",
     "react-images": "^0.5.17"
   },

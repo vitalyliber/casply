@@ -27,3 +27,11 @@ $color-text-gray: #999;
   padding: 10px;
   color: white;
 }
+
+.text-color-main {
+  color: $color-main;
+}
+
+.text-color-gray {
+  color: $color-text-gray;
+}

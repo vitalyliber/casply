@@ -123,6 +123,8 @@ gem 'timeliness-i18n'
 # Redcarpet is a Ruby library for Markdown processing
 gem 'redcarpet'
 
-# Error reporting
-# https://sentry.io/onboarding/casply/casply/configure/ruby-rails
-gem 'sentry-raven'
+group :production do
+  # Error reporting
+  # https://sentry.io/onboarding/casply/casply/configure/ruby-rails
+  gem 'sentry-raven'
+end

@@ -7,6 +7,8 @@ import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import Lightbox from 'react-images';
 
+import Uploader from './uploader'
+
 class Gallery extends PureComponent {
   state = {
     photos: gon.photos,
@@ -14,6 +16,7 @@ class Gallery extends PureComponent {
     lightboxIsOpen: false,
     isImageRemoving: false,
     currentImage: 0,
+    limit_photos: gon.limit_photos,
   }
 
   openLightbox = (currentPhotoId) => {
@@ -71,11 +74,15 @@ class Gallery extends PureComponent {
       isImageRemoving,
       currentImage,
       lightboxIsOpen,
-      imageRemovingId
+      imageRemovingId,
+      limit_photos,
     } = this.state
 
     return(
       <div className="images-container mt-2">
+        { (canRemove && photos.length < limit_photos ) &&
+          <Uploader />
+        }
         {photos.map((photo, index) => (
           <div
             key={photo.id}
@@ -85,7 +92,7 @@ class Gallery extends PureComponent {
               onClick={() => this.openLightbox(index)}
                src={photo.src}
             />
-            {(canRemove && photos.length > 1) &&
+            {(canRemove) &&
             <div
               onClick={() => this.removeImage(photo.id)}
               className="trash"

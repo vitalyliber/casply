@@ -1,5 +1,5 @@
 class CostumesController < ApplicationController
-  before_action :find_costume, only: [:show, :edit, :update]
+  before_action :find_costume, only: [:show, :edit, :update, :destroy]
   after_action :photos_counter_cache, only: [:create, :edit, :update]
   impressionist actions: [:show], unique: [:user_id, :impressionable_type, :impressionable_id]
   LIMIT_PHOTOS = 10
@@ -62,9 +62,10 @@ class CostumesController < ApplicationController
         .page(params[:page])
 
     @js_variables = {
+        limit_photos: LIMIT_PHOTOS,
         canRemove: user_signed_in? && @costume.user_id == current_user.id,
         costumeId: @costume.id,
-        photos: @costume.photos.map do |photo|
+        photos: @costume.photos.order(created_at: :desc).map do |photo|
           {
               id: photo.id,
               src: photo.variant(resize: "1024", interlace: "plane")
@@ -81,18 +82,39 @@ class CostumesController < ApplicationController
             title: "Cosplay - #{@costume.name}",
             type: 'website',
             description: desc,
-            image: @js_variables[:photos][0][:url]
+            image: @js_variables.dig(:photos, 0, :url)
         }
   end
 
   def update
     unless user_costume?
-      return redirect_to costume_path(@costume)
+      if need_json_response?
+        render json: {}, status: 401
+      else
+        return redirect_to costume_path(@costume)
+      end
     end
     if @costume.update(limit_photos!(costume_params, @costume.photos_count))
-      redirect_to @costume
+      if need_json_response?
+        render json: {}, status: 201
+      else
+        redirect_to @costume
+      end
     else
-      render 'edit'
+      if need_json_response?
+        render json: { messages: @costume.errors.full_messages }, status: 401
+      else
+        render 'edit'
+      end
+    end
+  end
+
+  def destroy
+    return redirect_to root_path unless user_costume?
+    @costume.destroy
+    respond_to do |format|
+      format.html { redirect_to cosplayer_path(current_user), notice: t('costumes.was_destroyed') }
+      format.json { head :no_content }
     end
   end
 
@@ -126,5 +148,11 @@ class CostumesController < ApplicationController
       return params
     end
     params
+  end
+
+  def need_json_response?
+    # need for the js fetch
+    # otherwise the fetch func will upload file multiple times
+    params[:need_json_response]
   end
 end
