@@ -2,8 +2,7 @@
 
 one:
   title: Summer Fest
-  from: 2019-07-09 14:46:58
-  to: 2019-07-09 14:46:58
+  date: 2019-07-09 14:46:58
   country: Russia
   city: Novosibirsk
   desc: MyText
@@ -11,8 +10,7 @@ one:
 
 two:
   title: Pop Corn
-  from: 2019-07-09 14:46:58
-  to: 2019-07-09 14:46:58
+  date: 2019-07-09 14:46:58
   country: Russia
   city: Novosibirsk
   desc: MyText

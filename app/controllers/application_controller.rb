@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   # Error reporting
   def set_raven_context
-    unless Rails.env.development?
+    unless Rails.env.development? || Rails.env.test?
       user_id = current_user.id if user_signed_in?
       Raven.user_context(id: user_id)
       Raven.extra_context(params: params.to_unsafe_h, url: request.url)
