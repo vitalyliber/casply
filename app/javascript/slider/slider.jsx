@@ -5,7 +5,8 @@
 import React, {PureComponent} from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
-import Lightbox from 'react-images';
+import 'react-photoswipe/lib/photoswipe.css';
+import { PhotoSwipe } from 'react-photoswipe';
 
 import Uploader from './uploader'
 
@@ -106,18 +107,12 @@ class Gallery extends PureComponent {
             }
           </div>
         ))}
-        <Lightbox
-          imageCountSeparator="/"
-          currentImage={currentImage}
-          images={photos}
+        <PhotoSwipe
           isOpen={lightboxIsOpen}
-          onClickImage={this.handleClickImage}
-          onClickNext={this.gotoNext}
-          onClickPrev={this.gotoPrevious}
-          onClose={() => this.setState({ lightboxIsOpen: false })}
-          showThumbnails={false}
+          items={photos}
+          options={{ index: currentImage, history: false }}
+          onClose={()=> this.setState({ lightboxIsOpen: false })}
         />
-
       </div>
     )
   }

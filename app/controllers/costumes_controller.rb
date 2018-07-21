@@ -66,11 +66,20 @@ class CostumesController < ApplicationController
         canRemove: user_signed_in? && @costume.user_id == current_user.id,
         costumeId: @costume.id,
         photos: @costume.photos.order(created_at: :desc).map do |photo|
+          metadata = if photo.metadata[:height]
+                       photo.metadata
+                     else
+                       photo.analyze
+                       photo.metadata
+                     end
           {
               id: photo.id,
-              src: photo.variant(resize: "1024", interlace: "plane")
+              src: photo.variant(resize: '1024', interlace: 'plane')
                      .processed
-                     .service_url
+                     .service_url,
+              w: metadata['width'] || 1024,
+              h: metadata['height'] || 1024,
+              title: ''
           }
         end
     }
