@@ -76,6 +76,7 @@ class CostumesController < ApplicationController
               id: photo.id,
               src: photo.variant(resize: '1024', interlace: 'plane')
                      .processed
+                     .image
                      .service_url,
               w: metadata['width'] || 1024,
               h: metadata['height'] || 1024,
