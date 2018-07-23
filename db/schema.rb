@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_09_074658) do
+ActiveRecord::Schema.define(version: 2018_07_23_144411) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -66,13 +66,16 @@ ActiveRecord::Schema.define(version: 2018_07_09_074658) do
     t.string "title"
     t.date "date"
     t.string "link"
-    t.string "country"
-    t.string "city"
+    t.string "country_code"
     t.text "desc"
     t.bigint "user_id"
     t.integer "costumes_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "formatted_address"
+    t.string "place_id"
+    t.float "lat"
+    t.float "lng"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 

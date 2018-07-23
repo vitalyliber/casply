@@ -11,15 +11,16 @@
           '
       .item.flex
         = fa_icon 'calendar', class: "fa-1x mr-0-5"
-        p = @event.date
+        p = @event.date.strftime('%e %B %Y')
       .item.flex
         = fa_icon 'globe', class: "fa-1x mr-0-5"
-        p = "#{@event.country}, #{@event.city}"
+        p = "#{@event.formatted_address}"
       .item
         = fa_icon 'link', class: "fa-1x mr-0-5"
         = link_to @event.link, "http://#{@event.link}", class: 'link-main', target: "_blank"
-      .item
-        = MarkdownHelper.render(@event.desc).html_safe
+      - if @event.desc.present?
+        .item
+          = MarkdownHelper.render(@event.desc).html_safe
     - if user_signed_in? && current_user == @event.user
       = link_to edit_event_path(@event), class: 'mt-1 btn btn-active flex flex-center' do
         = fa_icon 'edit', class: "fa-1x mr-0-5"

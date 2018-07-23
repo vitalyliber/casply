@@ -4,7 +4,15 @@ class Event < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   belongs_to :user
   validates_date :date, :on_or_after => lambda { Date.current }
-  validates_presence_of :title, :desc, :date, :user, :country, :city, :link
+  validates_presence_of :title,
+                        :country_code,
+                        :place_id,
+                        :formatted_address,
+                        :lat,
+                        :lng,
+                        :date,
+                        :link,
+                        :image
 
   before_save :clear_link
 

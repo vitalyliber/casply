@@ -1,144 +1,104 @@
-import React, { PureComponent, Fragment } from 'react'
+import React from 'react';
 import ReactDOM from 'react-dom'
-import Autocomplete from 'react-autocomplete'
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
-import CityInput from './city_input'
-
-
-class EventForm extends PureComponent {
-
-  state = {
-    country_selected: gon.current_country_code,
-    country_input: gon.current_country,
-    countries: gon.countries,
-    isGettingCities: false,
-    cities: [],
-    current_city: gon.current_city
+class EventForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      address: gon.formatted_address || '',
+      lat: gon.lat || '',
+      lng: gon.lng || '',
+      country_code: gon.country_code || '',
+      place_id: gon.place_id || '',
+      formatted_address_invalid: gon.formatted_address_invalid,
+    };
   }
 
-  componentDidMount() {
-    const { country_selected } = this.state
-    if (country_selected) {
-      this.getCities(country_selected)
-    }
+  handleChange = address => {
+    this.setState({ address });
+  };
+
+  getAddressCountry = (results) => {
+    return results[0].address_components.find(({ types }) => types[0] === 'country');
   }
+
+  handleSelect = address => {
+    geocodeByAddress(address)
+      .then(async results => {
+        const LatLng = await getLatLng(results[0])
+        this.setState({
+          address: results[0].formatted_address,
+          lat: LatLng.lat,
+          lng: LatLng.lng,
+          country_code: this.getAddressCountry(results).short_name,
+          place_id: results[0].place_id,
+        })
+        return getLatLng(results[0])
+      })
+      .catch(error => console.error('Error', error));
+  };
 
   render() {
-    const {
-      country_input,
-      country_selected,
-      countries,
-      cities,
-      isGettingCities,
-      current_city,
-    } = this.state;
+    const { place_id, country_code, address, lat, lng, formatted_address_invalid } = this.state
+
     return (
-      <div className="mt-1">
-        <label>
-          {I18n.t('events.country')}
-        </label>
-        <Autocomplete
-          inputProps={{ name: "event[country]" }}
-          getItemValue={(item) => item.name}
-          items={countries}
-          renderItem={(item, isHighlighted) =>
-            <div
-              key={item.code}
-              style={{ background: isHighlighted ? 'lightgray' : 'white' }}
-              className="autocomplete-item"
-            >
-              {item.name}
+      <PlacesAutocomplete
+        value={address}
+        onChange={this.handleChange}
+        onSelect={this.handleSelect}
+        debounce={700}
+      >
+        {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+          <div>
+            <div className={`autocomplete-input-container ${formatted_address_invalid ? 'field_with_errors' : '' }`} >
+              <label>
+                {I18n.t('events.address')}
+              </label>
+              <input
+                {...getInputProps({
+                  className: 'location-search-input',
+                })}
+              />
+              {loading &&
+                <div className="autocomplete-loader-container">
+                  <i className="fa fa-spinner fa-1x avatar-loader text-color-main"/>
+                </div>
+              }
             </div>
-          }
-          wrapperStyle={{}}
-          renderInput={(props) => <input {...props} type="text" className="text-field" />}
-          value={country_input}
-          onChange={this.onChange}
-          onSelect={this.onSelect }
-          shouldItemRender={this.matchStateToTermCity}
-        />
-        { (country_selected && !isGettingCities && cities.length > 0) &&
-          <CityInput
-            cities={cities}
-            current_city={current_city}
-            onChange={(object) => this.setState(object)}
-          />
-        }
-        { isGettingCities &&
-          <div className="content-center mt-0-5">
-            <i className="fa fa-spinner fa-2x avatar-loader mt-1" />
+            <input type="hidden" value={country_code} name="event[country_code]" />
+            <input type="hidden" value={place_id} name="event[place_id]" />
+            <input type="hidden" value={address} name="event[formatted_address]" />
+            <input type="hidden" value={lat} name="event[lat]" />
+            <input type="hidden" value={lng} name="event[lng]" />
+            <div className="autocomplete-dropdown-container" >
+              {suggestions.map(suggestion => {
+                const className = suggestion.active
+                  ? 'suggestion-item-active'
+                  : 'suggestion-item';
+                // inline style for demonstration purpose
+                const style = suggestion.active
+                  ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                  : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                return (
+                  <div
+                    {...getSuggestionItemProps(suggestion, {
+                      className,
+                      style,
+                    })}
+                  >
+                    <span>{suggestion.description}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-        }
-      </div>
-    )
-  }
-
-  onChange = (e) => {
-    this.setState({
-      current_city: undefined,
-      country_selected: undefined,
-      country_input: e.target.value,
-    })
-  }
-
-  onSelect = (value) => {
-    const { countries } = this.state;
-    const country = countries.find((country) => {
-      return value.toLowerCase().indexOf(country.name.toLowerCase()) !== -1
-    })
-    this.setState({
-      current_city: undefined,
-      country_selected: country.code,
-      country_input: value,
-    })
-    this.getCities(country.code)
-  }
-
-  matchStateToTermCity = (state, value) => {
-    return (
-      state.name.toLowerCase().indexOf(value.toLowerCase()) !== -1 ||
-      state.code.toLowerCase().indexOf(value.toLowerCase()) !== -1
-    )
-  }
-
-  getCities = (country_code) => {
-    const token = document.querySelector("meta[name=csrf-token]").content || ''
-
-    this.setState({
-      cities: [],
-      isGettingCities: true,
-    })
-
-    return fetch(`/api/cities?country_code=${country_code}`, {
-      method: 'get',
-      credentials: "same-origin",
-      headers: {
-        'X-CSRF-Token': token,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    })
-      .then( async response => {
-        if (response.status <= 400) {
-          const json = await response.json()
-          this.setState({
-            cities: json.cities,
-            isGettingCities: false,
-          })
-          return
-        }
-        this.setState({
-          cities: [],
-          isGettingCities: false,
-        })
-      })
-      .catch(err => {
-        console.log(err)
-        this.setState({
-          cities: [],
-          isGettingCities: false,
-        })
-      })
+        )}
+      </PlacesAutocomplete>
+    );
   }
 }
 

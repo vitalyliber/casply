@@ -92,13 +92,14 @@ en:
     login_with_vk: "Login with vk"
     privacy_policy: "Privacy Policy"
     privacy_agreement: "By registering, you agree to our"
+    should_fill_all_fields: "Please fill needed fields"
 
   events:
     new: "New event"
     create: "Create event"
     edit: "Editing event"
-    city: "City"
     country: "Country"
+    address: "Address"
     posted_by: "Posted by"
     was_destroyed: "Event was successfully destroyed."
     name: "Events"
