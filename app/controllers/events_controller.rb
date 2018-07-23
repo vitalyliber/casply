@@ -9,7 +9,7 @@ class EventsController < ApplicationController
       Event
         .with_eager_loaded_image
         .where("date >= ?", DateTime.now)
-        .try {|el| params[:country] ? el.where(country: params[:country]) : el}
+        .try {|el| params[:country] ? el.where(country_code: params[:country]) : el}
         .order(date: :asc)
         .page(params[:page])
     gon.push({
@@ -35,11 +35,6 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
-    gon.push({
-      countries: countries,
-      current_country: geoip.try(:country_name),
-      current_country_code: geoip.try(:country_code2)
-    })
   end
 
   # GET /events/1/edit
@@ -105,7 +100,19 @@ class EventsController < ApplicationController
   # Never trust parameters from the scary internet, only allow the white list through.
   def event_params
     params.require(:event).permit(
-      :title, :country, :city, :date, :link, :desc, :image, 'date(1i)', 'date(2i)', 'date(3i)'
+      :title,
+      :country_code,
+      :place_id,
+      :formatted_address,
+      :lat,
+      :lng,
+      :date,
+      :link,
+      :desc,
+      :image,
+      'date(1i)',
+      'date(2i)',
+      'date(3i)',
     )
   end
 
@@ -115,10 +122,12 @@ class EventsController < ApplicationController
 
   def gon_data
     gon.push({
-      countries: countries,
-      current_country: @event.country,
-      current_country_code: country_code_by_name(@event.country),
-      current_city: @event.city
+      country_code: @event.country_code,
+      place_id: @event.place_id,
+      formatted_address: @event.formatted_address,
+      lat: @event.lat,
+      lng: @event.lng,
+      formatted_address_invalid: @event.errors[:formatted_address].present?
     })
   end
 end

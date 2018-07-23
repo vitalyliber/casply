@@ -4,8 +4,21 @@ import Autocomplete from 'react-autocomplete'
 
 class EventsSearch extends PureComponent {
 
+  getCountryCodeByName = name => (
+    gon.countries.find(el => el.name === name)['code']
+  )
+
+  getCountryNameByCode = code => {
+    if (code) {
+      return gon.countries.find(el => el.code === code)['name']
+    }
+    else {
+      return ''
+    }
+  }
+
   state = {
-    country_input: gon.country_input || "",
+    country_input: this.getCountryNameByCode(gon.country_input),
     countries: gon.countries,
   }
 
@@ -56,10 +69,13 @@ class EventsSearch extends PureComponent {
   }
 
   onSelect = (value) => {
+    console.log(value)
+    const country_code = this.getCountryCodeByName(value)
     this.setState({
       country_input: value,
     })
-    location.replace(`/events?country=${value}`)
+    console.log(country_code)
+    location.replace(`/events?country=${country_code}`)
   }
 
   matchStateToTermCity = (state, value) => {

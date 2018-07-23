@@ -1,4 +1,42 @@
+@import 'helpers';
+
 .autocomplete-item {
   font-size: 16px;
   padding: 5px 10px;
+}
+
+.autocomplete-dropdown-container {
+  position: relative;
+}
+
+.autocomplete-input-container {
+  position: relative;
+  margin-top: 8px;
+
+  label {
+    display: block;
+    @extend .mb-0-5;
+    @extend .mt-1;
+  }
+}
+
+.autocomplete-loader-container {
+  position: absolute;
+  right: 25px;
+  bottom: 0;
+  top: 35px;
+  margin: auto;
+}
+
+.location-search-input {
+  margin-top: 0!important;
+}
+
+.suggestion-item {
+  padding: 7px;
+  @extend .text-truncate;
+}
+
+.suggestion-item-active {
+  @extend .suggestion-item
 }

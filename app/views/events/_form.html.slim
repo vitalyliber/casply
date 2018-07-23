@@ -1,10 +1,7 @@
 = form_for @event do |f|
   - if @event.errors.any?
-    #error_explanation
-      p.alert = t('not_saved', count: @event.errors.count, resource: Event.model_name.human)
-      ul
-        - @event.errors.full_messages.each do |message|
-          li = message
+    #error_explanation.mb-1
+      p.alert = t('common.should_fill_all_fields')
   div
     = f.label :title
     br
