@@ -15,5 +15,5 @@ class Costume < ApplicationRecord
   scope :with_eager_loaded_photos, -> { eager_load(photos_attachments: :blob) }
   belongs_to :user, counter_cache: true
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many_attached :photos, dependent: :destroy
+  has_many_attached :photos
 end

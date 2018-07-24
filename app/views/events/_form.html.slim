@@ -21,6 +21,6 @@
   .mt-1
     .mb-1
       = f.label :image
-    = f.file_field :image, multiple: false, direct_upload: true
+    = f.file_field :image, multiple: false, direct_upload: true, accept: 'image/jpeg'
 
   = f.submit class: 'actions mt-1 btn btn-active'
