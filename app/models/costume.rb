@@ -16,4 +16,10 @@ class Costume < ApplicationRecord
   belongs_to :user, counter_cache: true
   has_many :comments, as: :commentable, dependent: :destroy
   has_many_attached :photos
+
+  def send_comment_notification(text)
+    user.push_notification_subscriptions.each do |sub|
+      sub.send_push(text, "#{ENV['HOST']}/costumes/#{id}")
+    end
+  end
 end

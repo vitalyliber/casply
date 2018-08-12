@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_07_23_144411) do
+ActiveRecord::Schema.define(version: 2018_08_12_152524) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -62,6 +62,21 @@ ActiveRecord::Schema.define(version: 2018_07_23_144411) do
     t.index ["user_id"], name: "index_costumes_on_user_id"
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer "priority", default: 0, null: false
+    t.integer "attempts", default: 0, null: false
+    t.text "handler", null: false
+    t.text "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string "locked_by"
+    t.string "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.date "date"
@@ -105,6 +120,17 @@ ActiveRecord::Schema.define(version: 2018_07_23_144411) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "push_notification_subscriptions", force: :cascade do |t|
+    t.string "auth_key"
+    t.string "endpoint"
+    t.integer "notification_type", default: 0
+    t.string "p256dh_key"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_push_notification_subscriptions_on_user_id"
+  end
+
   create_table "subscribers", force: :cascade do |t|
     t.bigint "subscription_id"
     t.bigint "follower_id"
@@ -145,4 +171,5 @@ ActiveRecord::Schema.define(version: 2018_07_23_144411) do
 
   add_foreign_key "comments", "users"
   add_foreign_key "costumes", "users"
+  add_foreign_key "push_notification_subscriptions", "users"
 end

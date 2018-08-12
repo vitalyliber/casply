@@ -29,6 +29,7 @@ class ApplicationController < ActionController::Base
     gon.push(
       vk_app_id: ENV['VK_APP_ID'],
       vk_redirect_uri: ENV['VK_REDIRECT_URI'],
+      is_user_signed_in: user_signed_in?,
     )
   end
 
