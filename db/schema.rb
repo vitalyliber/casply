@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_152524) do
+ActiveRecord::Schema.define(version: 2018_08_12_194916) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -165,6 +165,9 @@ ActiveRecord::Schema.define(version: 2018_08_12_152524) do
     t.datetime "updated_at", null: false
     t.integer "subscriptions_count", default: 0
     t.integer "followers_count", default: 0
+    t.integer "social_type", default: 0
+    t.string "social_id"
+    t.boolean "has_email", default: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
