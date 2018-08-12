@@ -128,3 +128,12 @@ group :production do
   # https://sentry.io/onboarding/casply/casply/configure/ruby-rails
   gem 'sentry-raven'
 end
+
+# This gem makes it possible to send push messages to web browsers from Ruby backends using the Web Push Protocol.
+gem 'webpush'
+
+# Use Service Worker with the Rails asset pipeline
+gem 'serviceworker-rails'
+
+# Delayed::Job (or DJ) encapsulates the common pattern of asynchronously executing longer tasks in the background.
+gem 'delayed_job_active_record'

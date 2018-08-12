@@ -1,0 +1,2 @@
+module PushNotificationSubscriptionsHelper
+end

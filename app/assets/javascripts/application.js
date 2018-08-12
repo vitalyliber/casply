@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require i18n/translations
 //= require_tree .
+//= require serviceworker-companion

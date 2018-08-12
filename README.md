@@ -36,6 +36,10 @@ FACEBOOK_APP_ID=xxx
 VK_APP_ID=xxx
 VK_REDIRECT_URI=http://localhost:3000/users/social_auth_vk
 VK_CLIENT_SECRET=xxx
+MAPS_JS_API_KEY=xxx
+VAPID_PUBLIC_KEY=BAy-5i7Zn_4mX6k3IyF-T6LchxtdoZ8WUDHoCJfDBjCA055mVaTY3ebgvRjZ9TaQ-iidVw9BckgHhW2YFGsKuUY=
+VAPID_PRIVATE_KEY=JqbjR2XGz5BtTrTTRzUD-NnCQgm4OHVv5maPbd0MEn0=
+HOST='https://www.casply.com/'
 ```
 
 For compatibility reasons Casply app uses PostgresSQL in development mode.
@@ -62,6 +66,12 @@ rake db:setup
 
 For some interactive elements app use Node.js v9.4.0 and Yarn. 
 You can install it from [here(Node)](https://nodejs.org/dist/v9.4.0/) and [here(Yarn)](https://yarnpkg.com/en/docs/install#mac-stable).
+
+Run background job for a heavy tasks as web pushes:
+
+```
+bin/rake jobs:work
+```
 
 Congratulations! You are ready to start to work on new feature for Casply!
 Just run Rails app:

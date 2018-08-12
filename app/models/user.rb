@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :events
   has_many :comments
   has_one_attached :photo
+  has_many :push_notification_subscriptions
 
   # magic from here ->
   # https://stackoverflow.com/questions/6559164/rails-associations-has-many-through-but-same-model
