@@ -3,18 +3,19 @@ class User < ApplicationRecord
   validates_presence_of :name, :country, :gender
   validates_length_of :desc, minimum: 3, maximum: 455, allow_blank: true
   validates_length_of :website, minimum: 5, maximum: 100, allow_blank: true
-  enum gender: %i(female male other)
+  enum gender: { female: 0, male: 1, other: 2 }
+  enum social_type: { mail: 0, vk: 1, fb: 2 }
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
 
-  has_many :costumes
-  has_many :events
-  has_many :comments
+  has_many :costumes, dependent: :destroy
+  has_many :events, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :photo
-  has_many :push_notification_subscriptions
+  has_many :push_notification_subscriptions, dependent: :destroy
 
   # magic from here ->
   # https://stackoverflow.com/questions/6559164/rails-associations-has-many-through-but-same-model

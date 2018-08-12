@@ -6,10 +6,17 @@ class UsersController < ApplicationController
       body = JSON.parse(response.body)
       name, picture = body.values_at 'name', 'picture'
       email = email_or_fake(body['email'], fb_user_id, 'facebook')
-      user = User.find_by(email: email)
+      user = if @has_email
+               User.find_by(email: email)
+             else
+               User.find_by(social_id: fb_user_id, social_type: :fb)
+             end
       if user.blank?
         user = User.create(
             name: name,
+            social_type: :fb,
+            social_id: fb_user_id,
+            has_email: @has_email,
             email: email,
             password: SecureRandom.hex,
             gender: :other,
@@ -38,7 +45,11 @@ class UsersController < ApplicationController
       if response.status == 200
         body = JSON.parse(response.body)
         email = email_or_fake(body['email'], body['user_id'], 'vk')
-        user = User.find_by(email: email)
+        user = if @has_email
+                 User.find_by(email: email)
+               else
+                 User.find_by(social_id: body['user_id'], social_type: :vk)
+               end
         if user.blank?
           info_uri = "https://api.vk.com/method/users.get?fields=sex,first_name,last_name,photo_max_orig&v=5.8&access_token=#{body['access_token']}"
           info_response = Excon.get(info_uri)
@@ -46,6 +57,9 @@ class UsersController < ApplicationController
             info = JSON.parse(info_response.body).dig('response', 0)
             user = User.create(
               name: "#{info['first_name']} #{info['last_name']}",
+              social_type: :vk,
+              social_id: body['user_id'],
+              has_email: @has_email,
               email: email,
               password: SecureRandom.hex,
               gender: vk_gender(info['sex']),
@@ -92,8 +106,10 @@ class UsersController < ApplicationController
 
   def email_or_fake(email, user_id, provider)
     if email
+      @has_email = true
       email
     else
+      @has_email = false
       "#{user_id}@#{provider}.casply.com"
     end
   end
