@@ -1,0 +1,13 @@
+{
+  "name": "casply",
+  "description": "The cosplayers community",
+  "keywords": [
+    "dokku",
+    "rails",
+  ],
+  "scripts": {
+    "dokku": {
+      "postdeploy": "bundle exec rake db:migrate"
+    }
+  }
+}
