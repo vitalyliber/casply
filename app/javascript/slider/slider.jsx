@@ -91,7 +91,7 @@ class Gallery extends PureComponent {
           >
             <img
               onClick={() => this.openLightbox(index)}
-               src={photo.src}
+               src={photo.lq_src}
             />
             {(canRemove) &&
             <div

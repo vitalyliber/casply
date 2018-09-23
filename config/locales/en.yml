@@ -51,7 +51,6 @@ en:
     register_to_write_comments: "Please log in or register to write comments"
     limit_photos: "You can upload only %{number} photos"
     your_reached_limit_photos: "You have reached limit of photos for the costume"
-    popular: "Popular"
     add_photos: "Add photos"
     remove: "Destroy"
     was_destroyed: "Costume was successfully destroyed."

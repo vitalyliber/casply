@@ -1,38 +1,68 @@
 @import 'colors';
+@import 'media_queries';
 
-.event-card {
-  box-shadow: #999 0px 0px 3px;
-  .image {
-    height: 200px;
-    width: 100%;
-    background-color: #ed7aa3;
-
-    img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
+#events-search {
+  @include mobile-only {
+    padding-left: 10px;
+    padding-right: 10px;
   }
-  .group {
-    padding: 15px;
-    h2, h1, p {
-      margin: 0;
-    }
-    .posted_by {
-      color: $color-text-gray;
-      font-size: 12px;
-    }
-    .fa {
-      color: $color-text;
-    }
-    .flex {
-      display: flex;
-    }
-  }
-
 }
 
+.events-cards {
+  padding: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  .event-card {
+    @include mobile-only {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+
+    @include mobile-portrait-and-up {
+      margin: 10px;
+      width: 300px;
+    }
+
+    box-shadow: #999 0px 0px 3px;
+    .image {
+      height: 200px;
+      width: 100%;
+      background-color: #ed7aa3;
+
+      img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+    .group {
+      padding: 15px;
+      h2, h1, p {
+        margin: 0;
+      }
+      .posted_by {
+        color: $color-text-gray;
+        font-size: 12px;
+      }
+      .fa {
+        color: $color-text;
+      }
+      .flex {
+        display: flex;
+      }
+    }
+  }
+}
+
+
 .event-page {
+  margin-left: 10px;
+  margin-right: 10px;
+
   p, h1, h2 {
     margin: 0;
     word-break: break-word
