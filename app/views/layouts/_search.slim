@@ -1,2 +1,2 @@
-= form_for :search, url: root_path, method: :get, html: { class: 'search' } do |f|
+= form_for :search, url: root_path, method: :get, html: { class: 'search mb-1' } do |f|
   = f.text_field :name, placeholder: t('common.search'), value: params.dig(:search, :name)

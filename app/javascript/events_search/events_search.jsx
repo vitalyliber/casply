@@ -28,7 +28,7 @@ class EventsSearch extends PureComponent {
       countries,
     } = this.state;
     return (
-      <div className="mb-2">
+      <div className="mb-1">
         <Autocomplete
           inputProps={{
             name: "event[country]",

@@ -4,14 +4,6 @@
       = image_tag 'logo.png', width: 40, height: 40, class: 'mr-0-5'
       = image_tag 'text_logo.svg', width: 80, height: 35, class: 'mr-0-5'
   .options
-    - if controller_name == 'events'
-      - route = user_signed_in? ? new_event_path : new_user_session_path
-      = link_to route, title: t('events.create'), class: 'mr-1' do
-        = fa_icon 'calendar', class: "fa-2x"
-    - else
-      - route = user_signed_in? ? new_costume_path : new_user_session_path
-      = link_to route, title: t('layouts.new_costume'), class: 'mr-1' do
-        = fa_icon 'cloud', class: "fa-2x"
     - if user_signed_in?
       = link_to cosplayer_path(current_user) do
         - if current_user.photo.attached?

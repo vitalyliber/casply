@@ -1,29 +1,30 @@
 = render 'info'
 .wrapper
   #events-search
-  - @events.each do |event|
-    .event-card
-      = link_to event do
-        .image
-          - if event.image.attached?
-            = image_tag event.image.variant(resize: "900x200^", gravity: :center, interlace: "plane"),
-                    class: 'mr-0-5'
-      .group
-        h1 = link_to event.title, event, class: 'link-black'
-        .mt-1
-          p.posted_by
-            '#{t('events.posted_by')}
-            = link_to event.user.name, cosplayer_path(event.user), class: 'link-main'
-            '
-        .mt-1.flex
-          = fa_icon 'calendar', class: "fa-1x mr-0-5"
-          p = event.date.strftime('%e %B %Y')
-        .mt-0-5.flex
-          = fa_icon 'globe', class: "fa-1x mr-0-5"
-          p = "#{event.formatted_address}"
-        .mt-0-5
-          = fa_icon 'link', class: "fa-1x mr-0-5"
-          = link_to event.link, "http://#{event.link}", class: 'link-main', target: "_blank"
+  .events-cards
+    - @events.each do |event|
+      .event-card
+        = link_to event do
+          .image
+            - if event.image.attached?
+              = image_tag event.image.variant(resize: "900x200^", gravity: :center, interlace: "plane"),
+                      class: 'mr-0-5'
+        .group
+          h1 = link_to event.title, event, class: 'link-black'
+          .mt-1
+            p.posted_by
+              '#{t('events.posted_by')}
+              = link_to event.user.name, cosplayer_path(event.user), class: 'link-main'
+              '
+          .mt-1.flex
+            = fa_icon 'calendar', class: "fa-1x mr-0-5"
+            p = event.date.strftime('%e %B %Y')
+          .mt-0-5.flex
+            = fa_icon 'globe', class: "fa-1x mr-0-5"
+            p = "#{event.formatted_address}"
+          .mt-0-5
+            = fa_icon 'link', class: "fa-1x mr-0-5"
+            = link_to event.link, "http://#{event.link}", class: 'link-main', target: "_blank"
     br
   - if @events.blank?
     .blank-list
