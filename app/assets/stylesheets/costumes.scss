@@ -20,6 +20,11 @@
 .costume-card {
   padding: 1px 15px 20px 15px;
   background-color: white;
+
+  @include mobile-only {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }
 
 .universe {
@@ -48,4 +53,11 @@
 .responsive-image {
   width: 100%;
   height: auto;
+}
+
+.costume-comments {
+  @include mobile-only {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
 }

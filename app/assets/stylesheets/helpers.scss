@@ -189,9 +189,12 @@ span {
     padding-right: 10px;
     padding-top: 10px;
     background-color: white;
+    max-width: 350px;
+    min-height: 200px;
 
     @include mobile-only {
       margin-bottom: 15px;
+      width: 100%;
     }
 
     @include mobile-portrait-and-up {
@@ -201,6 +204,14 @@ span {
     .stub {
       width: 200px;
       height: 150px;
+    }
+
+    img {
+      height: auto;
+      width: 100%;
+      max-width: 350px;
+      min-height: 200px;
+      background-color: #deeafe;
     }
   }
 

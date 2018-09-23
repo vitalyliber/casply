@@ -24,7 +24,7 @@
 
     @include mobile-portrait-and-up {
       margin: 10px;
-      width: 300px;
+      max-width: 350px;
     }
 
     box-shadow: #999 0px 0px 3px;
