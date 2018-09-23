@@ -67,10 +67,12 @@ class CostumesController < ApplicationController
                      end
           {
               id: photo.id,
-              src: rails_blob_url(
+              src: rails_representation_url(
                 photo
-                  .variant(resize: '1024', interlace: 'plane')
-                  .blob),
+                  .variant(resize: '1024', interlace: 'plane')),
+              lq_src: rails_representation_url(
+                  photo
+                      .variant(resize: '350', interlace: 'plane')),
               w: metadata['width'] || 1024,
               h: metadata['height'] || 1024,
               title: ''

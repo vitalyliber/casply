@@ -22,7 +22,7 @@
     .images-container.mt-2
       - @js_variables[:photos].each do |photo|
         .image-container
-         = image_tag photo[:src]
+         = image_tag photo[:lq_src]
 
   h2 #{t('costumes.comments')} (#{@costume.comments_count})
 
