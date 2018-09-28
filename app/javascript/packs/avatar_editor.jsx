@@ -1,1 +1,1 @@
-import "../avatar_editor/avatar_editor.jsx"
+import "../components/avatar_editor/avatar_editor.jsx"

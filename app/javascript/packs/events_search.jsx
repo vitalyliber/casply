@@ -1,1 +1,1 @@
-import "../events_search/events_search.jsx"
+import "../components/events_search/events_search.jsx"

@@ -1,1 +1,1 @@
-import "../event_form/event_form.jsx"
+import "../components/event_form/event_form.jsx"
