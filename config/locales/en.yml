@@ -54,6 +54,8 @@ en:
     add_photos: "Add photos"
     remove: "Destroy"
     was_destroyed: "Costume was successfully destroyed."
+    name: "Name"
+    desc: "Description"
 
   cosplayers:
     edit_cosplayers_info: "Edit cosplayer's info"
@@ -102,3 +104,7 @@ en:
     posted_by: "Posted by"
     was_destroyed: "Event was successfully destroyed."
     name: "Events"
+
+  validations:
+    min: "%{field} must be at least %{min} characters"
+    required: "Required"

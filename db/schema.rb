@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_12_194916) do
+ActiveRecord::Schema.define(version: 2018_10_01_084323) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_trgm"
@@ -50,7 +50,6 @@ ActiveRecord::Schema.define(version: 2018_08_12_194916) do
 
   create_table "costumes", force: :cascade do |t|
     t.string "name", default: ""
-    t.string "universe", default: ""
     t.text "desc", default: ""
     t.bigint "user_id"
     t.integer "comments_count", default: 0

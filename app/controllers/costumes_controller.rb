@@ -2,7 +2,6 @@ class CostumesController < ApplicationController
   before_action :find_costume, only: [:show, :edit, :update, :destroy]
   after_action :photos_counter_cache, only: [:create, :edit, :update]
   impressionist actions: [:show], unique: [:user_id, :impressionable_type, :impressionable_id]
-  LIMIT_PHOTOS = 10
 
   def index
     name = params.dig(:search, :name)
@@ -25,25 +24,32 @@ class CostumesController < ApplicationController
   end
 
   def new
-    @costume = Costume.new
-    @limit_photos = LIMIT_PHOTOS
   end
 
   def create
-    @costume = current_user.costumes.new(limit_photos!(costume_params))
+    @costume = current_user.costumes.new(costume_params)
     if @costume.save
-      redirect_to costume_path(@costume)
+      render json: @costume
     else
-      @limit_photos = LIMIT_PHOTOS
-      render 'new'
+      render json: { errors: @costume.errors.full_messages }, status: 400
     end
   end
 
   def edit
-    @limit_photos = LIMIT_PHOTOS
     unless user_costume?
-      redirect_to costume_path(@costume)
+      render json: { errors: ['Unauthorized access'] }, status: 401
     end
+    gon.push({
+      costume_id: @costume.id,
+      name: @costume.name,
+      desc: @costume.desc,
+      photos: @costume.photos.map do |photo|
+        {
+          id: photo.id,
+          preview: rails_representation_url(photo.variant(resize: '100', interlace: 'plane'))
+        }
+      end
+    })
   end
 
   def show
@@ -55,7 +61,6 @@ class CostumesController < ApplicationController
         .page(params[:page])
 
     @js_variables = {
-        limit_photos: LIMIT_PHOTOS,
         canRemove: user_signed_in? && @costume.user_id == current_user.id,
         costumeId: @costume.id,
         photos: @costume.photos.order(created_at: :desc).map do |photo|
@@ -93,24 +98,12 @@ class CostumesController < ApplicationController
 
   def update
     unless user_costume?
-      if need_json_response?
-        render json: {}, status: 401
-      else
-        return redirect_to costume_path(@costume)
-      end
+      render json: { errors: ['Unauthorized access'] }, status: 401
     end
-    if @costume.update(limit_photos!(costume_params, @costume.photos_count))
-      if need_json_response?
-        render json: {}, status: 201
-      else
-        redirect_to @costume
-      end
+    if @costume.update(costume_params)
+      render json: {}, status: 201
     else
-      if need_json_response?
-        render json: { messages: @costume.errors.full_messages }, status: 401
-      else
-        render 'edit'
-      end
+      render json: { messages: @costume.errors.full_messages }, status: 401
     end
   end
 
@@ -130,7 +123,12 @@ class CostumesController < ApplicationController
   end
 
   def costume_params
-    params.require(:costume).permit(:name, :universe, :desc, photos: [])
+    params.require(:costume).permit(
+      :name,
+      :desc,
+      photos: [],
+      photos_attachments_attributes: [:id, :_destroy],
+    )
   end
 
   def photos_counter_cache
@@ -139,25 +137,5 @@ class CostumesController < ApplicationController
 
   def user_costume?
     @costume.user_id == current_user.id
-  end
-
-  def limit_photos!(params, photos_number = 0)
-    limit = LIMIT_PHOTOS - photos_number
-    if params[:photos] && params[:photos].count > limit
-      flash[:notice] = t('costumes.limit_photos', number: LIMIT_PHOTOS)
-      params[:photos] = if limit < 0
-                          []
-                        else
-                          params[:photos][0, limit]
-                        end
-      return params
-    end
-    params
-  end
-
-  def need_json_response?
-    # need for the js fetch
-    # otherwise the fetch func will upload file multiple times
-    params[:need_json_response]
   end
 end

@@ -23,6 +23,8 @@ ru:
     add_photos: "Добавить фото"
     remove: "Удалить"
     was_destroyed: "Костюм был успешно удален."
+    name: "Имя"
+    desc: "Описание"
 
   cosplayers:
     edit_cosplayers_info: "Редактирование профиля"
@@ -71,3 +73,7 @@ ru:
     posted_by: "Разместил"
     was_destroyed: "Событие было успешно удалено."
     name: "События"
+
+  validations:
+    min: "%{field} должно быть не меньше %{min} символов"
+    required: "Обязательное поле"
