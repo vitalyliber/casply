@@ -69,7 +69,7 @@ en:
     following_count: "Following"
     create_costume: "Create costume"
     change_a_photo: "Change a photo"
-    upload_a_photo: "Upload a photo"
+    update: "Update"
 
   common:
     remove: "&#x2715;"

@@ -11,7 +11,7 @@
     = t('cosplayers.followers_count')
     span.ml-0-5 = @user.followers_count
 
-.wrapper
+.wrapper-container
 
   .profile-card
 
@@ -50,5 +50,4 @@
     = link_to t('cosplayers.create_costume'), new_costume_path, class: 'btn btn-main mt-1'
     = link_to t('events.create'), new_event_path, class: 'mt-0-5 btn btn-active'
 
-  br
-  = render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }
+= render partial: 'costumes/costumes_gallery', locals: { costumes: @costumes }

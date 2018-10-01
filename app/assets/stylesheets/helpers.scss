@@ -20,7 +20,7 @@ h2 {
 }
 
 .wrapper {
-  padding: 20px 30px 40px 30px;
+  padding: 20px 30px 10px 30px;
   box-sizing: border-box;
   max-width: 800px;
   display: flex;
@@ -30,7 +30,7 @@ h2 {
   margin: auto;
 
   @include tablet-portrait-and-below {
-    padding: 10px 0px 40px 0px;
+    padding: 10px 0px 10px 0px;
   }
 
  .search {
@@ -42,6 +42,15 @@ h2 {
      display: block;
    }
  }
+}
+
+.wrapper-container {
+  @extend .wrapper;
+
+  @include tablet-portrait-and-below {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
 }
 
 .navigation-container {
