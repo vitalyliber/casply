@@ -1,1 +1,1 @@
-import "../slider/slider.jsx"
+import "../components/slider/slider.jsx"

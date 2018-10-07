@@ -30,7 +30,6 @@ ru:
         other: Другой
       costume:
         name: Персонаж
-        universe: Вселенная
         desc: Описание
         photos: Фотографии
       comment:

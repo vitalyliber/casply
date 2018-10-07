@@ -1,16 +1,16 @@
-.navigation
-  .logo
-    = link_to root_path do
-      = image_tag 'logo.png', width: 40, height: 40, class: 'mr-0-5'
-      = image_tag 'text_logo.svg', width: 80, height: 35, class: 'mr-0-5'
-  .options
-    - if user_signed_in?
-      = link_to cosplayer_path(current_user) do
-        - if current_user.photo.attached?
-          = image_tag current_user.photo.variant(resize: "30x30^", gravity: :center, crop: "30x30+0+0", interlace: "plane"),
-                class: 'circle'
-        - else
-          = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'
-      = render 'layouts/search'
-    - else
-      = link_to t('layouts.sign_in'), new_user_session_path
+.navigation-container
+  .navigation
+    .logo
+      = link_to root_path do
+        = image_tag 'logo.png', width: 40, height: 40, class: 'mr-0-5'
+        = image_tag 'text_logo.svg', width: 80, height: 35, class: 'mr-0-5'
+    .options
+      - if user_signed_in?
+        = link_to cosplayer_path(current_user) do
+          - if current_user.photo.attached?
+            = image_tag current_user.photo.variant(resize: "30x30^", gravity: :center, crop: "30x30+0+0", interlace: "plane"),
+                  class: 'circle'
+          - else
+            = image_tag 'avatar.jpg', height: "30", width: "30", class: 'circle'
+      - else
+        = link_to t('layouts.sign_in'), new_user_session_path

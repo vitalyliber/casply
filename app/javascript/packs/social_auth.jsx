@@ -1,1 +1,1 @@
-import "../social_auth/social_auth.jsx"
+import "../components/social_auth/social_auth.jsx"

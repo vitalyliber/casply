@@ -144,7 +144,7 @@ class AvatarEditor extends PureComponent {
                 className="btn btn-active btn-m mt-0-5 mb-1"
                 onClick={this.upload}
               >
-                {I18n.t("cosplayers.upload_a_photo")}
+                {I18n.t("cosplayers.update")}
               </button>
               <button
                 className="btn btn-main btn-m mt-0-5 mb-1 ml-0-5"

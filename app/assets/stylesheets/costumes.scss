@@ -27,10 +27,6 @@
   }
 }
 
-.universe {
-  color: $color-text-gray
-}
-
 .comment-header {
   align-items: center;
   display: flex;
@@ -59,5 +55,82 @@
   @include mobile-only {
     margin-left: 10px;
     margin-right: 10px;
+  }
+}
+
+.costume-form {
+  @include tablet-portrait-and-below {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  button {
+    width: 100%;
+    margin-top: 15px;
+  }
+
+  .previews {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    .preview-container {
+      position: relative;
+      height: 100px;
+      width: 100px;
+      margin-left: 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 5px;
+
+      .preview {
+        object-fit: cover;
+        height: 100px;
+        width: 100px;
+      }
+
+      .delete {
+        position: absolute;
+        cursor: pointer;
+        padding: 5px;
+        background-color: rgba(255, 255, 255, 0.63);
+        border-radius: 5px;
+
+        .fa {
+          color: black;
+        }
+      }
+
+      &:first-child {
+        margin-left: 0px;
+      }
+    }
+
+
+  }
+
+  .dropzone {
+    display: flex;
+    align-items: baseline;
+    border-radius: 10px;
+    border: 4px white solid;
+    width: 100%;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 20px;
+
+    .text {
+      margin: 0 0 0 10px;
+    }
+
+    .fa {
+      margin: 0;
+    }
+  }
+
+  .dropzone-errors {
+    @extend .dropzone;
+    box-shadow: 0 0 10px #f1475d;
   }
 }

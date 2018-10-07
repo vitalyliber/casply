@@ -1,14 +1,8 @@
-// Run this example by adding <%= javascript_pack_tag 'Gallery_react' %> to the head of your layout file,
-// like app/views/layouts/application.html.erb. All it does is render <div>Gallery React</div> at the bottom
-// of the page.
-
 import React, {PureComponent} from 'react'
 import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import 'react-photoswipe/lib/photoswipe.css';
 import { PhotoSwipe } from 'react-photoswipe';
-
-import Uploader from './uploader'
 
 class Gallery extends PureComponent {
   state = {
@@ -17,7 +11,6 @@ class Gallery extends PureComponent {
     lightboxIsOpen: false,
     isImageRemoving: false,
     currentImage: 0,
-    limit_photos: gon.limit_photos,
   }
 
   openLightbox = (currentPhotoId) => {
@@ -27,63 +20,15 @@ class Gallery extends PureComponent {
     })
   }
 
-  setRemoveButtonHover = () => {
-    const { removeButtonHover } = this.state
-    this.setState({ removeButtonHover: !removeButtonHover })
-  }
-
-  removeImage = (currentPhotoId) => {
-    const { photos } = this.state;
-    const token = document.querySelector("meta[name=csrf-token]").content || ''
-
-    this.setState({
-      isImageRemoving: true,
-      imageRemovingId: currentPhotoId,
-    })
-    fetch(`/costumes/${gon.costumeId}/photos/${currentPhotoId}`, {
-      method: 'delete',
-      credentials: "same-origin",
-      headers: {
-        'X-CSRF-Token': token,
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    })
-      .then(response => {
-        if (response.status < 400) {
-          const newPhotos = photos.filter(({ id }) => id !== currentPhotoId)
-          this.setState({
-            photos: newPhotos,
-          })
-        }
-        this.setState({
-          isImageRemoving: false,
-        })
-      })
-      .catch(err => {
-        console.log(err)
-        this.setState({
-          isImageRemoving: false
-        })
-      })
-  }
-
   render() {
     const {
       photos,
-      canRemove,
-      isImageRemoving,
       currentImage,
       lightboxIsOpen,
-      imageRemovingId,
-      limit_photos,
     } = this.state
 
     return(
       <div className="images-container mt-2">
-        { (canRemove && photos.length < limit_photos ) &&
-          <Uploader />
-        }
         {photos.map((photo, index) => (
           <div
             key={photo.id}
@@ -93,18 +38,6 @@ class Gallery extends PureComponent {
               onClick={() => this.openLightbox(index)}
                src={photo.lq_src}
             />
-            {(canRemove) &&
-            <div
-              onClick={() => this.removeImage(photo.id)}
-              className="trash"
-            >
-              {isImageRemoving && imageRemovingId === photo.id ? (
-                <i style={styles.loader} className="fa fa-spinner fa-1x" />
-              ) : (
-                <i className="fa fa-trash fa-1x" />
-              )}
-            </div>
-            }
           </div>
         ))}
         <PhotoSwipe

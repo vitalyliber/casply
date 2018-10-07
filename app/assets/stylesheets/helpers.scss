@@ -20,7 +20,7 @@ h2 {
 }
 
 .wrapper {
-  padding: 20px 30px 40px 30px;
+  padding: 20px 30px 10px 30px;
   box-sizing: border-box;
   max-width: 800px;
   display: flex;
@@ -30,7 +30,7 @@ h2 {
   margin: auto;
 
   @include tablet-portrait-and-below {
-    padding: 10px 0px 40px 0px;
+    padding: 10px 0px 10px 0px;
   }
 
  .search {
@@ -44,6 +44,21 @@ h2 {
  }
 }
 
+.wrapper-container {
+  @extend .wrapper;
+
+  @include tablet-portrait-and-below {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+}
+
+.navigation-container {
+  background-color: #333333;
+  display: flex;
+  justify-content: center;
+}
+
 .navigation {
   display: flex;
   justify-content: space-between;
@@ -51,6 +66,8 @@ h2 {
   padding: 0px 30px;
   height: 56px;
   background-color: #333333;
+  width: 800px;
+
 
   @include mobile-only {
     padding: 0px 15px;
@@ -189,16 +206,17 @@ span {
     padding-right: 10px;
     padding-top: 10px;
     background-color: white;
-    max-width: 350px;
     min-height: 200px;
 
     @include mobile-only {
       margin-bottom: 15px;
       width: 100%;
+      max-width: 350px;
     }
 
     @include mobile-portrait-and-up {
       margin: 5px;
+      width: 330px
     }
 
     .stub {
@@ -420,4 +438,14 @@ input[type=password], input[type=email], input[type=text], textarea, select {
 
 .fd-c {
   flex-direction: column;
+}
+
+.loader-container {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+
+  .fa {
+    color: $color-main;
+  }
 }

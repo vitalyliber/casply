@@ -24,11 +24,6 @@
 }
 
 .btn {
-  @include tablet-portrait-and-below {
-    margin-right: 10px;
-    margin-left: 10px;
-  }
-
   cursor: pointer;
   font-weight: bold;
   color: white;

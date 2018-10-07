@@ -2,7 +2,7 @@ class CosplayersController < ApplicationController
   before_action :find_user, only: [:show, :edit, :update, :subscribe, :unsubscribe]
 
   def show
-    @costumes = @user.costumes.page(params[:page])
+    @costumes = @user.costumes.order(created_at: :desc).page(params[:page])
     @subscriber = Subscriber.find_by(subscription: current_user, follower: @user)
     @photo_url =
       if @user.photo.attached?
