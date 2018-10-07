@@ -283,8 +283,6 @@ GEM
     timeliness-i18n (0.6.0)
       rails
       timeliness
-    trix (0.10.1)
-      rails
     turbolinks (5.2.0)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -357,7 +355,6 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   timeliness-i18n
-  trix
   turbolinks (~> 5)
   tzinfo-data
   uglifier (>= 1.3.0)
