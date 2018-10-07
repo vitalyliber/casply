@@ -68,6 +68,7 @@ en:
     followers_count: "Followers"
     following_count: "Following"
     create_costume: "Create costume"
+    plus_costume: "+ Costume"
     change_a_photo: "Change a photo"
     update: "Update"
 
@@ -98,6 +99,7 @@ en:
   events:
     new: "New event"
     create: "Create event"
+    plus_event: "+ Event"
     edit: "Editing event"
     country: "Country"
     address: "Address"
