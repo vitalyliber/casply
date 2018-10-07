@@ -51,43 +51,44 @@ export class FabFan extends PureComponent {
         {({ spinOpen, expandOpts, fadeOpts }) => (
           <div className='fab-container'>
             <div className='fab-content'>
+              { open &&
+                <StaggeredMotion
+                  defaultStyles={optsWithStyle.map(o => o.style)}
+                  styles={nextStyle}
+                >
+                  {interpolatingStyles =>
+                    <div style={{...actionContainerStyle}}>
+                      {
+                        interpolatingStyles.map(({ springIn }, i) => {
+                          const styled = this.childButtonStyle(springIn)
 
-              <StaggeredMotion
-                defaultStyles={optsWithStyle.map(o => o.style)}
-                styles={nextStyle}
-              >
-                {interpolatingStyles =>
-                  <div style={{...actionContainerStyle}}>
-                    {
-                      interpolatingStyles.map(({ springIn }, i) => {
-                        const styled = this.childButtonStyle(springIn)
-
-                        return (
-                          <div
-                            key={i}
-                            style={styled}
-                            onClick={optsWithStyle[i].onClick}
-                            className='fabItem'
-                          >
-                            <div>{optsWithStyle[i].name}</div>
+                          return (
                             <div
-                              style={{
-                                backgroundColor: optsWithStyle[i].background,
-                                borderRadius: '50%',
-                                height: 50,
-                                width: 50,
-                                display: 'flex',
-                                justifyContent: 'center',
-                                alignItems: 'center',
-                              }}
-                            >{optsWithStyle[i].icon}</div>
-                          </div>
-                        )
-                      })
-                    }
-                  </div>
-                }
-              </StaggeredMotion>
+                              key={i}
+                              style={styled}
+                              onClick={optsWithStyle[i].onClick}
+                              className='fabItem'
+                            >
+                              <div>{optsWithStyle[i].name}</div>
+                              <div
+                                style={{
+                                  backgroundColor: optsWithStyle[i].background,
+                                  borderRadius: '50%',
+                                  height: 50,
+                                  width: 50,
+                                  display: 'flex',
+                                  justifyContent: 'center',
+                                  alignItems: 'center',
+                                }}
+                              >{optsWithStyle[i].icon}</div>
+                            </div>
+                          )
+                        })
+                      }
+                    </div>
+                  }
+                </StaggeredMotion>
+              }
 
               <button
                 className={`fab ${open ? 'active' : ''}`} style={{
