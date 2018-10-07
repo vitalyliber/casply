@@ -37,6 +37,7 @@ ru:
     followers_count: "Подписчики"
     following_count: "Подписки"
     create_costume: "Создать костюм"
+    plus_costume: "+ Костюм"
     change_a_photo: "Изменить фото"
     update: "Применить"
 
@@ -67,6 +68,7 @@ ru:
   events:
     new: "Новое событие"
     create: "Создать событие"
+    plus_event: "+ Событие"
     edit: "Редактирование события"
     country: "Страна"
     address: "Адрес"
