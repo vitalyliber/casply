@@ -1,6 +1,6 @@
 {
   "name": "cosplayers",
-  "engines" : { "node" : ">=9" },
+  "engines" : { "node": "^8.15.0" },
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^3.3.0",
