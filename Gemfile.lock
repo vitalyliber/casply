@@ -115,7 +115,7 @@ GEM
       dotenv (= 2.5.0)
       railties (>= 3.2, < 6.0)
     erubi (1.7.1)
-    excon (0.62.0)
+    excon (0.71.0)
     execjs (2.7.0)
     faraday (0.15.3)
       multipart-post (>= 1.2, < 3)
