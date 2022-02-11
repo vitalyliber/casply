@@ -171,7 +171,9 @@ GEM
     meta-tags (2.10.0)
       actionpack (>= 3.2.0, < 5.3)
     method_source (0.9.0)
-    mimemagic (0.3.2)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_magick (4.9.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
@@ -191,7 +193,8 @@ GEM
       activesupport (>= 4.2)
       arel (>= 6)
     public_suffix (3.0.3)
-    puma (3.12.0)
+    puma (4.3.11)
+      nio4r (~> 2.0)
     rack (2.0.5)
     rack-proxy (0.6.5)
       rack
@@ -343,7 +346,7 @@ DEPENDENCIES
   mini_magick (~> 4.8)
   pg (>= 0.18, < 2.0)
   pg_search
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.1)
   redcarpet
   russian
